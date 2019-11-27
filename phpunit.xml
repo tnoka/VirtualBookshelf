@@ -26,6 +26,7 @@
         <extension class="Tests\Bootstrap"/>
     </extensions>
     <php>
+        <server name="env" value="testing"/>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
