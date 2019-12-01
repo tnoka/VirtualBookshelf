@@ -12,6 +12,9 @@ import store from './store'
 
 Vue.use(VueRouter)
 
+const createApp = async() => {
+    await store.dispatch('auth/currentUser')
+
 new Vue({
     el: '#app',
     router, //ルーティングの定義を読み込む
@@ -21,3 +24,6 @@ new Vue({
     }, //ルートコンポーネントの使用を宣言
     template: '<App />' //ルートコンポーネントの描画
 })
+}
+
+createApp()

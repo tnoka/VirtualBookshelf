@@ -1917,7 +1917,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
+    },
+    username: function username() {
+      return this.$store.getters['auth/username'];
+    }
+  },
   methods: {
     logout: function logout() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function logout$(_context) {
@@ -5395,10 +5404,6 @@ var render = function() {
     "footer",
     { staticClass: "footer" },
     [
-      _c("button", { staticClass: "button button--like" }, [
-        _vm._v("\n        Logout\n    ")
-      ]),
-      _vm._v(" "),
       _c(
         "router-link",
         { staticClass: "button button--like", attrs: { to: "/login" } },
@@ -5439,30 +5444,40 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "navbar__menu" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("span", { staticClass: "navbar__item" }, [
-          _vm._v("\n            username\n        ")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar__item" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "button button--like", attrs: { to: "/login" } },
-              [_vm._v("\n            Login / Register\n            ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "button button--like", on: { click: _vm.logout } },
-              [_vm._v("\n            Logout\n            ")]
+        _vm.isLogin
+          ? _c("div", { staticClass: "navbar__item" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "button button--like",
+                  on: { click: _vm.logout }
+                },
+                [_vm._v("\n            Logout\n            ")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "navbar__item" }, [
+                _vm._v(
+                  "\n            " + _vm._s(_vm.username) + "\n            "
+                )
+              ])
+            ])
+          : _c(
+              "div",
+              { staticClass: "navbar__item" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "button button--like",
+                    attrs: { to: "/login" }
+                  },
+                  [_vm._v("\n            Login / Register\n            ")]
+                )
+              ],
+              1
             )
-          ],
-          1
-        )
       ])
     ],
     1
@@ -5473,11 +5488,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar__item" }, [
-      _c("button", { staticClass: "button" }, [
-        _c("i", { staticClass: "icon ion-md-add" }),
-        _vm._v("\n                本棚に飾る\n            ")
-      ])
+    return _c("button", { staticClass: "button" }, [
+      _c("i", { staticClass: "icon ion-md-add" }),
+      _vm._v("\n                本棚に飾る\n            ")
     ])
   }
 ]
@@ -21952,13 +21965,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+
 
 
  // ルーティング
@@ -21968,20 +21984,40 @@ __webpack_require__.r(__webpack_exports__);
  // Vuex
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
-new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
-  el: '#app',
-  router: _router__WEBPACK_IMPORTED_MODULE_3__["default"],
-  //ルーティングの定義を読み込む
-  store: _store__WEBPACK_IMPORTED_MODULE_5__["default"],
-  //Vuex
-  components: {
-    App: _App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  },
-  //ルートコンポーネントの使用を宣言
-  template: '<App />' //ルートコンポーネントの描画
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
-});
+var createApp = function createApp() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function createApp$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(_store__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('auth/currentUser'));
+
+        case 2:
+          new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
+            el: '#app',
+            router: _router__WEBPACK_IMPORTED_MODULE_4__["default"],
+            //ルーティングの定義を読み込む
+            store: _store__WEBPACK_IMPORTED_MODULE_6__["default"],
+            //Vuex
+            components: {
+              App: _App_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+            },
+            //ルートコンポーネントの使用を宣言
+            template: '<App />' //ルートコンポーネントの描画
+
+          });
+
+        case 3:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+};
+
+createApp();
 
 /***/ }),
 
@@ -22265,8 +22301,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_ProductList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/ProductList.vue */ "./resources/js/pages/ProductList.vue");
 /* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 
  //ページコンポーネントをインポート
+
 
 
  //VueRouterプラグインを使用
@@ -22278,7 +22316,14 @@ var routes = [{
   component: _pages_ProductList_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/login',
-  component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  beforeEnter: function beforeEnter(to, from, next) {
+    if (_store__WEBPACK_IMPORTED_MODULE_4__["default"].getters['auth/check']) {
+      next('/');
+    } else {
+      next();
+    }
+  }
 }]; // VueRouterインスタンスを作成
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -22312,7 +22357,14 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   user: null
 };
-var getters = {};
+var getters = {
+  check: function check(state) {
+    return !!state.user;
+  },
+  username: function username(state) {
+    return state.user ? state.user.name : '';
+  }
+};
 var mutations = {
   setUser: function setUser(state, user) {
     state.user = user;
@@ -22375,6 +22427,27 @@ var actions = {
           case 4:
           case "end":
             return _context3.stop();
+        }
+      }
+    });
+  },
+  currentUser: function currentUser(context) {
+    var response, user;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function currentUser$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/user'));
+
+          case 2:
+            response = _context4.sent;
+            user = response.data || null;
+            context.commit('setUser', user);
+
+          case 5:
+          case "end":
+            return _context4.stop();
         }
       }
     });
