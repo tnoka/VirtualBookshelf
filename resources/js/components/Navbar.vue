@@ -17,7 +17,21 @@
                 <router-link class="button button--like" to="/login">
                 Login / Register
                 </router-link>
+                <button @click="logout" class="button button--like">
+                Logout
+                </button>
             </div>        
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    methods: {
+        async logout(){
+            await this.$store.dispatch('auth/logout')
+            this.$router.push('/login')
+        }
+    }
+}
+</script>

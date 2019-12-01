@@ -1,12 +1,16 @@
 import './bootstrap'
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+
 // ルーティング
 import router from './router'
 // ルートコンポーネント（コンポーネントツリーの頂上）
 import App from './App.vue'
 // Vuex
 import store from './store'
+
+Vue.use(VueRouter)
 
 new Vue({
     el: '#app',
