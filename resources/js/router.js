@@ -6,6 +6,7 @@ import ProductList from './pages/ProductList.vue'
 import Login from './pages/Login.vue'
 
 import store from './store'
+import SystemError from './pages/errors/System.vue'
 
 
 //VueRouterプラグインを使用
@@ -27,6 +28,10 @@ const routes = [
                 next()
             }
         }
+    },
+    {
+        path: '/500',
+        component: SystemError
     }
 ]
 
