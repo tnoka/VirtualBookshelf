@@ -24,7 +24,11 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'product' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240'
+            'title' => ['required', 'string'],
+            'author' => ['required', 'string'],
+            'recommend' => ['required', 'string'],
+            'text' => ['required', 'string'],
+            'product_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240'
         ];
     }
 }

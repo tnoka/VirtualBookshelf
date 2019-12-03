@@ -5,10 +5,10 @@
         </router-link>
         <div class="navbar__menu">
             <div v-if="isLogin" class="navbar__item">
-                <button class="button">
-                    <i class="icon ion-md-add"></i>
+                    <router-link class="button button--like" to="/ProductForm">
+                    <i class="fa fa-plus"></i>
                     本棚に飾る
-                </button>
+                    </router-link>
                 <button @click="logout" class="button button--like">
                 Logout
                 </button>
@@ -20,7 +20,6 @@
                 <router-link class="button button--like" to="/login">
                 Login / Register
                 </router-link>
-
             </div>        
         </div>
     </nav>
@@ -35,7 +34,8 @@ export default {
             apiStatus: state => stete.auth.apiStatus
         }),
         ...mapGetters({
-            isLogin: 'auth/check'
+            isLogin: 'auth/check',
+            username: 'auth/username'
         })
     },
     methods: {

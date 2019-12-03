@@ -32,4 +32,4 @@ Route::get('/user', function(){
 })->name('user');
 
 // 本の投稿
-Route::post('/products', 'ProductController@create')->name('product.create');
+Route::post('/products', 'ProductController@store')->name('product.store');
