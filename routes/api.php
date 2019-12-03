@@ -30,3 +30,6 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/user', function(){
     return Auth::user();
 })->name('user');
+
+// 本の投稿
+Route::post('/products', 'ProductController@create')->name('product.create');
