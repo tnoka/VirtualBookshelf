@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProduct;
 use App\Product;
 use illuminate\Support\Facades\Auth;
-use illuminate\Support\Facades\DB;
-use illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,11 +17,27 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
+    // 本の投稿
     public function store(StoreProduct $request, product $product)
     {
         $user = auth()->user();
-        $data = $request->all();
-        $product->productStore($user->id, $data);
+        $extension = $request->product_image->extension();
+        $product = new Product();
+        $product->product_image = $product->id . '.' . $extension;
+        Storage::cloud()->putFileAs('', $request->product_image, $product->product_image, 'public');
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            $data['product_image'] = $product->product_image;
+            $product->productStore($user->id, $data);
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            // DBとの不整合を避けるためアップロードしたファイルを削除
+            Storage::cloud()->delete($product->product_image);
+            throw $exception;
+        }
+
 
         return response($product, 201);
 

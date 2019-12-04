@@ -6,6 +6,23 @@
             <Loader>Sending your Book...</Loader>
         </div>
         <form v-show="! loading" class="form" @submit.prevent="submit">
+            <div class="errors" v-if="errors">
+                <ul v-if="errors.title">
+                    <li v-for="msg in errors.title" :key="msg">{{ msg }}</li>
+                </ul>
+                <ul v-if="errors.author">
+                    <li v-for="msg in errors.author" :key="msg">{{ msg }}</li>
+                </ul>
+                <ul v-if="errors.recommend">
+                    <li v-for="msg in errors.recommend" :key="msg">{{ msg }}</li>
+                </ul>
+                <ul v-if="errors.text">
+                    <li v-for="msg in errors.text" :key="msg">{{ msg }}</li>
+                </ul>
+                <ul v-if="errors.product_image">
+                    <li v-for="msg in errors.product_image" :key="msg">{{ msg }}</li>
+                </ul>
+            </div>
             <label for="title">タイトル</label>
             <input type="text" class="form__item" id="title" v-model="title">
             <label for="author">著者</label>
@@ -14,12 +31,6 @@
             <input type="text" class="form__item" id="recommend" v-model="recommend">
             <label for="text">メモ</label>
             <input type="text" class="form__item" id="text" v-model="text">
-
-            <div class="errors" v-if="errors">
-                <ul v-if="errors.product">
-                    <li v-for="msg in errors.product" :key="msg">{{ msg }}</li>
-                </ul>
-            </div>
             <label for="product_image">本の画像</label>
             <input type="file" id="product_image" class="form__item" @change="onFileChange">
             <output class="form__output" v-if="preview">

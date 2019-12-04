@@ -2230,6 +2230,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4236,6 +4247,60 @@ var render = function() {
           }
         },
         [
+          _vm.errors
+            ? _c("div", { staticClass: "errors" }, [
+                _vm.errors.title
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.title, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.errors.author
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.author, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.errors.recommend
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.recommend, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.errors.text
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.text, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.errors.product_image
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.errors.product_image, function(msg) {
+                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c("label", { attrs: { for: "title" } }, [_vm._v("タイトル")]),
           _vm._v(" "),
           _c("input", {
@@ -4331,20 +4396,6 @@ var render = function() {
               }
             }
           }),
-          _vm._v(" "),
-          _vm.errors
-            ? _c("div", { staticClass: "errors" }, [
-                _vm.errors.product
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.product, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e()
-              ])
-            : _vm._e(),
           _vm._v(" "),
           _c("label", { attrs: { for: "product_image" } }, [
             _vm._v("本の画像")
