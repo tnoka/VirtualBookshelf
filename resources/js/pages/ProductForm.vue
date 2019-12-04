@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <label for="product_image">本の画像</label>
-            <input type="file" class="form__item" @change="onFileChange">
+            <input type="file" id="product_image" class="form__item" @change="onFileChange">
             <output class="form__output" v-if="preview">
                 <img :src="preview">
             </output>
@@ -46,11 +46,11 @@ export default {
         return {
             loading: false,
             preview: null,
-            product: null,
             title: '',
             author: '',
             recommend: '',
             text: '',
+            product_image: null,
             errors: null,
         }
     },
@@ -77,20 +77,24 @@ export default {
             }
             // ファイルを読み込む
             reader.readAsDataURL(event.target.files[0])
-            this.product = event.target.files[0]
+            this.product_image = event.target.files[0]
         },
         
         // 入力欄の値とプレビュー表示をクリアするメソッド
         reset() {
             this.preview = ''
-            this.product = null
+            this.product_image = null
             this.$el.querySelector('input[type="file"]').value = null //this.$elはコンポーネントそのもののDOM要素
         },
         async submit() {
             this.loading = true
 
             const formData = new FormData()
-            formData.append('product', this.product)
+            formData.append('title', this.title)
+            formData.append('author', this.author)
+            formData.append('recommend', this.recommend)
+            formData.append('text', this.text)
+            formData.append('product_image', this.product_image)
             const response = await axios.post('/api/products', formData)
 
             this.loading = false
@@ -102,7 +106,7 @@ export default {
 
             this.reset()
 
-            if(response.data !== CREATED) {
+            if(response.status !== CREATED) {
                 this.$store.commit('error/setCode', response.status)
                 return false
             }
@@ -113,15 +117,8 @@ export default {
                 timeout: 6000
             })
 
-            this.router.push('/products/${response.data.id}')
+            this.$router.push('/products/${response.data.id}')
             },
-        clearError() {
-            this.$store.commit('auth/setLoginErrorMessages', null)
-            this.$store.commit('auth/setRegisterErrorMessages', null)
-        }
     },
-    created() {
-        this.clearError()
-    }
 }
 </script>

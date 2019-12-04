@@ -2240,11 +2240,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       loading: false,
       preview: null,
-      product: null,
       title: '',
       author: '',
       recommend: '',
       text: '',
+      product_image: null,
       errors: null
     };
   },
@@ -2275,12 +2275,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
       reader.readAsDataURL(event.target.files[0]);
-      this.product = event.target.files[0];
+      this.product_image = event.target.files[0];
     },
     // 入力欄の値とプレビュー表示をクリアするメソッド
     reset: function reset() {
       this.preview = '';
-      this.product = null;
+      this.product_image = null;
       this.$el.querySelector('input[type="file"]').value = null; //this.$elはコンポーネントそのもののDOM要素
     },
     submit: function submit() {
@@ -2291,55 +2291,52 @@ __webpack_require__.r(__webpack_exports__);
             case 0:
               this.loading = true;
               formData = new FormData();
-              formData.append('product', this.product);
-              _context.next = 5;
+              formData.append('title', this.title);
+              formData.append('author', this.author);
+              formData.append('recommend', this.recommend);
+              formData.append('text', this.text);
+              formData.append('product_image', this.product_image);
+              _context.next = 9;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.post('/api/products', formData));
 
-            case 5:
+            case 9:
               response = _context.sent;
               this.loading = false;
 
               if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
-                _context.next = 10;
+                _context.next = 14;
                 break;
               }
 
               this.errors = response.data.errors;
               return _context.abrupt("return", false);
 
-            case 10:
+            case 14:
               this.reset();
 
-              if (!(response.data !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
-                _context.next = 14;
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
+                _context.next = 18;
                 break;
               }
 
               this.$store.commit('error/setCode', response.status);
               return _context.abrupt("return", false);
 
-            case 14:
+            case 18:
               // メッセージ登録
               this.$store.commit('message/setContent', {
                 content: '本棚に飾りました！',
                 timeout: 6000
               });
-              this.router.push('/products/${response.data.id}');
+              this.$router.push('/products/${response.data.id}');
 
-            case 16:
+            case 20:
             case "end":
               return _context.stop();
           }
         }
       }, null, this);
-    },
-    clearError: function clearError() {
-      this.$store.commit('auth/setLoginErrorMessages', null);
-      this.$store.commit('auth/setRegisterErrorMessages', null);
     }
-  },
-  created: function created() {
-    this.clearError();
   }
 });
 
@@ -4355,7 +4352,7 @@ var render = function() {
           _vm._v(" "),
           _c("input", {
             staticClass: "form__item",
-            attrs: { type: "file" },
+            attrs: { type: "file", id: "product_image" },
             on: { change: _vm.onFileChange }
           }),
           _vm._v(" "),

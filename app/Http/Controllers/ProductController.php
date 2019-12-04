@@ -17,10 +17,14 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(StoreProduct $request)
+    public function store(StoreProduct $request, product $product)
     {
+        $user = auth()->user();
         $data = $request->all();
-        
+        $product->productStore($user->id, $data);
+
+        return response($product, 201);
+
     }
 
 
