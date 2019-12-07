@@ -10,25 +10,21 @@
 
   &:nth-child(4n+1) {
     #{$component}__wrapper {
-      background: #DBBCD5;
     }
   }
 
   &:nth-child(4n+2) {
     #{$component}__wrapper {
-      background: #DBDBBC;
     }
   }
 
   &:nth-child(4n+3) {
     #{$component}__wrapper {
-      background: #BCDBC8;
     }
   }
 
   &:nth-child(4n) {
     #{$component}__wrapper {
-      background: #BCC8DB;
     }
   }
 
@@ -36,6 +32,7 @@
     overflow: hidden;
     padding-top: 75%;
     position: relative;
+    height: 520px;
   }
 
   &__image {

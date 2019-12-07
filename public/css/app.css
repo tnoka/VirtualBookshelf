@@ -93,37 +93,22 @@ img {
   margin-left: 1rem;
 }
 
-.photo {
+.product {
   position: relative;
 }
 
-.photo:hover .photo__overlay {
+.product:hover .product__overlay {
   visibility: visible;
 }
 
-.photo:nth-child(4n+1) .photo__wrapper {
-  background: #DBBCD5;
-}
-
-.photo:nth-child(4n+2) .photo__wrapper {
-  background: #DBDBBC;
-}
-
-.photo:nth-child(4n+3) .photo__wrapper {
-  background: #BCDBC8;
-}
-
-.photo:nth-child(4n) .photo__wrapper {
-  background: #BCC8DB;
-}
-
-.photo__wrapper {
+.product__wrapper {
   overflow: hidden;
   padding-top: 75%;
   position: relative;
+  height: 520px;
 }
 
-.photo__image {
+.product__image {
   display: block;
   left: 50%;
   opacity: 0;
@@ -133,18 +118,18 @@ img {
           transform: translateX(-50%) translateY(-50%);
 }
 
-.photo__image--landscape {
+.product__image--landscape {
   max-height: 100%;
   max-width: none;
   opacity: 1;
 }
 
-.photo__image--portrait {
+.product__image--portrait {
   max-width: 100%;
   opacity: 1;
 }
 
-.photo__overlay {
+.product__overlay {
   background: rgba(0, 0, 0, 0.3);
   bottom: 0;
   color: #fff;
@@ -166,11 +151,11 @@ img {
   visibility: hidden;
 }
 
-.photo__controls {
+.product__controls {
   text-align: right;
 }
 
-.photo__action {
+.product__action {
   background: #fff;
   border: 0;
   border-radius: .25rem;
@@ -186,21 +171,21 @@ img {
   padding: .5em .75em;
 }
 
-.photo__action:hover {
+.product__action:hover {
   opacity: 1;
 }
 
-.photo__action--like .icon {
+.product__action--like .icon {
   color: #e4406f;
   margin-right: .5em;
 }
 
-.photo__action--liked {
+.product__action--liked {
   background: #e4406f;
   color: #fff;
 }
 
-.photo__action--liked .icon {
+.product__action--liked .icon {
   color: #fff;
 }
 

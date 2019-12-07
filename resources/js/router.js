@@ -18,7 +18,13 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        component: ProductList
+        component: ProductList,
+        props: route => {
+            const page = route.query.page
+            return {
+                page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+            }
+        }
     },
     {
         path: '/login',
@@ -56,6 +62,9 @@ const routes = [
 // VueRouterインスタンスを作成
 const router = new VueRouter({
     mode: 'history', //historyモード（URLの＃を消す）
+    scrollBehavior() {
+        return { x: 0, y: 0}
+    },
     routes
 })
 
