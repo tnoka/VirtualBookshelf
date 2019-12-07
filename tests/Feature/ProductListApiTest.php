@@ -27,7 +27,20 @@ class ProductListApiTest extends TestCase
         // データ作成日の降順で取得
         $products = Product::with(['owner'])->orderBy('created_at', 'desc')->get();
 
-        // d
+        // data項目の期待値
+        $expected_data = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'url' => $product->url,
+                'owner' => ['name' => $product->owner->name],
+            ];
+        })
+        ->all();
 
+        $response->assertStatus(200)
+        ->assertJsonCount(5, 'data')
+        ->assertJsonFragment([
+            "data" => $expected_data, // レスポンスJsonの項目が期待値と合致するか
+        ]);
     }
 }

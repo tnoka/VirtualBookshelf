@@ -21690,7 +21690,7 @@ var INTERNAL_SERVER_ERROR = 500; //サーバーエラー
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\n@import \"photo\";\n^\n      File to import not found or unreadable: /Users/nagaokatsutomu/VirtualBookshelf/src/resources/sass/_photo.scss.\n      in /Users/nagaokatsutomu/VirtualBookshelf/src/resources/sass/app.scss (line 6, column 1)\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/sass-loader/dist/index.js:89:7)\n    at Object.done [as callback] (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/neo-async/async.js:8067:18)\n    at options.error (/Users/nagaokatsutomu/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ }),
 

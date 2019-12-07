@@ -33,3 +33,6 @@ Route::get('/user', function(){
 
 // 本の投稿
 Route::post('/products', 'ProductController@store')->name('product.store');
+
+// 本の一覧
+Route::get('/products', 'ProductController@index')->name('product.index');

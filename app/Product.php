@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -62,4 +63,22 @@ class Product extends Model
 
         return;
     }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
+    }
+
+    public function getUrlAttribute()
+    {
+        return Storage::cloud()->url($this->attributes['product_image']);
+    }
+
+    protected $appends = [ // モデルの項目、ユーザー定義のアクセサ（デフォルトではJSON含まれない）
+        'url',
+    ];
+
+    protected $visible = [ // JSONに含める属性
+        'id', 'owner', 'url',
+    ];
 }
