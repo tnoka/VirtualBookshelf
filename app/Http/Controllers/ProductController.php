@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function __construct()
     {
         // 認証
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     // 本の一覧
@@ -23,6 +23,14 @@ class ProductController extends Controller
         $products = Product::with(['owner'])->orderBy(Product::CREATED_AT, 'desc')->paginate();
 
         return $products;
+    }
+
+    // 本の詳細
+    public function show(string $id)
+    {
+        $product = Product::where('id', $id)->with(['owner'])->first();
+
+        return $product ?? abort(404);
     }
 
     // 本の投稿
