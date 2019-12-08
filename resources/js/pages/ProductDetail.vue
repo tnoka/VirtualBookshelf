@@ -11,9 +11,9 @@
             <button class="button button--like" title="読みたい本">
                 <i class="fa fa-heart"></i>12
             </button>
-            <h2 class="product-detail__title">
-                <i class="fab fa-rocketchat"></i>Comments
-            </h2>
+            <h3 class="product-detail__title">
+                <i class="fab fa-rocketchat"></i> Comments
+            </h3>
         </div>
     </div>
 </template>

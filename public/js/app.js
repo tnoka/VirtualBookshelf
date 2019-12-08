@@ -4685,9 +4685,9 @@ var staticRenderFns = [
         [_c("i", { staticClass: "fa fa-heart" }), _vm._v("12\n        ")]
       ),
       _vm._v(" "),
-      _c("h2", { staticClass: "product-detail__title" }, [
+      _c("h3", { staticClass: "product-detail__title" }, [
         _c("i", { staticClass: "fab fa-rocketchat" }),
-        _vm._v("Comments\n        ")
+        _vm._v(" Comments\n        ")
       ])
     ])
   }
