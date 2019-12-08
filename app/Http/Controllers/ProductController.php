@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProduct;
 use App\Product;
+use App\Comment;
+use App\Http\Requests\StoreComment;
 use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +30,7 @@ class ProductController extends Controller
     // 本の詳細
     public function show(string $id)
     {
-        $product = Product::where('id', $id)->with(['owner'])->first();
+        $product = Product::where('id', $id)->with(['owner', 'comments.author'])->first();
 
         return $product ?? abort(404);
     }
@@ -59,8 +61,6 @@ class ProductController extends Controller
 
     }
 
-
-
     public function create(StoreProduct $request)
     {
         // 拡張子を取得
@@ -86,6 +86,19 @@ class ProductController extends Controller
             throw $extension;
         }
         return response($product, 201);
+    }
+
+    // コメント投稿
+    public function addComment(Product $product, StoreComment $request)
+    {
+        $comment = new Comment();
+        $comment->text = $request->get('text');
+        $comment->user_id = Auth::user()->id;
+        $product->comments()->save($comment);
+
+        $new_comment = Comment::where('id', $comment->id)->with('author')->first();
+
+        return response($new_comment, 201);
     }
 
 }

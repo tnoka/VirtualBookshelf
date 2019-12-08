@@ -2328,6 +2328,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2359,7 +2394,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       product: null,
-      fullWidth: false
+      fullWidth: false,
+      commentText: '',
+      commentErrors: null
     };
   },
   methods: {
@@ -2392,21 +2429,71 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }, null, this);
+    },
+    addComment: function addComment() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function addComment$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.post("/api/products/".concat(this.id, "/comments"), {
+                text: this.commentText
+              }));
+
+            case 2:
+              response = _context2.sent;
+
+              if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_1__["UNPROCESSABLE_ENTITY"])) {
+                _context2.next = 6;
+                break;
+              }
+
+              this.commentErrors = reponse.data.commentErrors;
+              return _context2.abrupt("return", false);
+
+            case 6:
+              this.commentText = '';
+              this.commentErrors = null;
+
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
+                _context2.next = 11;
+                break;
+              }
+
+              this.$store.commit('error/setCode', response.status);
+              return _context2.abrupt("return", false);
+
+            case 11:
+              // 投稿したコメントを表示させる
+              this.$set(this.product, 'comments', [response.data].concat(_toConsumableArray(this.product.comments)));
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, null, this);
+    }
+  },
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
     }
   },
   watch: {
     $route: {
       handler: function handler() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.next = 2;
+                _context3.next = 2;
                 return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.fetchProduct());
 
               case 2:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
         }, null, this);
@@ -4668,7 +4755,108 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "product-detail__pane" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm.product.comments.length > 0
+              ? _c(
+                  "ul",
+                  { staticClass: "product-detail__comments" },
+                  _vm._l(_vm.product.comments, function(comment) {
+                    return _c(
+                      "li",
+                      {
+                        key: comment.text,
+                        staticClass: "product-detail__commentItem"
+                      },
+                      [
+                        _c(
+                          "p",
+                          { staticClass: "product-detail__commentBody" },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(comment.text) +
+                                "\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "product-detail__commentInfo" },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(comment.author.name) +
+                                "\n            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _c("p", [_vm._v("No comments yet.")]),
+            _vm._v(" "),
+            _vm.isLogin
+              ? _c(
+                  "form",
+                  {
+                    staticClass: "form",
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.addComment($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm.commentErrors
+                      ? _c("div", { staticClass: "errors" }, [
+                          _vm.commentErrors.text
+                            ? _c(
+                                "ul",
+                                _vm._l(_vm.commentErrors.text, function(msg) {
+                                  return _c("li", { key: msg }, [
+                                    _vm._v(_vm._s(msg))
+                                  ])
+                                }),
+                                0
+                              )
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.commentText,
+                          expression: "commentText"
+                        }
+                      ],
+                      staticClass: "form__item",
+                      domProps: { value: _vm.commentText },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.commentText = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]
+                )
+              : _vm._e()
+          ])
         ]
       )
     : _vm._e()
@@ -4678,17 +4866,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-detail__pane" }, [
+    return _c(
+      "button",
+      { staticClass: "button button--like", attrs: { title: "読みたい本" } },
+      [_c("i", { staticClass: "fa fa-heart" }), _vm._v("12\n        ")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "product-detail__title" }, [
+      _c("i", { staticClass: "fab fa-rocketchat" }),
+      _vm._v(" Comments\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form__button" }, [
       _c(
         "button",
-        { staticClass: "button button--like", attrs: { title: "読みたい本" } },
-        [_c("i", { staticClass: "fa fa-heart" }), _vm._v("12\n        ")]
-      ),
-      _vm._v(" "),
-      _c("h3", { staticClass: "product-detail__title" }, [
-        _c("i", { staticClass: "fab fa-rocketchat" }),
-        _vm._v(" Comments\n        ")
-      ])
+        { staticClass: "button button--inverse", attrs: { type: "submit" } },
+        [_vm._v("submit comment")]
+      )
     ])
   }
 ]

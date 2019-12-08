@@ -67,6 +67,11 @@ class Product extends Model
         return;
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('id', 'desc');
+    }
+
     public function owner()
     {
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
@@ -82,6 +87,6 @@ class Product extends Model
     ];
 
     protected $visible = [ // JSONに含める属性
-        'id', 'owner', 'url',
+        'id', 'owner', 'url', 'comments',
     ];
 }
