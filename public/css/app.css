@@ -255,20 +255,6 @@ img {
   margin: 0;
 }
 
-.product-form {
-  background: #fff;
-  border-radius: .25rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  max-height: 75vh;
-  max-width: 600px;
-  overflow: scroll;
-  padding: 1.5rem;
-  position: absolute;
-  right: 2%;
-  top: 3.5rem;
-  width: 90%;
-}
-
 .button {
   border: 1px solid #dedede;
   border-radius: .25rem;
@@ -316,21 +302,21 @@ img {
   width: 100%;
 }
 
-.button--like .icon {
+.button--favorite .icon {
   color: #e4406f;
 }
 
-.button--liked {
+.button--favorited {
   background: #e4406f;
   border-color: #e4406f;
   color: #fff;
 }
 
-.button--liked .icon {
+.button--favorited .icon {
   color: #fff;
 }
 
-.button--liked:hover {
+.button--favorited:hover {
   border-color: #e4406f;
   color: #fff;
   opacity: .8;

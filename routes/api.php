@@ -48,3 +48,9 @@ Route::put('/products/{id}/favorite', 'ProductController@favorite')->name('produ
 
 // いいね（読みたい本）解除
 Route::delete('/products/{id}/favorite', 'ProductController@unFavorite');
+
+// トークンリフレッシュ
+Route::get('/refresh-token', function (Illuminate\Http\Request $request) {
+    $request->session()->regenerateToken();
+    return response()->json();
+});
