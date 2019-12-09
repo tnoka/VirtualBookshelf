@@ -8,8 +8,11 @@
             <figcaption>Posted by {{ product.owner.name }}</figcaption>
         </figure>
         <div class="product-detail__pane">
-            <button class="button button--like" title="読みたい本">
-                <i class="fa fa-heart"></i>12
+            <button class="button button__favorite"
+                    :class="{ 'button__favorited': product.favorited_by_user }"
+                    title="読みたい本"
+                    @click="onFavoriteClick">
+                <i class="fa fa-heart"></i>{{ product.favorite_count }}
             </button>
             <h3 class="product-detail__title">
                 <i class="fab fa-rocketchat"></i> Comments
@@ -96,6 +99,41 @@ export default {
                 response.data,
                 ...this.product.comments
             ])
+        },
+        onFavoriteClick() {
+            if(! this.isLogin) {
+                alert('読みたい本に追加する場合はログインしてください。')
+                return false 
+            }
+
+            if(this.product.favorited_by_user) {
+                this.unFavorite()
+            } else {
+                this.favorite()
+            }
+        },
+        async favorite() {
+            const response = await axios.put(`/api/products/${this.id}/favorite`)
+
+            if(response.status !== OK) {
+                this.$store.commit('error/setCode', response.status)
+                return false
+            }
+
+            // $setでthis.productの要素を更新
+            this.$set(this.product, 'favorite_count', this.product.favorite_count + 1)
+            this.$set(this.product, 'favorited_by_user', true)
+        },
+        async unFavorite() {
+            const response = await axios.delete(`/api/products/${this.id}/favorite`)
+
+            if(response.status !== OK) {
+                this.$store.commit('error/setCode' , response.status)
+                return false
+            }
+
+            this.$set(this.product, 'favorite_count', this.product.favorite_count - 1)
+            this.$set(this.product, 'favorited_by_user', false)
         }
     },
     computed: {

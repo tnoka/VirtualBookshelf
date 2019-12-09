@@ -42,3 +42,9 @@ Route::get('/products/{id}', 'ProductController@show')->name('product.show');
 
 // コメント
 Route::post('/products/{product}/comments', 'ProductController@addComment')->name('product.comment');
+
+// いいね（読みたい本）
+Route::put('/products/{id}/favorite', 'ProductController@favorite')->name('product.favorite');
+
+// いいね（読みたい本）解除
+Route::delete('/products/{id}/favorite', 'ProductController@unFavorite');

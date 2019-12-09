@@ -175,17 +175,17 @@ img {
   opacity: 1;
 }
 
-.product__action--like .icon {
+.product__action--favorite .icon {
   color: #e4406f;
   margin-right: .5em;
 }
 
-.product__action--liked {
+.product__action--favorited {
   background: #e4406f;
   color: #fff;
 }
 
-.product__action--liked .icon {
+.product__action--favorited .icon {
   color: #fff;
 }
 
@@ -255,7 +255,7 @@ img {
   margin: 0;
 }
 
-.photo-form {
+.product-form {
   background: #fff;
   border-radius: .25rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);

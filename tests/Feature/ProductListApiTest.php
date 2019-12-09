@@ -33,6 +33,8 @@ class ProductListApiTest extends TestCase
                 'id' => $product->id,
                 'url' => $product->url,
                 'owner' => ['name' => $product->owner->name],
+                'favorited_by_user' => false,
+                'favorite_count' => 0,
             ];
         })
         ->all();
@@ -40,7 +42,7 @@ class ProductListApiTest extends TestCase
         $response->assertStatus(200)
         ->assertJsonCount(5, 'data')
         ->assertJsonFragment([
-            "data" => $expected_data, // レスポンスJsonの項目が期待値と合致するか
-        ]);
+            'data' => $expected_data, // レスポンスJsonの項目が期待値と合致するか
+            ]);
     }
 }

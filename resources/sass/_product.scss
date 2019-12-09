@@ -95,14 +95,14 @@
       opacity: 1;
     }
 
-    &--like {
+    &--favorite {
       .icon {
         color: $red;
         margin-right: .5em;
       }
     }
 
-    &--liked {
+    &--favorited {
       background: $red;
       color: #fff;
 

@@ -2104,6 +2104,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2139,6 +2141,12 @@ __webpack_require__.r(__webpack_exports__);
       this.landscape = height / width <= 0.75; // 横長でなければ縦長
 
       this.portrait = !this.landscape;
+    },
+    favorite: function favorite() {
+      this.$emit('favorite', {
+        id: this.item.id,
+        favorited: this.item.favorited_by_user
+      });
     }
   },
   watch: {
@@ -2383,6 +2391,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2474,6 +2485,81 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           }
         }
       }, null, this);
+    },
+    onFavoriteClick: function onFavoriteClick() {
+      if (!this.isLogin) {
+        alert('読みたい本に追加する場合はログインしてください。');
+        return false;
+      }
+
+      if (this.product.favorited_by_user) {
+        this.unFavorite();
+      } else {
+        this.favorite();
+      }
+    },
+    favorite: function favorite() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function favorite$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.put("/api/products/".concat(this.id, "/favorite")));
+
+            case 2:
+              response = _context3.sent;
+
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                _context3.next = 6;
+                break;
+              }
+
+              this.$store.commit('error/setCode', response.status);
+              return _context3.abrupt("return", false);
+
+            case 6:
+              // $setでthis.productの要素を更新
+              this.$set(this.product, 'favorite_count', this.product.favorite_count + 1);
+              this.$set(this.product, 'favorited_by_user', true);
+
+            case 8:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, null, this);
+    },
+    unFavorite: function unFavorite() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function unFavorite$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios["delete"]("/api/products/".concat(this.id, "/favorite")));
+
+            case 2:
+              response = _context4.sent;
+
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["OK"])) {
+                _context4.next = 6;
+                break;
+              }
+
+              this.$store.commit('error/setCode', response.status);
+              return _context4.abrupt("return", false);
+
+            case 6:
+              this.$set(this.product, 'favorite_count', this.product.favorite_count - 1);
+              this.$set(this.product, 'favorited_by_user', false);
+
+            case 8:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, null, this);
     }
   },
   computed: {
@@ -2484,16 +2570,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   watch: {
     $route: {
       handler: function handler() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context5) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context3.next = 2;
+                _context5.next = 2;
                 return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.fetchProduct());
 
               case 2:
               case "end":
-                return _context3.stop();
+                return _context5.stop();
             }
           }
         }, null, this);
@@ -2707,6 +2793,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2755,21 +2842,110 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }, null, this);
+    },
+    onFavoriteClick: function onFavoriteClick(_ref) {
+      var id = _ref.id,
+          favorited = _ref.favorited;
+
+      if (!this.$store.getters['auth/check']) {
+        alert('読みたい本に追加する場合はログインしてください');
+        return false;
+      }
+
+      if (favorited) {
+        this.unFavorite(id);
+      } else {
+        this.favorite(id);
+      }
+    },
+    favorite: function favorite(id) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function favorite$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.put("/api/products/".concat(id, "/favorite")));
+
+            case 2:
+              response = _context2.sent;
+
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
+                _context2.next = 6;
+                break;
+              }
+
+              this.$store.commit('error/setCode', response.status);
+              return _context2.abrupt("return", false);
+
+            case 6:
+              this.products = this.products.map(function (product) {
+                if (product.id === response.data.product_id) {
+                  product.favorite_count += 1;
+                  product.favorited_by_user = true;
+                }
+
+                return product;
+              });
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, null, this);
+    },
+    unFavorite: function unFavorite(id) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function unFavorite$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios["delete"]("/api/products/".concat(id, "/favorite")));
+
+            case 2:
+              response = _context3.sent;
+
+              if (!(response.data !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
+                _context3.next = 6;
+                break;
+              }
+
+              this.$store.commit('error/setCode', response.status);
+              return _context3.abrupt("return", false);
+
+            case 6:
+              this.product = this.product.map(function (product) {
+                if (product.id === response.data.product_id) {
+                  product.favorite_count -= 1;
+                  product.favorited_by_user = false;
+                }
+
+                return product;
+              });
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, null, this);
     }
   },
   watch: {
     $route: {
       handler: function handler() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handler$(_context4) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context2.next = 2;
+                _context4.next = 2;
                 return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.fetchProducts());
 
               case 2:
               case "end":
-                return _context2.stop();
+                return _context4.stop();
             }
           }
         }, null, this);
@@ -4337,10 +4513,22 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "product__action product__action--like",
-                attrs: { title: "読みたい本" }
+                staticClass: "product__action product__action--favorite",
+                class: {
+                  "product__action--favorited": _vm.item.favorited_by_user
+                },
+                attrs: { title: "読みたい本" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.favorite($event)
+                  }
+                }
               },
-              [_c("i", { staticClass: "fa fa-heart" }), _vm._v("12\n        ")]
+              [
+                _c("i", { staticClass: "fa fa-heart" }),
+                _vm._v(_vm._s(_vm.item.favorite_count) + "\n        ")
+              ]
             )
           ]),
           _vm._v(" "),
@@ -4756,9 +4944,21 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "product-detail__pane" }, [
-            _vm._m(0),
+            _c(
+              "button",
+              {
+                staticClass: "button button__favorite",
+                class: { button__favorited: _vm.product.favorited_by_user },
+                attrs: { title: "読みたい本" },
+                on: { click: _vm.onFavoriteClick }
+              },
+              [
+                _c("i", { staticClass: "fa fa-heart" }),
+                _vm._v(_vm._s(_vm.product.favorite_count) + "\n        ")
+              ]
+            ),
             _vm._v(" "),
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _vm.product.comments.length > 0
               ? _c(
@@ -4852,7 +5052,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _vm._m(1)
                   ]
                 )
               : _vm._e()
@@ -4862,16 +5062,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "button button--like", attrs: { title: "読みたい本" } },
-      [_c("i", { staticClass: "fa fa-heart" }), _vm._v("12\n        ")]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -5174,7 +5364,8 @@ var render = function() {
           return _c("Product", {
             key: product.id,
             staticClass: "grid__item",
-            attrs: { item: product }
+            attrs: { item: product },
+            on: { like: _vm.onFavoriteClick }
           })
         }),
         1
@@ -22603,7 +22794,7 @@ var INTERNAL_SERVER_ERROR = 500; //サーバーエラー
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\n@import \"product-form\";\n^\n      File to import not found or unreadable: product-form.\n      in /Users/nagaokatsutomu/VirtualBookshelf/src/resources/sass/app.scss (line 8, column 1)\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/sass-loader/dist/index.js:89:7)\n    at Object.done [as callback] (/Users/nagaokatsutomu/VirtualBookshelf/src/node_modules/neo-async/async.js:8067:18)\n    at options.error (/Users/nagaokatsutomu/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ }),
 

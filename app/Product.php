@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -67,26 +68,53 @@ class Product extends Model
         return;
     }
 
+    // リレーション、コメント
     public function comments()
     {
         return $this->hasMany('App\Comment')->orderBy('id', 'desc');
     }
 
+    // リレーション、読みたい本
+    public function favorite()
+    {
+        return $this->belongsToMany('App\User', 'favorite');
+    }
+
+    // リレーション、投稿者
     public function owner()
     {
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
+    // S3のURL取得（独自属性）
     public function getUrlAttribute()
     {
         return Storage::cloud()->url($this->attributes['product_image']);
     }
 
-    protected $appends = [ // モデルの項目、ユーザー定義のアクセサ（デフォルトではJSON含まれない）
-        'url',
+    public function getFavoriteCountAttribute()
+    {
+        return $this->favorite->count();
+    }
+
+    public function getFavoritedByUserAttribute()
+    {
+        if(Auth::guest()) {
+            return false;
+        }
+
+        // ログインユーザーのIDと合致するfavoriteが含まれているか
+        return $this->favorite->contains(function($user) {
+            return $user->id === Auth::user()->id;
+        });
+    }
+
+
+    protected $appends = [ // モデルの項目、ユーザー定義のアクセサ（デフォルトではJSONに含まれない）
+        'url', 'favorite_count', 'favorited_by_user',
     ];
 
     protected $visible = [ // JSONに含める属性
-        'id', 'owner', 'url', 'comments',
+        'id', 'owner', 'url', 'comments', 'favorite_count', 'favorited_by_user',
     ];
 }

@@ -32,6 +32,8 @@ class ProductDetailApiTest extends TestCase
                     'owner' => [
                         'name' => $product->owner->name,
                     ],
+                    'favorited_by_user' => false,
+                    'favorite_count' => 0,
                 ]);
     }
 }

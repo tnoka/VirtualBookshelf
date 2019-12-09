@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeCommentsTableId extends Migration
+class ChangeFavoriteTableId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ChangeCommentsTableId extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
+        Schema::table('favorite', function (Blueprint $table) {
             $table->string('product_id')->change();
         });
     }
@@ -25,7 +25,7 @@ class ChangeCommentsTableId extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
+        Schema::table('favorite', function (Blueprint $table) {
         });
     }
 }

@@ -15,9 +15,11 @@
         :to= "`/products/${item.id}`"
         :title="`View the Book by ${item.owner.name}`">
         <div class="product__controls">
-            <button class="product__action product__action--like"
-            title="読みたい本">
-            <i class="fa fa-heart"></i>12
+            <button class="product__action product__action--favorite"
+                    :class="{ 'product__action--favorited': item.favorited_by_user }"
+                    title="読みたい本"
+                    @click.prevent="favorite">
+            <i class="fa fa-heart"></i>{{ item.favorite_count }}
             </button>
         </div>
         <div class="product__username">
@@ -62,8 +64,15 @@ export default {
         this.landscape = height / width <= 0.75
         // 横長でなければ縦長
         this.portrait = ! this.landscape
+        },
+        favorite() {
+            this.$emit('favorite', {
+                id: this.item.id,
+                favorited: this.item.favorited_by_user
+            })
         }
     },
+    
     watch: {
         $route () {
         // ページが切り替わってから画像が読み込まれるまでの間に

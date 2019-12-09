@@ -22,7 +22,7 @@ class ProductController extends Controller
     // 本の一覧
     public function index()
     {
-        $products = Product::with(['owner'])->orderBy(Product::CREATED_AT, 'desc')->paginate();
+        $products = Product::with(['owner', 'favorite'])->orderBy(Product::CREATED_AT, 'desc')->paginate();
 
         return $products;
     }
@@ -30,7 +30,7 @@ class ProductController extends Controller
     // 本の詳細
     public function show(string $id)
     {
-        $product = Product::where('id', $id)->with(['owner', 'comments.author'])->first();
+        $product = Product::where('id', $id)->with(['owner', 'comments.author', 'favorite'])->first();
 
         return $product ?? abort(404);
     }
@@ -99,6 +99,35 @@ class ProductController extends Controller
         $new_comment = Comment::where('id', $comment->id)->with('author')->first();
 
         return response($new_comment, 201);
+    }
+
+    // いいね（読みたい本）
+    public function favorite(string $id)
+    {
+        $product = Product::where('id', $id)->with('favorite')->first();
+
+        if(! $product) {
+            abort(404);
+        }
+
+        $product->favorite()->detach(Auth::user()->id);
+        $product->favorite()->attach(Auth::user()->id);
+
+        return["product_id" => $id];
+    }
+
+    // いいね解除
+    public function unFavorite(string $id)
+    {
+        $product = Product::where('id', $id)->with('favorite')->first();
+
+        if(! $product) {
+            abort(404);
+        }
+
+        $product->favorite()->detach(Auth::user()->id);
+
+        return ["product_id" => $id];
     }
 
 }
