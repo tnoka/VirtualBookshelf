@@ -5,11 +5,11 @@
         </router-link>
         <div class="navbar__menu">
             <div v-if="isLogin" class="navbar__item">
-                    <router-link class="button button--like" to="/ProductForm">
+                    <router-link class="button" to="/ProductForm">
                     <i class="fa fa-plus"></i>
                     本棚に飾る
                     </router-link>
-                <button @click="logout" class="button button--like">
+                <button @click="logout" class="button">
                 Logout
                 </button>
                 <span class="navbar__item">
@@ -27,6 +27,7 @@
 
 <script>
 import { mapState, mapGetters} from 'vuex'
+import { OK } from '../util'
 
 export default {
     computed: {
@@ -45,7 +46,17 @@ export default {
             if(this.apiStatus) {
             this.$router.push('/login')
             }
-        }
-    }
+        },
+        // async destroy(){
+        //     const response = await axios.delete(`/api/users/${this.id}`)
+
+        //     if(response.status !== OK) {
+        //         this.$store.commit('error/setCode', response.status)
+        //         return false
+        //     }
+        //     this.user = response.data
+        //     this.$router.push('/login')
+        // }
+    },
 }
 </script>

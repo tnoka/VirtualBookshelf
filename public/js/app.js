@@ -1990,6 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -2026,6 +2027,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     apiStatus: function apiStatus(state) {
@@ -2055,7 +2057,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
       }, null, this);
-    }
+    } // async destroy(){
+    //     const response = await axios.delete(`/api/users/${this.id}`)
+    //     if(response.status !== OK) {
+    //         this.$store.commit('error/setCode', response.status)
+    //         return false
+    //     }
+    //     this.user = response.data
+    //     this.$router.push('/login')
+    // }
+
   }
 });
 
@@ -4407,10 +4418,7 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  {
-                    staticClass: "button button--like",
-                    attrs: { to: "/ProductForm" }
-                  },
+                  { staticClass: "button", attrs: { to: "/ProductForm" } },
                   [
                     _c("i", { staticClass: "fa fa-plus" }),
                     _vm._v("\n                本棚に飾る\n                ")
@@ -4419,10 +4427,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  {
-                    staticClass: "button button--like",
-                    on: { click: _vm.logout }
-                  },
+                  { staticClass: "button", on: { click: _vm.logout } },
                   [_vm._v("\n            Logout\n            ")]
                 ),
                 _vm._v(" "),
@@ -22646,6 +22651,19 @@ var actions = {
       }
     });
   },
+  // // 退会
+  // async destroy(context)
+  // {
+  //     context.commit('setApiStatus', null)
+  //     const response = await axios.delete(`/api/users/` + user.id)
+  //     if(response.status === OK) {
+  //         context.commit('setApiStatus', true)
+  //         context.commit('setUser', null)
+  //         return false
+  //     }
+  //     context.commit('setApiStatus', false)
+  //     context.commit('error/setCode', response.status, { root: true })
+  // },
   // ログイン
   login: function login(context, data) {
     var response;

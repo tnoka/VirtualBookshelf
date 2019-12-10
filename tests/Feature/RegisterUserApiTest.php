@@ -8,7 +8,7 @@ use Tests\TestCase;
 use App\User;
 
 
-class RegisterApiTest extends TestCase
+class RegisterUserApiTest extends TestCase
 {
     use RefreshDatabase;
     /**

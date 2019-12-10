@@ -37,4 +37,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Product');
     }
 
+    public function destroyUser(Int $user_id)
+    {
+        return $this->where('id', $user_id)->delete();
+    }
+
 }

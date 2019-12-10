@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
+// 会員退会
+Route::delete('/users/{id}', 'UsersController@destroy')->name('user.destroy');
+
 // ログイン
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
