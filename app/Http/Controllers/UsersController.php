@@ -11,7 +11,9 @@ class UsersController extends Controller
     {
         $all_users = $user->getAllUsers(auth()->user()->id);
 
-        return $all_users;
+        return view('users.index', [
+            'all_users' => $all_users
+        ]);
     }
 
     public function destroy(User $user)

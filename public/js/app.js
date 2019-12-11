@@ -22637,11 +22637,11 @@ var routes = [{
 }, {
   path: '/500',
   component: _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
-}, {
-  path: '*',
-  // 指定されたルート以外はNotFound
-  component: _pages_errors_NotFound_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
-}]; // VueRouterインスタンスを作成
+} // {
+//     path: '*', // 指定されたルート以外はNotFound
+//     component: NotFound
+// }
+]; // VueRouterインスタンスを作成
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

@@ -11,7 +11,7 @@
 |
 */
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('index');
 // });
 
 Route::get('/{any?}', function () {
@@ -20,4 +20,5 @@ Route::get('/{any?}', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// ユーザー関連
+Route::resource('users', 'usersController');

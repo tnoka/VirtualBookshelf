@@ -58,10 +58,10 @@ const routes = [
         path: '/500',
         component: SystemError
     },
-    {
-        path: '*', // 指定されたルート以外はNotFound
-        component: NotFound
-    }
+    // {
+    //     path: '*', // 指定されたルート以外はNotFound
+    //     component: NotFound
+    // }
 ]
 
 // VueRouterインスタンスを作成
