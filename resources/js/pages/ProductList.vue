@@ -1,25 +1,39 @@
 <template>
         <div class="product-list">
+            
+            <div v-if="isLogin">
+                <div  class="grid">
+                    <Product
+                    class="grid__item"
+                    v-for="product in products"
+                    :key="product.id"
+                    :item="product"
+                    @like="onFavoriteClick"
+                    />
+                </div>
+                <Pagination :current-page="currentPage" :last-page="lastPage" />
+            </div>
 
-            <div class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
-            <div class="container-fluid jumbotron-container">
-
-            <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
-            <h3 class="site-name text-light text-center mt-5 top-title">読んだ本を本棚に飾り</h3>
-            <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
+            <div v-else>
+                <div  class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
+                    <div class="container-fluid jumbotron-container">
+                        <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
+                        <h3 class="site-name text-light text-center mt-5 top-title">読んだ本を本棚に飾り</h3>
+                        <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
+                    </div>
+                </div>
+                <div class="grid">
+                    <Product
+                    class="grid__item"
+                    v-for="product in products"
+                    :key="product.id"
+                    :item="product"
+                    @like="onFavoriteClick"
+                    />
+                </div>
+                <Pagination :current-page="currentPage" :last-page="lastPage" />
             </div>
         </div>
-        <div class="grid">
-            <Product
-            class="grid__item"
-            v-for="product in products"
-            :key="product.id"
-            :item="product"
-            @like="onFavoriteClick"
-            />
-        </div>
-        <Pagination :current-page="currentPage" :last-page="lastPage" />
-    </div>
 </template>
 
 
@@ -96,6 +110,11 @@ export default {
                 }
                 return product
             })
+        }
+    },
+    computed: {
+        isLogin() {
+            return this.$store.getters['auth/check']
         }
     },
     watch: {

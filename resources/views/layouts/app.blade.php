@@ -76,15 +76,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="btn nav-link text-primary" href="{{ url('products/all') }}">すべての投稿</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn nav-link text-primary mx-2" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="btn btn-outline-primary nav-link text-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="btn btn-outline-primary nav-link text-primary" href="{{ url('login') }}">ログイン / 新規登録</a>
                                 </li>
                             @endif
                         @else

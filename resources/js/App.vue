@@ -7,7 +7,7 @@
                 <Message />
                 <RouterView />
             </div>
-        <Footer />   
+            
         <p>Copyright ©2019 仮想本棚, All Rights Reserved.</p>
     </div>
 </template>

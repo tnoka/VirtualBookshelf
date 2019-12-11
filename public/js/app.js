@@ -2854,6 +2854,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2991,6 +3005,11 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }, null, this);
+    }
+  },
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
     }
   },
   watch: {
@@ -4260,22 +4279,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [_c("Message"), _vm._v(" "), _c("RouterView")],
-        1
-      ),
-      _vm._v(" "),
-      _c("Footer"),
-      _vm._v(" "),
-      _c("p", [_vm._v("Copyright ©2019 仮想本棚, All Rights Reserved.")])
-    ],
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [_c("Message"), _vm._v(" "), _c("RouterView")],
+      1
+    ),
+    _vm._v(" "),
+    _c("p", [_vm._v("Copyright ©2019 仮想本棚, All Rights Reserved.")])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4306,7 +4319,7 @@ var render = function() {
       _c(
         "router-link",
         { staticClass: "button button--like", attrs: { to: "/login" } },
-        [_vm._v("\n    Login / Register\n    ")]
+        [_vm._v("\n    ログイン / 新規登録\n    ")]
       )
     ],
     1
@@ -5409,32 +5422,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "product-list" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid" },
-        _vm._l(_vm.products, function(product) {
-          return _c("Product", {
-            key: product.id,
-            staticClass: "grid__item",
-            attrs: { item: product },
-            on: { like: _vm.onFavoriteClick }
-          })
-        }),
-        1
-      ),
-      _vm._v(" "),
-      _c("Pagination", {
-        attrs: { "current-page": _vm.currentPage, "last-page": _vm.lastPage }
-      })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "product-list" }, [
+    _vm.isLogin
+      ? _c(
+          "div",
+          [
+            _c(
+              "div",
+              { staticClass: "grid" },
+              _vm._l(_vm.products, function(product) {
+                return _c("Product", {
+                  key: product.id,
+                  staticClass: "grid__item",
+                  attrs: { item: product },
+                  on: { like: _vm.onFavoriteClick }
+                })
+              }),
+              1
+            ),
+            _vm._v(" "),
+            _c("Pagination", {
+              attrs: {
+                "current-page": _vm.currentPage,
+                "last-page": _vm.lastPage
+              }
+            })
+          ],
+          1
+        )
+      : _c(
+          "div",
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "grid" },
+              _vm._l(_vm.products, function(product) {
+                return _c("Product", {
+                  key: product.id,
+                  staticClass: "grid__item",
+                  attrs: { item: product },
+                  on: { like: _vm.onFavoriteClick }
+                })
+              }),
+              1
+            ),
+            _vm._v(" "),
+            _c("Pagination", {
+              attrs: {
+                "current-page": _vm.currentPage,
+                "last-page": _vm.lastPage
+              }
+            })
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = [
   function() {
