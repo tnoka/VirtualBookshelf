@@ -37,6 +37,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Product');
     }
 
+    // ユーザー一覧取得（自分以外）
+    public function getAllUsers(Int $user_id)
+    {
+        return $this->where('id', '<>', $user_id)->paginate(5);
+    }
+
     public function destroyUser(Int $user_id)
     {
         return $this->where('id', $user_id)->delete();

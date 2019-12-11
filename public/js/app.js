@@ -1871,8 +1871,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -4256,16 +4254,12 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("header", [_c("Navbar")], 1),
-      _vm._v(" "),
-      _c("main", [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [_c("Message"), _vm._v(" "), _c("RouterView")],
-          1
-        )
-      ]),
+      _c(
+        "div",
+        { staticClass: "container" },
+        [_c("Message"), _vm._v(" "), _c("RouterView")],
+        1
+      ),
       _vm._v(" "),
       _c("Footer"),
       _vm._v(" "),
@@ -5152,218 +5146,224 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container--small" }, [
-    _c("h2", { staticClass: "title" }, [_vm._v("本棚に飾る(新規投稿)")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "panel" }, [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.loading,
-              expression: "loading"
-            }
-          ],
-          staticClass: "panel"
-        },
-        [_c("Loader", [_vm._v("Sending your Book...")])],
-        1
-      ),
+  return _c(
+    "div",
+    { staticClass: "container--small", staticStyle: { "margin-top": "80px" } },
+    [
+      _c("h2", { staticClass: "title" }, [_vm._v("本棚に飾る(新規投稿)")]),
       _vm._v(" "),
-      _c(
-        "form",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.loading,
-              expression: "! loading"
-            }
-          ],
-          staticClass: "form",
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.submit($event)
-            }
-          }
-        },
-        [
-          _vm.errors
-            ? _c("div", { staticClass: "errors" }, [
-                _vm.errors.title
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.title, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.errors.author
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.author, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.errors.recommend
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.recommend, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.errors.text
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.text, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.errors.product_image
-                  ? _c(
-                      "ul",
-                      _vm._l(_vm.errors.product_image, function(msg) {
-                        return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
-                      }),
-                      0
-                    )
-                  : _vm._e()
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "title" } }, [_vm._v("タイトル")]),
-          _vm._v(" "),
-          _c("input", {
+      _c("div", { staticClass: "panel" }, [
+        _c(
+          "div",
+          {
             directives: [
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.title,
-                expression: "title"
+                name: "show",
+                rawName: "v-show",
+                value: _vm.loading,
+                expression: "loading"
               }
             ],
-            staticClass: "form__item",
-            attrs: { type: "text", id: "title" },
-            domProps: { value: _vm.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.title = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "author" } }, [_vm._v("著者")]),
-          _vm._v(" "),
-          _c("input", {
+            staticClass: "panel"
+          },
+          [_c("Loader", [_vm._v("Sending your Book...")])],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
             directives: [
               {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.author,
-                expression: "author"
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.loading,
+                expression: "! loading"
               }
             ],
-            staticClass: "form__item",
-            attrs: { type: "text", id: "author" },
-            domProps: { value: _vm.author },
+            staticClass: "form",
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.author = $event.target.value
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submit($event)
               }
             }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "recommend" } }, [_vm._v("おすすめ度")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.recommend,
-                expression: "recommend"
-              }
-            ],
-            staticClass: "form__item",
-            attrs: { type: "text", id: "recommend" },
-            domProps: { value: _vm.recommend },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          },
+          [
+            _vm.errors
+              ? _c("div", { staticClass: "errors" }, [
+                  _vm.errors.title
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.title, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.errors.author
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.author, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.errors.recommend
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.recommend, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.errors.text
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.text, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.errors.product_image
+                    ? _c(
+                        "ul",
+                        _vm._l(_vm.errors.product_image, function(msg) {
+                          return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "title" } }, [_vm._v("タイトル")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title"
                 }
-                _vm.recommend = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "text" } }, [_vm._v("メモ")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.text,
-                expression: "text"
-              }
-            ],
-            staticClass: "form__item",
-            attrs: { type: "text", id: "text" },
-            domProps: { value: _vm.text },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "title" },
+              domProps: { value: _vm.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
                 }
-                _vm.text = $event.target.value
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "product_image" } }, [
-            _vm._v("本の画像")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form__item",
-            attrs: { type: "file", id: "product_image" },
-            on: { change: _vm.onFileChange }
-          }),
-          _vm._v(" "),
-          _vm.preview
-            ? _c("output", { staticClass: "form__output" }, [
-                _c("img", { attrs: { src: _vm.preview } })
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0)
-        ]
-      )
-    ])
-  ])
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "author" } }, [_vm._v("著者")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.author,
+                  expression: "author"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "author" },
+              domProps: { value: _vm.author },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.author = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "recommend" } }, [
+              _vm._v("おすすめ度")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.recommend,
+                  expression: "recommend"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "recommend" },
+              domProps: { value: _vm.recommend },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.recommend = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "text" } }, [_vm._v("メモ")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.text,
+                  expression: "text"
+                }
+              ],
+              staticClass: "form__item",
+              attrs: { type: "text", id: "text" },
+              domProps: { value: _vm.text },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.text = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "product_image" } }, [
+              _vm._v("本の画像")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form__item",
+              attrs: { type: "file", id: "product_image" },
+              on: { change: _vm.onFileChange }
+            }),
+            _vm._v(" "),
+            _vm.preview
+              ? _c("output", { staticClass: "form__output" }, [
+                  _c("img", { attrs: { src: _vm.preview } })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {

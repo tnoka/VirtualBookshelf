@@ -1,5 +1,5 @@
 <template>
-    <div class="container--small">
+    <div class="container--small" style="margin-top:80px;">
         <h2 class="title">本棚に飾る(新規投稿)</h2>
         <div class="panel">
         <div v-show="loading" class="panel">
