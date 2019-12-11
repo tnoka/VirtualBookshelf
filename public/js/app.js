@@ -2845,6 +2845,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5404,6 +5413,8 @@ var render = function() {
     "div",
     { staticClass: "product-list" },
     [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "grid" },
@@ -5425,7 +5436,47 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "jumbotron jumbotron-extend home-header",
+        staticStyle: {
+          background: "url(../img/main.jpg) no-repeat center center",
+          "background-size": "cover"
+        }
+      },
+      [
+        _c("div", { staticClass: "container-fluid jumbotron-container" }, [
+          _c(
+            "h1",
+            {
+              staticClass:
+                "display-4 site-name text-light text-center mt-5 top-title"
+            },
+            [_vm._v("仮想本棚")]
+          ),
+          _vm._v(" "),
+          _c(
+            "h3",
+            { staticClass: "site-name text-light text-center mt-5 top-title" },
+            [_vm._v("読んだ本を本棚に飾り")]
+          ),
+          _vm._v(" "),
+          _c(
+            "h3",
+            { staticClass: "site-name text-light text-center top-title" },
+            [_vm._v("おすすめの本を共有しよう")]
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -22554,7 +22605,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   scrollBehavior: function scrollBehavior() {
     return {
       x: 0,
-      y: 0
+      y: 500
     };
   },
   routes: routes

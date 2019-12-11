@@ -23,7 +23,7 @@ export default {
         lastPage: {
         type: Number,
         required: true
-        }
+        },
     },
     computed: {
         isFirstPage () {
@@ -32,6 +32,6 @@ export default {
         isLastPage () {
         return this.currentPage === this.lastPage
         }
-    }
+    },
     }
 </script>

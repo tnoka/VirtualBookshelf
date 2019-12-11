@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 @guest
-                <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('home/') }}">
+                <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('/') }}">
                 <i class="fa fa-book mr-0"></i>
                     {{ ' 仮想本棚 ' }}
                 </a>
@@ -39,7 +39,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @else
-                <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('home/') }}">
+                <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('/') }}">
                 <i class="fa fa-book"></i>
                 {{ ' 仮想本棚 ' }}
                 </a>

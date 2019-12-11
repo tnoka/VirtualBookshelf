@@ -1,5 +1,14 @@
 <template>
-    <div class="product-list">
+        <div class="product-list">
+
+            <div class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
+            <div class="container-fluid jumbotron-container">
+
+            <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
+            <h3 class="site-name text-light text-center mt-5 top-title">読んだ本を本棚に飾り</h3>
+            <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
+            </div>
+        </div>
         <div class="grid">
             <Product
             class="grid__item"
@@ -28,7 +37,7 @@ export default {
         return {
             products: [],
             currentPage: 0,
-            lastPage: 0
+            lastPage: 0,
         }
     },
     methods: {

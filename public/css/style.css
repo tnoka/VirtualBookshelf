@@ -4,6 +4,11 @@
     transform: translateY(+10%);
 }
 
+.home-header {
+  background: url(../img/main.jpg) no-repeat center center;
+  background-size: cover;
+}
+
 .jumbotron-extend-bs {
     position: relative;
     height: 120vh;
