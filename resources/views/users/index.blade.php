@@ -14,7 +14,7 @@
                    <a href="{{ url('users/' .$user->id) }}" >ユーザー名 : {{ $user->name }}</a>
                    <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>
                  </div>
-                 @if (auth()->user()->isFollowed($user->id))
+                 {{-- @if (auth()->user()->isFollowed($user->id))
                  <div class="px-2">
                    <span class="px-1 bg-secondary text-light">フォローされています</span>
                  </div>
@@ -35,7 +35,7 @@
                      <button type="submit" class="btn btn-primary">フォローする</button>
                    </form>
                    @endif
-                 </div>
+                 </div> --}}
 
                 </div>
             </div>

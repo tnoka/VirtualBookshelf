@@ -13,12 +13,11 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
+// ユーザー関連
+Route::resource('users', 'usersController');
 
 Route::get('/{any?}', function () {
     return view('index');
 })->where('any', '.+');
 
 Auth::routes();
-
-// ユーザー関連
-Route::resource('users', 'usersController');
