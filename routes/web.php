@@ -13,8 +13,14 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
+
 // ユーザー関連
 Route::resource('users', 'usersController');
+
+// フォローする
+Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
+// フォロー解除
+Route::delete('users/{user}/unFollow', 'UsersController@unFollow')->name('unFollow');
 
 Route::get('/{any?}', function () {
     return view('index');

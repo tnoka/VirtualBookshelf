@@ -15,6 +15,25 @@ class Product extends Model
     // プライマリーキーの型
     protected $keyType = 'string';
 
+    // リレーション
+    // コメント
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('id', 'desc');
+    }
+
+    // 読みたい本
+    public function favorite()
+    {
+        return $this->belongsToMany('App\User', 'favorite');
+    }
+
+    // 投稿者
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
+    }
+
     // IDの桁数
     const ID_LENGTH = 12;
 
@@ -66,24 +85,6 @@ class Product extends Model
         $this->save();
 
         return;
-    }
-
-    // リレーション、コメント
-    public function comments()
-    {
-        return $this->hasMany('App\Comment')->orderBy('id', 'desc');
-    }
-
-    // リレーション、読みたい本
-    public function favorite()
-    {
-        return $this->belongsToMany('App\User', 'favorite');
-    }
-
-    // リレーション、投稿者
-    public function owner()
-    {
-        return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
     // S3のURL取得（独自属性）
