@@ -16,6 +16,11 @@ class Product extends Model
     protected $keyType = 'string';
 
     // リレーション
+    // ユーザー
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     // コメント
     public function comments()
     {
@@ -35,7 +40,7 @@ class Product extends Model
     }
 
     // タイムライン
-    public function getTimeLine(Int $user_id)
+    public function getUserTimeLine(Int $user_id)
     {
         return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(6);
     }
