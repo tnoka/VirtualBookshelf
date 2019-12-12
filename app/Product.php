@@ -34,6 +34,18 @@ class Product extends Model
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
+    // タイムライン
+    public function getTimeLine(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(6);
+    }
+
+    // 投稿した本の数
+    public function getProductCount(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->count();
+    }
+
     // IDの桁数
     const ID_LENGTH = 12;
 
