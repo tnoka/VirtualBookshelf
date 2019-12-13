@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProduct;
 use App\Product;
 use App\Comment;
+use App\Follow;
+use App\Http\Requests\StoreProduct;
 use App\Http\Requests\StoreComment;
 use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -25,6 +27,21 @@ class ProductController extends Controller
         $products = Product::with(['owner', 'favorite'])->orderBy(Product::CREATED_AT, 'desc')->paginate();
 
         return $products;
+    }
+
+    // タイムライン
+    public function productTimeLine(Product $product, Follow $follow)
+    {
+        $user = auth()->user();
+        // ログインしているユーザーがフォローしているユーザーのIDを取得
+        $follow_ids = $follow->followIds($user->id);
+        
+        $timelines = $product->getTimeLine($user->id, $follow_ids);
+
+        return view('product.timeline', [
+            'user' => $user,
+            'timelines' => $timelines
+        ]);
     }
 
     // 本の詳細

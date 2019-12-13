@@ -22,15 +22,15 @@ class UsersController extends Controller
     }
 
     // ユーザー詳細
-    public function show(User $user, Product $product, Follow $follower)
+    public function show(User $user, Product $product, Follow $follow)
     {
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
         $is_followed = $login_user->isFollowed($user->id);
         $timelines = $product->getUserTimeLine($user->id);
         $product_count = $product->getProductCount($user->id);
-        $follow_count = $follower->getFollowerCount($user->id);
-        $follower_count = $follower->getFollowerCount($user->id);
+        $follow_count = $follow->getFollowerCount($user->id);
+        $follower_count = $follow->getFollowerCount($user->id);
 
         return view('users.show', [
             'user' => $user,
