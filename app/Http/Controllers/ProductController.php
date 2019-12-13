@@ -105,6 +105,21 @@ class ProductController extends Controller
         return response($product, 201);
     }
 
+    // 本の編集機能
+    public function edit(Product $product)
+    {
+        $user = auth()->user();
+        $products = $product->getEditProduct($user->id, $product->id);
+
+        if(!isset($products)) {
+            return redirect('/');
+        }
+        return view('products.edit', [
+            'user' => $user,
+            'products' => $products
+        ]);
+    }
+
     // コメント投稿
     public function addComment(Product $product, StoreComment $request)
     {

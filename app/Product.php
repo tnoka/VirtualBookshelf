@@ -143,4 +143,11 @@ class Product extends Model
     protected $visible = [ // JSONに含める属性
         'id', 'owner', 'url', 'comments', 'favorite_count', 'favorited_by_user',
     ];
+
+    // 本の編集機能
+    public function getEditProduct(Int $user_id, Int $product_id)
+    {
+        // 両方が一致するものを取得
+        return $this->where('user_id', $user_id)->where('id', $product_id)->first();
+    }
 }
