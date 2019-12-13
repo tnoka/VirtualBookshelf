@@ -9,7 +9,7 @@
           @foreach ($all_users as $user)
             <div class="card">
               <div class="card-haeder p-3 w-100 d-flex">
-                <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
+                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->product_image) }}" class="rounded-circle" width="50" height="50" alt="">
                 <div class="ml-2 flex-column">
                   <a href="{{ url('users/' .$user->id) }}" >ユーザー名 : {{ $user->name }}</a>
                   <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>

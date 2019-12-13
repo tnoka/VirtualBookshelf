@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="d-inline-flex">
                         <div class="p-3 d-flex flex-column">
-                            <img src="{{ $user->profile_image }}" class="rounded-circle" width="100" height="100">
+                            <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
                             <div class="mt-3 d-flex flex-column">
                                 <h4 class="mb-0 font-weight-bold">ユーザー名 : {{ $user->name }}</h4>
                                 <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
@@ -53,7 +53,7 @@
                     <div class="col-md-8 mb-3">
                         <div class="card">
                             <div class="card-header p-3 w-100 d-flex">
-                                <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
+                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
                                 <div class="ml-2 d-flex flex-column flex-grow-1">
                                     <p class="mb-0 text-secondary">ユーザー名 : {{ $timeline->user->name }}</p>
                                     <p class="mb-0 text-secondary">ユーザーID : {{ $timeline->user->id }}</p>

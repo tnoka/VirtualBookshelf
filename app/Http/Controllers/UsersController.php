@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\User;
 use App\Product;
 use App\Follow;
@@ -45,7 +46,7 @@ class UsersController extends Controller
     // ユーザー編集
     public function edit(User $user)
     {
-        return view('user.edit', ['user' => $user]);
+        return view('users.edit', ['user' => $user]);
     }
 
     // プロフィール更新
@@ -53,9 +54,9 @@ class UsersController extends Controller
     {
         $data = $request->all();
         $validator = Validator::make($data, [
-            'name' => ['required' | 'string' | 'max:255'],
-            'email' => ['required' | 'string' | 'email' | 'max:255' | Rule::unique('users')->ignore($user->id)],
-            'profile_image' => ['file' | 'image' | 'mimes:jpeg,jpg,png' | 'max:8192'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255', Rule::unique('users')->ignore($user->id),
+            'profile_image' => 'file|image|mimes:jpeg,jpg,png|max:8192'
         ]);
         $validator->validate();
         $user->updateProfile($data);

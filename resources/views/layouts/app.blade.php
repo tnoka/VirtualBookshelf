@@ -43,7 +43,7 @@
                 <i class="fa fa-book"></i>
                 {{ ' 仮想本棚 ' }}
                 </a>
-                <img src="{{ asset('storage/profile_image/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="50" height="50">
+                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="50" height="50">
                 <li class="nav-item dropdown list-inline text-light">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="opacity: 0; transform: translateX(-70%);">
                     {{ Auth::user()->name }} <span class="caret"></span>
