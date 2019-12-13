@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->belongsToMany(self::class, 'follow', 'following_id', 'followed_id');
     }
 
-    // ユーザー一覧取得（自分以外）
+    // ユーザーの一覧を取得（自分以外）
     public function getAllUsers(Int $user_id)
     {
         return $this->where('id', '<>', $user_id)->paginate(5);
@@ -61,6 +61,29 @@ class User extends Authenticatable
     public function destroyUser(Int $user_id)
     {
         return $this->where('id', $user_id)->delete();
+    }
+
+    // プロフィール更新
+    public function updateProfile(Array $params)
+    {
+        if(isset($params['profile_image'])) {
+            // publicにファイルを保存
+            $file_name = $params['profile_image']->store('public/profile_image');
+            // S3にファイルを保存
+            Storage::cloud()->putFileAs('', $params['profile_image'], basename($file_name), 'public');
+
+            $this::where('id', $this->id)->update([
+                'name' => $params['name'],
+                'email' => $params['email'],
+                'profile_image' => basename($file_name),
+            ]);
+        } else {
+            $this::where('id', $this->id)->update([
+                'name' => $params['name'],
+                'email' => $params['email'],
+            ]);
+        }
+        return;
     }
 
     // フォローする

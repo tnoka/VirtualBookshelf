@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Product;
 use App\Follow;
@@ -39,6 +40,27 @@ class UsersController extends Controller
             'follow_count' => $follow_count,
             'follower_count' => $follower_count,
         ]);
+    }
+
+    // ユーザー編集
+    public function edit(User $user)
+    {
+        return view('user.edit', ['user' => $user]);
+    }
+
+    // プロフィール更新
+    public function update(Request $request, User $user)
+    {
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'name' => ['required' | 'string' | 'max:255'],
+            'email' => ['required' | 'string' | 'email' | 'max:255' | Rule::unique('users')->ignore($user->id)],
+            'profile_image' => ['file' | 'image' | 'mimes:jpeg,jpg,png' | 'max:8192'],
+        ]);
+        $validator->validate();
+        $user->updateProfile($data);
+
+        return redirect('users/'.$user->id);
     }
 
     // public function destroy(User $user)
