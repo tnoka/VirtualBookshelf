@@ -128,7 +128,7 @@ export default {
                 timeout: 6000
             })
 
-            this.$router.push('/products/${response.data.id}')
+            this.$router.push('/')
             },
     },
 }

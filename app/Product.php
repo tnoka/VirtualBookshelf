@@ -99,8 +99,6 @@ class Product extends Model
     // 本の投稿機能
     public function productStore(Int $user_id, Array $data)
     {
-        // $file_name = $data['product_image']->store('public/product_image');
-
         $this->user_id = $user_id;
         $this->title = $data['title'];
         $this->author = $data['author'];
@@ -145,9 +143,31 @@ class Product extends Model
     ];
 
     // 本の編集機能
-    public function getEditProduct(Int $user_id, Int $product_id)
+    public function productUpdate($product_id, Array $data)
+    {
+        $this->id = $product_id;
+        $this->title = $data['title'];
+        $this->author = $data['author'];
+        $this->recommend = $data['recommend'];
+        $this->text = $data['text'];
+        $this->update();
+
+        return;
+    }
+
+    // 本の編集画面
+    public function getEditProduct(Int $user_id, $product_id)
     {
         // 両方が一致するものを取得
         return $this->where('user_id', $user_id)->where('id', $product_id)->first();
+    }
+
+    // 本の削除機能
+    public function productDestroy(Int $user_id, $product_id)
+    {
+        $product_image = Product::where('user_id', $user_id)->where('id', $product_id)->value('product_image');
+        $disk = Storage::disk('s3');
+        $disk->delete($product_image);
+        return $this->where('user_id', $user_id)->where('id', $product_id)->delete();
     }
 }

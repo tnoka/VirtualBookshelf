@@ -106,18 +106,44 @@ class ProductController extends Controller
     }
 
     // 本の編集機能
+    public function update(Request $request, Product $product)
+    {
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'title' => 'required|max:100',
+            'author' => 'required|max:100',
+            'recommend' => 'required|string',
+            'text' => 'required|string|max:2000',                                       
+        ]);
+
+        $validator->validate();
+        $product->productUpdate($product->id, $data);
+
+        return redirect('/');
+    }
+
+    // 本の編集画面
     public function edit(Product $product)
     {
         $user = auth()->user();
         $products = $product->getEditProduct($user->id, $product->id);
 
         if(!isset($products)) {
-            return redirect('/');
+            return redirect('/users');
         }
         return view('products.edit', [
             'user' => $user,
             'products' => $products
         ]);
+    }
+
+    // 本の削除機能
+    public function destroy(Product $product)
+    {
+        $user = auth()->user();
+        $product->productDestroy($user->id, $product->id);
+
+        return back();
     }
 
     // コメント投稿

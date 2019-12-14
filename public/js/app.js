@@ -2800,7 +2800,7 @@ __webpack_require__.r(__webpack_exports__);
                 content: '本棚に飾りました！',
                 timeout: 6000
               });
-              this.$router.push('/products/${response.data.id}');
+              this.$router.push('/');
 
             case 20:
             case "end":

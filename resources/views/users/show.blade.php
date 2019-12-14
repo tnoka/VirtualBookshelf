@@ -71,18 +71,13 @@
                             </div>
                             <div class="card-footer py-1 d-flex justify-content-end bg-white">
                                 @if ($timeline->user->id === Auth::user()->id)
-                                    <div class="dropdown mr-3 d-flex align-items-center">
-                                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-fw"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <form method="POST" action="{{ url('products/' .$timeline->id) }}" class="mb-0">
+                                    <div class="mr-3 d-flex align-items-center">
+                                            <form method="POST" action="{{ url('products/' .$timeline->id) }}" class="mb-0 d-flex flex-row">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a href="{{ url('products/' .$timeline->id .'/edit') }}" class="dropdown-item">編集</a>
                                                 <button type="submit" class="dropdown-item del-btn">削除</button>
                                             </form>
-                                        </div>
                                     </div>
                                 @endif
                                 <div class="mr-3 d-flex align-items-center">
