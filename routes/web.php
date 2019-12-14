@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/products/{id}', 'ProductController@show')->name('product.show');
     Route::put('products/{products}', 'ProductController@update')->name('products.update');
 
+    // コメント関連
+    Route::resource('comments', 'CommentsController');
+
     // フォローする
     Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
     // フォロー解除

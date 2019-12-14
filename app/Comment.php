@@ -21,6 +21,14 @@ class Comment extends Model
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
+    public function commentStore(Int $user_id, Array $data)
+    {
+        $this->user_id = $user_id;
+        $this->product_id = $data['product_id'];
+        $this->text = $data['text'];
+        $this->save();
+    }
+
     public function getComment($product_id)
     {
         return $this->with('author')->where('product_id', $product_id)->get();
