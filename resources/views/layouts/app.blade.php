@@ -43,7 +43,7 @@
                 <i class="fa fa-book"></i>
                 {{ ' 仮想本棚 ' }}
                 </a>
-                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="50" height="50">
+                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="40" height="40">
                 <li class="nav-item dropdown list-inline text-light">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="opacity: 0; transform: translateX(-70%);">
                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -99,9 +99,6 @@
                             </li>
                             <li class="nav-item ml-auto">
                               <a href="{{ url('users') }}" class="btn nav-link text-primary"><i class="fas fa-users fa-fw  mr-1"></i>登録者一覧</a>
-                            </li>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('products/create') }}" class="btn nav-link text-primary"><i class="fa-plus fa fa-book mr-1"></i>本棚に飾る</a>
                             </li>
                             <li class="nav-item ml-auto">
                               <a href="{{ url('ProductForm') }}" class="btn nav-link text-primary"><i class="fa-plus fa fa-book mr-1"></i>本棚に飾る</a>

@@ -64,6 +64,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                
                                 <h4><a href="{{ url('products/' .$timeline->id) }}" class="pl-4">{{ $timeline->title }} / {{ $timeline->author }}</a></h4>
                                 <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$timeline->product_image) }}" width="300" height="300" class="mt-3 d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425" style="cursor:pointer" />
                                 <p class="form-control pl-4 mb-0">おすすめ度 : {{ $timeline->recommend }}</p>

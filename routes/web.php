@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // 本関連
     Route::resource('products', 'ProductController');
+    Route::get('/products/{id}', 'ProductController@show')->name('product.show');
+    Route::put('products/{products}', 'ProductController@update')->name('products.update');
 
     // フォローする
     Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');

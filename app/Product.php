@@ -39,6 +39,12 @@ class Product extends Model
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
 
+    // 本の詳細
+    public function getProduct($product_id)
+    {
+        return $this->with('user')->where('id', $product_id)->first();
+    }
+
     // ユーザー詳細のタイムライン
     public function getUserTimeLine(Int $user_id)
     {

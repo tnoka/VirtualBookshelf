@@ -20,4 +20,9 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');
     }
+
+    public function getComment($product_id)
+    {
+        return $this->with('author')->where('product_id', $product_id)->get();
+    }
 }

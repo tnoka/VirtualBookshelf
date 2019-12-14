@@ -45,12 +45,24 @@ class ProductController extends Controller
     }
 
     // 本の詳細
-    public function show(string $id)
+    public function show(Product $product, Comment $comment)
     {
-        $product = Product::where('id', $id)->with(['owner', 'comments.author', 'favorite'])->first();
+        $user = auth()->user();
+        $product = $product->getProduct($product->id);
+        $comments = $comment->getComment($product->id);
 
-        return $product ?? abort(404);
+        return view('product.show', [
+            'user' => $user,
+            'product' => $product,
+            'comments' => $comments
+        ]);
     }
+    // public function show(string $id)
+    // {
+    //     $product = Product::where('id', $id)->with(['owner', 'comments.author', 'favorite'])->first();
+
+    //     return $product ?? abort(404);
+    // }
 
     // 本の投稿
     public function store(StoreProduct $request, product $product)
@@ -119,7 +131,7 @@ class ProductController extends Controller
         $validator->validate();
         $product->productUpdate($product->id, $data);
 
-        return redirect('/');
+        return back();
     }
 
     // 本の編集画面
