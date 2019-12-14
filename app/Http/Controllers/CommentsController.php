@@ -18,7 +18,7 @@ class CommentsController extends Controller
         ]);
 
         $validator->validate();
-        $comment->commentStore($user_id, $data);
+        $comment->commentStore($user->id, $data);
 
         return back();
     }
