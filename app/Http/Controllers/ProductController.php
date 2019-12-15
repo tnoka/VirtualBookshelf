@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product = $product->getProduct($product->id);
         $comments = $comment->getComment($product->id);
 
-        return view('product.show', [
+        return view('products.show', [
             'user' => $user,
             'product' => $product,
             'comments' => $comments
