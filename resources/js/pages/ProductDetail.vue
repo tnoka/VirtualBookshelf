@@ -14,6 +14,9 @@
                     @click="onFavoriteClick">
                 <i class="fa fa-heart"></i>{{ product.favorite_count }}
             </button>
+            <h3 class="product-detail__title">{{ product.title }} / {{ product.author }}</h3>
+            <h3 class="product-detail__title">{{ product.recommend }}</h3>
+            <h3 class="product-detail__title" >{{ product.text }}</h3>
             <h3 class="product-detail__title">
                 <i class="fab fa-rocketchat"></i> Comments
             </h3>

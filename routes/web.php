@@ -23,8 +23,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // 本関連
     Route::get('products/{product}', 'ProductController@shows')->name('products.shows');
+    Route::resource('products', 'ProductController', ['only' => ['edit', 'update', 'destroy']]);
     Route::put('products/{products}', 'ProductController@update')->name('products.update');
-    // Route::resource('products', 'ProductController');
 
     // コメント関連
     Route::resource('comments', 'CommentsController');

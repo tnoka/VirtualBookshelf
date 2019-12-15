@@ -2445,6 +2445,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5020,6 +5023,20 @@ var render = function() {
                 _vm._v(_vm._s(_vm.product.favorite_count) + "\n        ")
               ]
             ),
+            _vm._v(" "),
+            _c("h3", { staticClass: "product-detail__title" }, [
+              _vm._v(
+                _vm._s(_vm.product.title) + " / " + _vm._s(_vm.product.author)
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "product-detail__title" }, [
+              _vm._v(_vm._s(_vm.product.recommend))
+            ]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "product-detail__title" }, [
+              _vm._v(_vm._s(_vm.product.text))
+            ]),
             _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),

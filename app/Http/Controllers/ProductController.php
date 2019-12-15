@@ -60,7 +60,6 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::where('id', $id)->with(['owner', 'comments.author', 'favorite'])->first();
-
         return $product ?? abort(404);
     }
 
@@ -125,7 +124,7 @@ class ProductController extends Controller
             'title' => 'required|max:100',
             'author' => 'required|max:100',
             'recommend' => 'required|string',
-            'text' => 'required|string|max:2000',                                       
+            'text' => 'required|string|max:750',                           
         ]);
 
         $validator->validate();
