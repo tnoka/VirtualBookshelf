@@ -6,15 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
 {
+    protected $table = 'favorite';
     public $timestamps = false;
 
-    // いいねの判定
+    // リレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    // 読みたい本の判定
     public function checkFavorite(Int $user_id, $product_id)
     {
         return (boolean) $this->where('user_id', $user_id)->where('product_id', $product_id)->first();
     }
 
-    // いいねをつける
+    // 読みたい本に追加
     public function storeFavorite(Int $user_id, $product_id)
     {
         $this->user_id = $user_id;
@@ -24,7 +36,7 @@ class Favorite extends Model
         return;
     }
 
-    // いいねを解除
+    // 読みたい本を解除
     public function destroyFavorite(Int $favorite_id)
     {
         return $this->where('id', $favorite_id)->delete();

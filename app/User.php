@@ -34,6 +34,11 @@ class User extends Authenticatable
     ];
 
     // リレーション
+    public function favorite()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
     public function products()
     {
         return $this->hasMany('App\Product');

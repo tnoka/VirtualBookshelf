@@ -21,6 +21,7 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     // コメント
     public function comments()
     {
@@ -28,6 +29,11 @@ class Product extends Model
     }
 
     // 読みたい本
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
     public function favorite()
     {
         return $this->belongsToMany('App\User', 'favorite');

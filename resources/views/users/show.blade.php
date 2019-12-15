@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div class="d-flex align-items-center">
-                                    {{-- @if (!in_array(Auth::user()->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
+                                    @if (!in_array(Auth::user()->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
                                         <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $timeline->id }}">
@@ -103,7 +103,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn p-0 border-0 text-danger"><i class="fas fa-heart fa-fw"></i></button>
                                         </form>
-                                    @endif --}}
+                                    @endif
                                     @if(is_countable($timeline->favorites))
                                     <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
                                     @else
