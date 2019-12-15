@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 //ページコンポーネントをインポート
 import ProductList from './pages/ProductList.vue'
+import ProductListRank from './pages/ProductListRank.vue'
 import Login from './pages/Login.vue'
 import ProductForm from './pages/ProductForm.vue'
 import ProductDetail from './pages/ProductDetail.vue'
@@ -20,6 +21,16 @@ const routes = [
     {
         path: '/',
         component: ProductList,
+        props: route => {
+            const page = route.query.page
+            return {
+                page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+            }
+        }
+    },
+    {
+        path: '/indexRank',
+        component: ProductListRank,
         props: route => {
             const page = route.query.page
             return {

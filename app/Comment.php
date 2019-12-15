@@ -16,6 +16,13 @@ class Comment extends Model
         'author', 'text',
     ];
 
+    // リレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+
     public function author()
     {
         return $this->belongsTo('App\User', 'user_id', 'id', 'users');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Comment;
 use App\Follow;
+use App\Favorite;
 use App\Http\Requests\StoreProduct;
 use App\Http\Requests\StoreComment;
 use illuminate\Support\Facades\Auth;
@@ -21,10 +22,19 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    // 本の一覧
+    // 本の一覧（新着順）
     public function index()
     {
         $products = Product::with(['owner', 'favorite'])->orderBy(Product::CREATED_AT, 'desc')->paginate();
+
+        return $products;
+    }
+
+    // 本の一覧（ランキング）
+    public function indexRank()
+    {
+        $products = Product::with(['owner', 'favorite'])->withCount('favorite')->orderBy('favorite_count', 'desc')->paginate();
+
 
         return $products;
     }
