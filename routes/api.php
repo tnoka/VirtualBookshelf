@@ -41,7 +41,7 @@ Route::post('/products', 'ProductController@store')->name('product.store');
 Route::get('/products', 'ProductController@index')->name('product.index');
 
 // 本の詳細
-// Route::get('/products/{id}', 'ProductController@show')->name('product.show');
+Route::get('/products/{id}', 'ProductController@show')->name('product.show');
 
 // コメント
 Route::post('/products/{product}/comments', 'ProductController@addComment')->name('product.comment');
