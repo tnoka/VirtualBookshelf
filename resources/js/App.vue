@@ -6,9 +6,11 @@
             <div class="container">
                 <Message />
                 <RouterView />
+
+        <p class="mt-5 text-center text-secondary">Copyright ©2019 仮想本棚, All Rights Reserved.</p>
             </div>
             
-        <p>Copyright ©2019 仮想本棚, All Rights Reserved.</p>
+
     </div>
 </template>
 

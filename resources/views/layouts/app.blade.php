@@ -29,14 +29,14 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 @guest
-                <a class="navbar-brand text-dark mr-2 custom-form" href="{{ url('/') }}">
+                <a class="navbar-brand text-dark mr-3 custom-form" href="{{ url('/') }}">
                     {{ ' 仮想本棚 ' }}
                 </a>
                 <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('/users/all') }}">
                 <i class="fa fa-user-friends"></i>
                 </a>
                 @else
-                <a class="navbar-brand text-dark mr-2 custom-form" href="{{ url('/') }}">
+                <a class="navbar-brand text-dark mr-3 custom-form" href="{{ url('/') }}">
                 {{ ' 仮想本棚 ' }}
                 </a>
                 <a class="navbar-brand text-dark mr-2 custom-form" href="{{ url('/users') }}">

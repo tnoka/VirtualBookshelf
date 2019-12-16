@@ -1871,6 +1871,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2126,6 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3103,8 +3106,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__);
 
-//
-//
 //
 //
 //
@@ -5208,11 +5209,17 @@ var render = function() {
     _c(
       "div",
       { staticClass: "container" },
-      [_c("Message"), _vm._v(" "), _c("RouterView")],
+      [
+        _c("Message"),
+        _vm._v(" "),
+        _c("RouterView"),
+        _vm._v(" "),
+        _c("p", { staticClass: "mt-5 text-center text-secondary" }, [
+          _vm._v("Copyright ©2019 仮想本棚, All Rights Reserved.")
+        ])
+      ],
       1
-    ),
-    _vm._v(" "),
-    _c("p", [_vm._v("Copyright ©2019 仮想本棚, All Rights Reserved.")])
+    )
   ])
 }
 var staticRenderFns = []
@@ -5475,12 +5482,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "product" },
+    { staticClass: "product col-6 col-sm-4" },
     [
-      _c("figure", { staticClass: "product__wrapper" }, [
+      _c("figure", {}, [
         _c("img", {
           ref: "image",
-          staticClass: "product__image",
+          staticClass: "img-fluid mb-4",
           class: _vm.imageClass,
           attrs: { src: _vm.item.url, alt: "By " + _vm.item.owner.name },
           on: { load: _vm.setAspectRatio }
@@ -6390,26 +6397,20 @@ var render = function() {
       _vm.isLogin
         ? _c(
             "div",
+            { staticClass: "container" },
             [
               _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  {
-                    staticClass: "tab__item tab__item--active",
-                    on: {
-                      click: function($event) {
-                        _vm.tab = 1
-                      }
-                    }
-                  },
+                  { staticClass: "tab__item tab__item--active px-0 pt-0" },
                   [
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-outline-secondary btn-lg",
+                        staticClass: "btn btn-secondary btn-lg",
                         attrs: { to: "/" }
                       },
-                      [_vm._v("タイムライン")]
+                      [_vm._v("フィード")]
                     )
                   ],
                   1
@@ -6417,7 +6418,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item" },
+                  { staticClass: "tab__item pt-0" },
                   [
                     _c(
                       "router-link",
@@ -6425,7 +6426,7 @@ var render = function() {
                         staticClass: "btn btn-outline-secondary btn-lg",
                         attrs: { to: "/" }
                       },
-                      [_vm._v("新 着")]
+                      [_vm._v("新着")]
                     )
                   ],
                   1
@@ -6433,7 +6434,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item" },
+                  { staticClass: "tab__item px-0 pt-0" },
                   [
                     _c(
                       "router-link",
@@ -6441,7 +6442,7 @@ var render = function() {
                         staticClass: "btn btn-outline-secondary btn-lg",
                         attrs: { to: "/indexRank" }
                       },
-                      [_vm._v("人 気")]
+                      [_vm._v("人気")]
                     )
                   ],
                   1
@@ -6450,11 +6451,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "grid" },
+                { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
                   return _c("Product", {
                     key: product.id,
-                    staticClass: "grid__item",
                     attrs: { item: product },
                     on: { like: _vm.onFavoriteClick }
                   })
@@ -6473,6 +6473,7 @@ var render = function() {
           )
         : _c(
             "div",
+            { staticClass: "container" },
             [
               _vm._m(0),
               _vm._v(" "),
@@ -6484,7 +6485,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-outline-secondary btn-lg",
+                        staticClass: "btn btn-secondary btn-lg",
                         attrs: { to: "/" }
                       },
                       [_vm._v("新 着")]
@@ -6512,11 +6513,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "grid" },
+                { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
                   return _c("Product", {
                     key: product.id,
-                    staticClass: "grid__item",
                     attrs: { item: product },
                     on: { like: _vm.onFavoriteClick }
                   })
@@ -6620,11 +6620,12 @@ var render = function() {
       _vm.isLogin
         ? _c(
             "div",
+            { staticClass: "container" },
             [
               _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  { staticClass: "tab__item" },
+                  { staticClass: "tab__item px-0 pt-0" },
                   [
                     _c(
                       "router-link",
@@ -6632,7 +6633,7 @@ var render = function() {
                         staticClass: "btn btn-outline-secondary btn-lg",
                         attrs: { to: "/" }
                       },
-                      [_vm._v("タイムライン")]
+                      [_vm._v("フィード")]
                     )
                   ],
                   1
@@ -6640,7 +6641,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item" },
+                  { staticClass: "tab__item pt-0" },
                   [
                     _c(
                       "router-link",
@@ -6656,12 +6657,12 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item tab__item--active" },
+                  { staticClass: "tab__item tab__item--active px-0 pt-0" },
                   [
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-outline-secondary btn-lg",
+                        staticClass: "btn btn-secondary btn-lg",
                         attrs: { to: "/indexRank" }
                       },
                       [_vm._v("人 気")]
@@ -6673,11 +6674,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "grid" },
+                { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
                   return _c("Product", {
                     key: product.id,
-                    staticClass: "grid__item",
                     attrs: { item: product },
                     on: { like: _vm.onFavoriteClick }
                   })
@@ -6696,6 +6696,7 @@ var render = function() {
           )
         : _c(
             "div",
+            { staticClass: "container" },
             [
               _vm._m(0),
               _vm._v(" "),
@@ -6723,7 +6724,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-outline-secondary btn-lg",
+                        staticClass: "btn btn-secondary btn-lg",
                         attrs: { to: "/indexRank" }
                       },
                       [_vm._v("人 気")]
@@ -6735,11 +6736,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "grid" },
+                { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
                   return _c("Product", {
                     key: product.id,
-                    staticClass: "grid__item",
                     attrs: { item: product },
                     on: { like: _vm.onFavoriteClick }
                   })

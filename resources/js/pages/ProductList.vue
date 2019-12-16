@@ -6,15 +6,14 @@
                 :on-cancel="onCancel"
                 :is-full-page="fullPage">
             </loading>
-            <div v-if="isLogin">
+                <div class="container" v-if="isLogin">
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active" @click="tab = 1"><router-link class="btn btn-outline-secondary btn-lg" to="/">タイムライン</router-link></li>
-                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
-                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                <li class="tab__item tab__item--active px-0 pt-0"><router-link class="btn btn-secondary btn-lg" to="/">フィード</router-link></li>
+                <li class="tab__item pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/">新着</router-link></li>
+                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人気</router-link></li>
                 </ul>
-                <div  class="grid">
+                <div  class="row">
                     <Product
-                    class="grid__item"
                     v-for="product in products"
                     :key="product.id"
                     :item="product"
@@ -24,31 +23,32 @@
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
 
             </div>
-
-            <div v-else>
-                <div  class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
+                <div class="container" v-else>
+                <div class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
                     <div class="container-fluid jumbotron-container">
                         <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
                         <h3 class="site-name text-light text-center mt-5 top-title">読んだ本を本棚に飾り</h3>
                         <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
                     </div>
                 </div>
+
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item tab__item--active"><router-link class="btn btn-secondary btn-lg" to="/">新 着</router-link></li>
                 <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
-                <div class="grid">
+                <div class="row">
                     <Product
-                    class="grid__item"
                     v-for="product in products"
                     :key="product.id"
                     :item="product"
                     @like="onFavoriteClick"
                     />
-                </div>
+                                </div>
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
+
             </div>
         </div>
+        
 </template>
 
 

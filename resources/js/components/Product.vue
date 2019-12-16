@@ -1,8 +1,9 @@
 <template>
-    <div class="product">
-        <figure class="product__wrapper">
+    <div class="product col-6 col-sm-4">
+
+        <figure class="">
             <img
-            class="product__image"
+            class="img-fluid mb-4"
             :class="imageClass"
             :src="item.url"
             :alt="`By ${item.owner.name}`"
@@ -25,7 +26,7 @@
         <div class="product__username">
             {{  item.owner.name }}
         </div>
-        </router-link>      
+        </router-link>
     </div>
 </template>
 
