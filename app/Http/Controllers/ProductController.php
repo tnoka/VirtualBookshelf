@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function __construct()
     {
         // 認証
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'indexRank', 'show']);
     }
 
     // 本の一覧（新着順）

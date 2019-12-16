@@ -1,6 +1,11 @@
 <template>
         <div class="product-list">
-            
+            <loading 
+                :active.sync="isLoading" 
+                :can-cancel="true" 
+                :on-cancel="onCancel"
+                :is-full-page="fullPage">
+            </loading>
             <div v-if="isLogin">
                 <div  class="grid">
                     <Product
@@ -22,6 +27,10 @@
                         <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
                     </div>
                 </div>
+                <ul class="tab mb-3 justify-content-center">
+                <li class="tab__item" :class="{'tab__item--active': tab === 1 }" @click="tab = 1"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item" :class="{'tab__item--active': tab === 2 }" @click="tab = 2"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                </ul>
                 <div class="grid">
                     <Product
                     class="grid__item"
@@ -41,21 +50,33 @@
 import Product from '../components/Product.vue'
 import Pagination from '../components/Pagination.vue'
 import { OK } from '../util'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
     components: {
         Product,
-        Pagination
+        Pagination,
+        Loading
     },
     data() {
         return {
+            tab: 2,
             products: [],
             currentPage: 0,
             lastPage: 0,
+            isLoading: false,
         }
     },
     methods: {
         async fetchProducts() {
+            let self = this;    
+            self.isLoading = true;
+            // simulate AJAX
+            setTimeout(function(){
+                self.isLoading = false;
+                console.log('load off');
+            }, 1300);
             const response = await axios.get(`/api/products/indexRank/?page=${this.$route.query.page}`)
 
             if(response.status !== OK) {
