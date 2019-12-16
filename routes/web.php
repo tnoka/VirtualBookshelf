@@ -14,6 +14,8 @@
 //     return view('index');
 // });
 
+Route::get('users/all', 'usersController@all')->name('all');
+
 // ログイン状態のみ
 Route::group(['middleware' => 'auth'], function(){
     
@@ -36,8 +38,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     // いいね関連
     Route::resource('favorites', 'FavoritesController');
-
-
 
 });
 

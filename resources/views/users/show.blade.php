@@ -18,7 +18,16 @@
                             <div class="d-flex">
                                 <div>
                                     @if($user->id === Auth::user()->id)
-                                    <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary">プロフィール編集</a>
+                                    <div class="mt-3 ml-2 d-flex flex-column">
+                                        <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary">プロフィール編集</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-primary mt-2"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">ログアウト
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
                                     @else
                                         @if($is_following)
                                             <form action="{{ route('unFollow', $user->id) }}" method="POST">

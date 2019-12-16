@@ -5624,7 +5624,9 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("label", { attrs: { for: "login-email" } }, [_vm._v("E-Mail")]),
+            _c("label", { attrs: { for: "login-email" } }, [
+              _vm._v("メールアドレス")
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -5649,7 +5651,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("label", { attrs: { for: "login-password" } }, [
-              _vm._v("Password")
+              _vm._v("パスワード")
             ]),
             _vm._v(" "),
             _c("input", {
@@ -5740,7 +5742,9 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("label", { attrs: { for: "username" } }, [_vm._v("Name")]),
+            _c("label", { attrs: { for: "username" } }, [
+              _vm._v("ユーザーネーム")
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -5764,7 +5768,9 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+            _c("label", { attrs: { for: "email" } }, [
+              _vm._v("メールアドレス")
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -5788,7 +5794,9 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+            _c("label", { attrs: { for: "password" } }, [
+              _vm._v("パスワード（8文字以上）")
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -5813,7 +5821,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("label", { attrs: { for: "password-confirmation" } }, [
-              _vm._v("Password (confirm)")
+              _vm._v("パスワード（再入力）")
             ]),
             _vm._v(" "),
             _c("input", {

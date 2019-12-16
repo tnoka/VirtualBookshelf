@@ -21,6 +21,15 @@ class UsersController extends Controller
         ]);
     }
 
+    public function all(User $user)
+    {
+        $all_users = $user->usersAll();
+
+        return view('users.all', [
+            'all_users' => $all_users
+        ]);
+    }
+
     // ユーザー詳細
     public function show(User $user, Product $product, Follow $follow)
     {
