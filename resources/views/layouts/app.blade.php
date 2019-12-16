@@ -46,12 +46,6 @@
                 <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="40" height="40">
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 @endguest
 
                     <!-- Right Side Of Navbar -->
@@ -59,38 +53,15 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-secondary btn-lg" href="{{ url('login') }}">ログイン / 新規登録</a>
-                                </li>
+                                    <a class="btn btn-dark btn-lg" href="{{ url('login') }}">ログイン / 新規登録</a>
                             @endif
                         @else
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('products') }}" class="btn nav-link text-primary"><i class="fas fa-comments fa-fw mr-1"></i>タイムライン</a>
-                            </li>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('favorites/') }}" class="btn nav-link text-primary"><i class="fas fa-heart fa-fw mr-1"></i>いいね一覧</a>
-                            </li>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('users') }}" class="btn nav-link text-primary"><i class="fas fa-users fa-fw  mr-1"></i>登録者一覧</a>
-                            </li>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('ProductForm') }}" class="btn nav-link text-primary"><i class="fa-plus fa fa-book mr-1"></i>本棚に飾る</a>
-                            </li>
-                            <li class="nav-item ml-auto">
-                              <a href="{{ url('users/bookshelf/' .auth()->user()->id) }}" class="btn nav-link text-primary"><i class="fa fa-book mr-1"></i>本 棚</a>
-                            </li>
+                        <div class="d-flex flex-row">
+                              <a href="{{ url('ProductForm') }}" class="btn btn-dark mr-2"><i class="far fa-edit mr-1"></i>投稿</a>
+                              <a href="{{ url('users/bookshelf/' .auth()->user()->id) }}" class="btn btn-dark"><i class="fa fa-book mr-1"></i>本 棚</a>
+                        </div>
                         @endguest
                     </ul>
-                </div>
         </nav>
 
         <main class="py-1">

@@ -2887,6 +2887,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3100,6 +3103,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_5__);
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6383,17 +6391,62 @@ var render = function() {
         ? _c(
             "div",
             [
-              _c(
-                "router-link",
-                { staticClass: "tab__item", attrs: { to: "/" } },
-                [_vm._v("新着")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                { staticClass: "tab__item", attrs: { to: "/indexRank" } },
-                [_vm._v("人気")]
-              ),
+              _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
+                _c(
+                  "li",
+                  {
+                    staticClass: "tab__item tab__item--active",
+                    on: {
+                      click: function($event) {
+                        _vm.tab = 1
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/" }
+                      },
+                      [_vm._v("タイムライン")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "tab__item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/" }
+                      },
+                      [_vm._v("新 着")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "tab__item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/indexRank" }
+                      },
+                      [_vm._v("人 気")]
+                    )
+                  ],
+                  1
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "div",
@@ -6423,18 +6476,10 @@ var render = function() {
             [
               _vm._m(0),
               _vm._v(" "),
-              _c("ul", { staticClass: "tab mb-3 justify-content-center" }, [
+              _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  {
-                    staticClass: "tab__item",
-                    class: { "tab__item--active": _vm.tab === 1 },
-                    on: {
-                      click: function($event) {
-                        _vm.tab = 1
-                      }
-                    }
-                  },
+                  { staticClass: "tab__item tab__item--active" },
                   [
                     _c(
                       "router-link",
@@ -6450,15 +6495,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  {
-                    staticClass: "tab__item",
-                    class: { "tab__item--active": _vm.tab === 2 },
-                    on: {
-                      click: function($event) {
-                        _vm.tab = 2
-                      }
-                    }
-                  },
+                  { staticClass: "tab__item" },
                   [
                     _c(
                       "router-link",
@@ -6584,6 +6621,56 @@ var render = function() {
         ? _c(
             "div",
             [
+              _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
+                _c(
+                  "li",
+                  { staticClass: "tab__item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/" }
+                      },
+                      [_vm._v("タイムライン")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "tab__item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/" }
+                      },
+                      [_vm._v("新 着")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "tab__item tab__item--active" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-secondary btn-lg",
+                        attrs: { to: "/indexRank" }
+                      },
+                      [_vm._v("人 気")]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "grid" },
@@ -6615,15 +6702,7 @@ var render = function() {
               _c("ul", { staticClass: "tab mb-3 justify-content-center" }, [
                 _c(
                   "li",
-                  {
-                    staticClass: "tab__item",
-                    class: { "tab__item--active": _vm.tab === 1 },
-                    on: {
-                      click: function($event) {
-                        _vm.tab = 1
-                      }
-                    }
-                  },
+                  { staticClass: "tab__item" },
                   [
                     _c(
                       "router-link",
@@ -6639,15 +6718,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  {
-                    staticClass: "tab__item",
-                    class: { "tab__item--active": _vm.tab === 2 },
-                    on: {
-                      click: function($event) {
-                        _vm.tab = 2
-                      }
-                    }
-                  },
+                  { staticClass: "tab__item tab__item--active" },
                   [
                     _c(
                       "router-link",

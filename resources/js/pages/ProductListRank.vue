@@ -7,6 +7,11 @@
                 :is-full-page="fullPage">
             </loading>
             <div v-if="isLogin">
+                <ul class="tab mb-4 justify-content-center">
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/">タイムライン</router-link></li>
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item tab__item--active"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                </ul>
                 <div  class="grid">
                     <Product
                     class="grid__item"
@@ -28,8 +33,8 @@
                     </div>
                 </div>
                 <ul class="tab mb-3 justify-content-center">
-                <li class="tab__item" :class="{'tab__item--active': tab === 1 }" @click="tab = 1"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
-                <li class="tab__item" :class="{'tab__item--active': tab === 2 }" @click="tab = 2"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item tab__item--active"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
                 <div class="grid">
                     <Product

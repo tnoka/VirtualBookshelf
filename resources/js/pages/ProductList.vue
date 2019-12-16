@@ -7,8 +7,11 @@
                 :is-full-page="fullPage">
             </loading>
             <div v-if="isLogin">
-                <router-link class="tab__item" to="/">新着</router-link>
-                <router-link class="tab__item" to="/indexRank">人気</router-link>
+                <ul class="tab mb-4 justify-content-center">
+                <li class="tab__item tab__item--active" @click="tab = 1"><router-link class="btn btn-outline-secondary btn-lg" to="/">タイムライン</router-link></li>
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                </ul>
                 <div  class="grid">
                     <Product
                     class="grid__item"
@@ -30,9 +33,9 @@
                         <h3 class="site-name text-light text-center top-title">おすすめの本を共有しよう</h3>
                     </div>
                 </div>
-                <ul class="tab mb-3 justify-content-center">
-                <li class="tab__item" :class="{'tab__item--active': tab === 1 }" @click="tab = 1"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
-                <li class="tab__item" :class="{'tab__item--active': tab === 2 }" @click="tab = 2"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                <ul class="tab mb-4 justify-content-center">
+                <li class="tab__item tab__item--active"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
+                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
                 <div class="grid">
                     <Product
