@@ -8,7 +8,7 @@
             </loading>
                 <div class="container" v-if="isLogin">
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexFeed">フィード</router-link></li>
+                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/">フィード</router-link></li>
                 <li class="tab__item pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/">新 着</router-link></li>
                 <li class="tab__item tab__item--active px-0 pt-0"><router-link class="btn btn-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
@@ -64,7 +64,7 @@ export default {
     },
     data() {
         return {
-            tab: 2,
+            tab: 1,
             products: [],
             currentPage: 0,
             lastPage: 0,
@@ -80,7 +80,7 @@ export default {
                 self.isLoading = false;
                 console.log('load off');
             }, 1300);
-            const response = await axios.get(`/api/products/indexRank/?page=${this.$route.query.page}`)
+            const response = await axios.get(`/api/products/indexFeed/?page=${this.$route.query.page}`)
 
             if(response.status !== OK) {
                 this.$store.commit('error/setCode', response.status)

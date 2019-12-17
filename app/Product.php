@@ -57,8 +57,8 @@ class Product extends Model
         return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(6);
     }
 
-    // フォローしているユーザーのタイムライン
-    public function getTimeLine(Int $user_id, Array $follow_ids)
+    // フォローしているユーザーのフィード
+    public function getFeed(Int $user_id, Array $follow_ids)
     {
         // 結合
         $follow_ids[] = $user_id;

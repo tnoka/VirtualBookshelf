@@ -5,9 +5,10 @@
         :class="{ 'product-detail--column': fullWidth }">
         <figure class="product-detail__pane product_detail__image" @click="fullWidth = ! fullWidth">
             <img :src="product.url">
-            <figcaption>Posted by {{ product.owner.name }}</figcaption>
+            <figcaption>Posted by {{ product.owner.profile_image }}</figcaption>
         </figure>
         <div class="product-detail__pane">
+            <a :href="'/users/'+product.owner.id" class=""><img :src="'https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/'+product.owner.profile_image" class="rounded-circle" style="height:100px; width:100px;"><h4>{{ product.owner.name }}</h4></a>
             <button class="button button__favorite"
                     :class="{ 'button__favorited': product.favorited_by_user }"
                     title="読みたい本"

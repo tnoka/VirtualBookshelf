@@ -11,10 +11,11 @@
             ref="image"
             >
         </figure> 
-        <router-link
+        <!-- <router-link
         class="product__overlay"
         :to= "`/products/${item.id}`"
-        :title="`View the Book by ${item.owner.name}`">
+        :title="`View the Book by ${item.owner.name}`"> -->
+        <a :href="'/products/'+item.id" class="product__overlay">
         <div class="product__controls">
             <button class="product__action product__action--favorite"
                     :class="{ 'product__action--favorited': item.favorited_by_user }"
@@ -26,7 +27,8 @@
         <div class="product__username">
             {{  item.owner.name }}
         </div>
-        </router-link>
+        </a>
+        <!-- </router-link> -->
     </div>
 </template>
 

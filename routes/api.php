@@ -39,7 +39,10 @@ Route::post('/products', 'ProductController@store')->name('product.store');
 
 // 本の一覧
 Route::get('/products', 'ProductController@index')->name('product.index');
+// 人気順
 Route::get('/products/indexRank', 'ProductController@indexRank')->name('product.indexRank');
+// フィード
+Route::get('/products/indexFeed', 'ProductController@indexFeed')->name('product.indexFeed');
 
 
 // 本の詳細
