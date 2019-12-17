@@ -58,7 +58,7 @@
                         @else
                         <div class="d-flex flex-row">
                               <a href="{{ url('ProductForm') }}" class="btn btn-dark mr-2"><i class="far fa-edit mr-1"></i>投稿</a>
-                              <a href="{{ url('users/bookshelf/' .auth()->user()->id) }}" class="btn btn-dark"><i class="fa fa-book mr-1"></i>本 棚</a>
+                              <a href="{{ url('users/bookshelf/' .auth()->user()->id) }}" class="btn btn-dark mr-3"><i class="fa fa-book mr-1"></i>本 棚</a>
                         </div>
                         @endguest
                     </ul>

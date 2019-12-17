@@ -4,23 +4,23 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 mb-3">
-                <div class="card">
-                    <div class="d-inline-flex">
-                        <div class="p-3 d-flex flex-column">
+                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">ユーザー情報</h3>
+            <div class="col-md-8 mb-3 p-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md px-0 d-flex align-items-center mb-3">
+                            <div class="pr-4 ml-5">
                             <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
-                            <div class="mt-3 d-flex flex-column">
-                                <h4 class="mb-0 font-weight-bold">ユーザー名 : {{ $user->name }}</h4>
-                                <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
                             </div>
-                        </div>
-                        <div class="p-3 d-flex flex-column justify-content-between">
-                            <div class="d-flex">
-                                <div>
+                            <div class="mt-3 d-flex flex-column">
+                                <h5 class="mb-0 pt-3 font-weight-bold">ユーザー名 : {{ $user->name }}</h5>
+                                <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
+                                <div class="d-flex flex-column justify-content-between">
+                                    <div class="d-flex">
                                     @if($user->id === Auth::user()->id)
-                                    <div class="mt-3 ml-2 d-flex flex-column">
-                                        <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary">プロフィール編集</a>
-                                        <a href="{{ route('logout') }}" class="btn btn-primary mt-2"
+                                    <div class="mt-3 d-flex">
+                                        <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary mr-2">編集</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-primary"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">ログアウト
                                         </a>
@@ -46,17 +46,33 @@
                                             <span class="mt-2 p-1 bg-secondary text-light" style="font-size:11px;">フォローされています</span>
                                         @endif
                                     @endif
-                                </div>
                             </div>
-                                <div class="mt-3 ml-2 d-flex flex-column" style="font-size:14px;">
-                                    <a href="#" class="font-weight-bold py-1">読んだ本　 {{ $product_count }}</a>
-                                    <a href="#" class="font-weight-bold py-1">フォロー　 {{ $follow_count }}</a>
-                                    <a href="#" class="font-weight-bold py-1">フォロワー {{ $follower_count }}</a>
-                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                            </div>
+                            </div>
+</div>
+
+                            <ul class="tab my-2 justify-content-center">
+                                <li class="tab__item tab__item--active px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="/">
+                                    <strong><div class="bold">本棚</div>
+                                    <div class="">{{ $product_count }}</div></a></strong>
+                                </li>
+                                <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/">
+                                    <div class="text-secondary">読みたい</div>
+                                    <div class="">{{ $product_count }}</div></a>
+                                </li>
+                                <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                                    <div class="text-secondary">フォロー</div>
+                                    <div class="">{{ $follow_count }}</div></a>
+                                </li>
+                                <li class="tab__item px-0 pt-0 mr-3 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                                    <div class="text-secondary">フォロワー</div>
+                                    <div class="">{{ $follower_count }}</div></a>
+                                </li>
+                            </ul>
             </div>
+            
             @if(isset($timelines))
                 @foreach($timelines as $timeline)
                     <div class="col-md-8 mb-3">
