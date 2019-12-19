@@ -6,7 +6,6 @@
             class="img-fluid mb-4"
             :class="imageClass"
             :src="item.url"
-            :alt="`By ${item.owner.name}`"
             @load="setAspectRatio"
             ref="image"
             >
@@ -23,9 +22,6 @@
                     @click.prevent="favorite">
             <i class="fa fa-heart"></i>{{ item.favorite_count }}
             </button>
-        </div>
-        <div class="product__username">
-            {{  item.owner.name }}
         </div>
         </a>
         <!-- </router-link> -->

@@ -46,9 +46,9 @@ class ProductController extends Controller
         $follow_ids = $follow->followIds($user->id);
         $following_ids = $follow_ids->pluck('followed_id')->toArray();
 
-        $feed = $product->getFeed($user->id, $following_ids); 
+        $products = $product->getFeed($user->id, $following_ids); 
 
-        return $feed;
+        return $products;
     }
 
     // タイムライン

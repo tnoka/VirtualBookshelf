@@ -8,8 +8,8 @@
             </loading>
                 <div class="container" v-if="isLogin">
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active px-0 pt-0"><router-link class="btn btn-secondary btn-lg" to="/">フィード</router-link></li>
-                <li class="tab__item pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/">新着</router-link></li>
+                <li class="tab__item tab__item--active pt-0"><router-link class="btn btn-secondary btn-lg" to="/">新着</router-link></li>
+                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexFeed">フィード</router-link></li>
                 <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人気</router-link></li>
                 </ul>
                 <div  class="row">
@@ -73,7 +73,7 @@ export default {
             currentPage: 0,
             lastPage: 0,
             isLoading: false,
-    fullPage: true
+            fullPage: true
         }
     },
     methods: {
@@ -86,9 +86,9 @@ export default {
                 console.log('load off');
             }, 1300);
             },
-            onCancel:function() {
+        onCancel:function() {
             console.log('User cancelled the loader.')
-    },
+            },
         async fetchProducts() {
             let self = this;    
             self.isLoading = true;
