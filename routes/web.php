@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('users/{user}/unFollow', 'UsersController@unFollow')->name('unFollow');
 
     // いいね関連
+    Route::get('favorites/{id}', 'FavoritesController@index')->name('favorites.index');
     Route::resource('favorites', 'FavoritesController');
 
 });

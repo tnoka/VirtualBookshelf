@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Favorite extends Model
 {
     protected $table = 'favorite';
@@ -18,6 +19,11 @@ class Favorite extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getFavorite($id)
+    {
+        return $this->where('user_id', $id)->get('product_id');
     }
 
     // 読みたい本の判定
@@ -40,5 +46,10 @@ class Favorite extends Model
     public function destroyFavorite(Int $favorite_id)
     {
         return $this->where('id', $favorite_id)->delete();
+    }
+
+    public function getFavoriteCount($id)
+    {
+        return $this->where('user_id', $id)->count();
     }
 }

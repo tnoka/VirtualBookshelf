@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\User;
 use App\Product;
 use App\Follow;
+use App\Favorite;
 
 class UsersController extends Controller
 {
@@ -31,7 +32,7 @@ class UsersController extends Controller
     }
 
     // ユーザー詳細
-    public function show(User $user, Product $product, Follow $follow)
+    public function show(User $user, Product $product, Follow $follow, Favorite $favorite)
     {
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
@@ -40,6 +41,7 @@ class UsersController extends Controller
         $product_count = $product->getProductCount($user->id);
         $follow_count = $follow->getFollowerCount($user->id);
         $follower_count = $follow->getFollowerCount($user->id);
+        $favorite_count = $favorite->getFavoriteCount($user->id);
 
         return view('users.show', [
             'user' => $user,
@@ -49,6 +51,7 @@ class UsersController extends Controller
             'product_count' => $product_count,
             'follow_count' => $follow_count,
             'follower_count' => $follower_count,
+            'favorite_count' => $favorite_count,
         ]);
     }
 

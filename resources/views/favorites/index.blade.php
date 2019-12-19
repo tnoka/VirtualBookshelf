@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">ユーザー情報</h3>
+            <h3 class="col-md-8 mb-3 p-0 text-center text-muted">読みたい本</h3>
             <div class="col-md-8 mb-3 p-0">
                 <div class="container">
                     <div class="row">
@@ -60,7 +60,7 @@
                                 </li>
                                 <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('favorites/' .$user->id) }}">
                                     <div class="text-secondary">読みたい</div>
-                                    <div class="">{{ $favorite_count }}</div></a>
+                                    <div class="">{{ $product_count }}</div></a>
                                 </li>
                                 <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
                                     <div class="text-secondary">フォロー</div>
@@ -123,7 +123,7 @@
                                             <button type="submit" class="btn p-0 border-0 text-primary"><i class="far fa-heart fa-fw"></i></button>
                                         </form>
                                     @else
-                                        <form method="POST" action="{{ url('favorites/' .array_column($timeline->favorites->toArray(), 'id', 'user_id')[Auth::user()->id]) }}" class="mb-0">
+                                        <form method="POST"action="{{ url('favorites/' .array_column($timeline->favorites->toArray(), 'id', 'user_id')[Auth::user()->id]) }}" class="mb-0">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn p-0 border-0 text-danger"><i class="fas fa-heart fa-fw"></i></button>
