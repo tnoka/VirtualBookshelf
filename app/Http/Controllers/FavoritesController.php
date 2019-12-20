@@ -21,7 +21,6 @@ class FavoritesController extends Controller
         $product_count = $product->getProductCount($id);
         $follow_count = $follow->getFollowerCount($id);
         $follower_count = $follow->getFollowerCount($id);
-        var_dump($favorites);
         return view('favorites.index',
         [
             'user' => $user,

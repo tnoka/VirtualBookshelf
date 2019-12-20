@@ -54,13 +54,13 @@
 </div>
 
                             <ul class="tab my-2 justify-content-center">
-                                <li class="tab__item tab__item--active px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="/">
-                                    <strong><div class="bold">本棚</div>
-                                    <div class="">{{ $product_count }}</div></a></strong>
+                                <li class="tab__item px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="{{ url('users/' .$user->id) }}">
+                                    <div class="text-secondary">本棚</div>
+                                    <div class="">{{ $product_count }}</div></a>
                                 </li>
-                                <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('favorites/' .$user->id) }}">
-                                    <div class="text-secondary">読みたい</div>
-                                    <div class="">{{ $favorite_count }}</div></a>
+                                <li class="tab__item tab__item--active px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('favorites/' .$user->id) }}">
+                                    <strong><div class="">読みたい</div>
+                                    <div class="">{{ $favorite_count }}</div></a></strong>
                                 </li>
                                 <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
                                     <div class="text-secondary">フォロー</div>
