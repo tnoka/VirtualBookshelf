@@ -17,60 +17,61 @@
                                 <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="d-flex">
-                                    @if($user->id === Auth::user()->id)
-                                    <div class="mt-3 d-flex">
-                                        <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary mr-2">編集</a>
-                                        <a href="{{ route('logout') }}" class="btn btn-primary"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">ログアウト
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                    @else
-                                        @if($is_following)
-                                            <form action="{{ route('unFollow', $user->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger mb-1">フォロー解除</button>
-                                            </form>
+                                        @if($user->id === Auth::user()->id)
+                                            <div class="mt-3 d-flex">
+                                                <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary mr-2">編集</a>
+                                                <a href="{{ route('logout') }}" class="btn btn-primary"
+                                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">ログアウト
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
                                         @else
-                                            <form action="{{ route('follow', $user->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary mb-1">フォローする</button>
-                                            </form>
+                                            @if($is_following)
+                                                <form action="{{ route('unFollow', $user->id) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger mb-1">フォロー解除</button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('follow', $user->id) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-primary mb-1">フォローする</button>
+                                                </form>
+                                            @endif
+                                            @if($is_followed)
+                                                <span class="mt-2 p-1 bg-secondary text-light" style="font-size:11px;">フォローされています</span>
+                                            @endif
                                         @endif
-
-                                        @if($is_followed)
-                                            <span class="mt-2 p-1 bg-secondary text-light" style="font-size:11px;">フォローされています</span>
-                                        @endif
-                                    @endif
-                            </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                            </div>
-                            </div>
-</div>
+                    </div>
+                </div>
 
-                            <ul class="tab my-2 justify-content-center">
-                                <li class="tab__item px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="{{ url('users/' .$user->id) }}">
-                                    <div class="text-secondary">本棚</div>
-                                    <div class="">{{ $product_count }}</div></a>
-                                </li>
-                                <li class="tab__item tab__item--active px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('favorites/' .$user->id) }}">
-                                    <strong><div class="">読みたい</div>
-                                    <div class="">{{ $favorite_count }}</div></a></strong>
-                                </li>
-                                <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
-                                    <div class="text-secondary">フォロー</div>
-                                    <div class="">{{ $follow_count }}</div></a>
-                                </li>
-                                <li class="tab__item px-0 pt-0 mr-3 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
-                                    <div class="text-secondary">フォロワー</div>
-                                    <div class="">{{ $follower_count }}</div></a>
-                                </li>
-                            </ul>
+                <ul class="tab my-2 justify-content-center">
+                    <li class="tab__item px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="{{ url('users/' .$user->id) }}">
+                        <div class="text-secondary">本棚</div>
+                            <div class="">{{ $product_count }}</div></a>
+                    </li>
+                    <li class="tab__item tab__item--active px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('favorites/' .$user->id) }}">
+                        <strong>
+                            <div class="">読みたい</div>
+                            <div class="">{{ $favorite_count }}</div></a>
+                        </strong>
+                    </li>
+                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                        <div class="text-secondary">フォロー</div>
+                        <div class="">{{ $follow_count }}</div></a>
+                    </li>
+                    <li class="tab__item px-0 pt-0 mr-3 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                        <div class="text-secondary">フォロワー</div>
+                        <div class="">{{ $follower_count }}</div></a>
+                    </li>
+                </ul>
             </div>
             
             @if(isset($favorites))
