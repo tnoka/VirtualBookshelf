@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Storage;
 
 class Favorite extends Model
 {
@@ -23,7 +23,7 @@ class Favorite extends Model
 
     public function getFavorite($id)
     {
-        return $this->where('user_id', $id)->get('product_id');
+        return $this->where('user_id', $id)->paginate(6);
     }
 
     // 読みたい本の判定
@@ -48,7 +48,12 @@ class Favorite extends Model
         return $this->where('id', $favorite_id)->delete();
     }
 
-    public function getFavoriteCount($id)
+    public function getFavoriteCount(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->count();
+    }
+
+    public function getFavoritesCount($id)
     {
         return $this->where('user_id', $id)->count();
     }

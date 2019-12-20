@@ -108,8 +108,8 @@
                                 @endif
                                 <div class="mr-3 d-flex align-items-center">
                                     <a href="{{ url('products/' .$timeline->id) }}"><i class="far fa-comment fa-fw"></i></a>
-                                    @if(is_countable($timeline->comment))
-                                        <p class="mb-0 text-secondary">{{ count($timeline->comment) }}</p>
+                                    @if(is_countable($timeline->comments))
+                                        <p class="mb-0 text-secondary">{{ count($timeline->comments) }}</p>
                                     @else
                                     <p class="mb-0 text-secondary">0</p>
                                     @endif

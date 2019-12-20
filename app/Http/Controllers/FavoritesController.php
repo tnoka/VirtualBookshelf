@@ -10,28 +10,28 @@ use App\User;
 
 class FavoritesController extends Controller
 {
-    public function index(Favorite $favorite,User $user, Product $product, Follow $follow, $id)
+    public function index(Favorite $favorite, User $user, Product $product, Follow $follow, $id)
     {
         $login_user  = auth()->user();
         $user = $user->getUser($id);
-        $favorite = $favorite->getFavorite($id);
+        $favorites = $favorite->getFavorite($id);
+        $favorite_count = $favorite->getFavoritesCount($id);
         $is_following = $login_user->isFollowing($id);
         $is_followed = $login_user->isFollowed($id);
-        $timelines = $product->getUserTimeLine($id);
         $product_count = $product->getProductCount($id);
         $follow_count = $follow->getFollowerCount($id);
         $follower_count = $follow->getFollowerCount($id);
+        var_dump($favorites);
         return view('favorites.index',
         [
             'user' => $user,
-            'favorite' => $favorite,
+            'favorites' => $favorites,
+            'favorite_count' => $favorite_count,
             'is_following' => $is_following,
             'is_followed' => $is_followed,
-            'timelines' => $timelines,
             'product_count' => $product_count,
             'follow_count' => $follow_count,
             'follower_count' => $follower_count,
-
         ]);
 
     }

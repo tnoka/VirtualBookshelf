@@ -37,8 +37,8 @@
                         @endif
                         <div class="mr-3 d-flex align-items-center">
                             <a href="{{ url('products/' .$product->id) }}"><i class="far fa-comment fa-fw"></i></a>
-                            @if(is_countable($product->comment))
-                                <p class="mb-0 text-secondary">{{ count($product->comment) }}</p>
+                            @if(is_countable($product->comments))
+                                <p class="mb-0 text-secondary">{{ count($product->comments) }}</p>
                             @else
                                 <p class="mb-0 text-secondary">0</p>
                             @endif

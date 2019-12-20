@@ -152,7 +152,7 @@ class Product extends Model
 
     protected $visible = [ // JSONに含める属性
         'id', 'owner', 'url', 'comments', 'favorite_count', 'favorited_by_user',
-        'title', 'author', 'recommend', 'text'
+        'title', 'author', 'recommend', 'text', 'created_at'
     ];
 
     // 本の編集機能
