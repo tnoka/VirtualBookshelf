@@ -25,12 +25,22 @@ class Follow extends Model
     // AutoIncrementではないのでfalse
     public $incrementing = false;
 
+    // フォローしているユーザー
+    public function getFollow(Int $user_id)
+    {
+        return $this->where('following_id', $user_id)->paginate(6);
+    }
     // フォローしているユーザー数
     public function getFollowCount(Int $user_id)
     {
         return $this->where('following_id', $user_id)->count();
     }
 
+    // フォローされているユーザー
+    public function getFollower(Int $user_id)
+    {
+        return $this->where('followed_id', $user_id)->paginate(6);
+    } 
     // フォローされているユーザー数
     public function getFollowerCount(Int $user_id)
     {

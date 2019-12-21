@@ -54,6 +54,52 @@ class UsersController extends Controller
             'favorite_count' => $favorite_count,
         ]);
     }
+    // フォロー一覧
+    public function followIndex(User $user, Product $product, Follow $follow, Favorite $favorite)
+    {
+        $login_user = auth()->user();
+        $is_following = $login_user->isFollowing($user->id);
+        $is_followed = $login_user->isFollowed($user->id);
+        $product_count = $product->getProductCount($user->id);
+        $follows = $follow->getFollow($user->id);
+        $follow_count = $follow->getFollowerCount($user->id);
+        $follower_count = $follow->getFollowerCount($user->id);
+        $favorite_count = $favorite->getFavoriteCount($user->id);
+
+        return view('users.followIndex', [
+            'user' => $user,
+            'is_following' => $is_following,
+            'is_followed' => $is_followed,
+            'product_count' => $product_count,
+            'follows' => $follows,
+            'follow_count' => $follow_count,
+            'follower_count' => $follower_count,
+            'favorite_count' => $favorite_count,
+        ]);
+    }
+    // フォロワー一覧
+    public function followerIndex(User $user, Product $product, Follow $follow, Favorite $favorite)
+    {
+        $login_user = auth()->user();
+        $is_following = $login_user->isFollowing($user->id);
+        $is_followed = $login_user->isFollowed($user->id);
+        $product_count = $product->getProductCount($user->id);
+        $followers = $follow->getFollower($user->id);
+        $follow_count = $follow->getFollowerCount($user->id);
+        $follower_count = $follow->getFollowerCount($user->id);
+        $favorite_count = $favorite->getFavoriteCount($user->id);
+
+        return view('users.followerIndex', [
+            'user' => $user,
+            'is_following' => $is_following,
+            'is_followed' => $is_followed,
+            'product_count' => $product_count,
+            'followers' => $followers,
+            'follow_count' => $follow_count,
+            'follower_count' => $follower_count,
+            'favorite_count' => $favorite_count,
+        ]);
+    }
 
     // ユーザー編集
     public function edit(User $user)
