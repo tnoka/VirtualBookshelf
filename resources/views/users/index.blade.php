@@ -16,7 +16,7 @@
                 </div>
                 @if (auth()->user()->isFollowed($user->id))
                   <div class="px-2">
-                    <span class="px-1 bg-secondary text-light">フォローされています</span>
+                    <span class="px-1 bg-secondary text-light">フォロワー</span>
                   </div>
                 @endif
                 <div class="d-flex justify-content-end flex-grow-1">
