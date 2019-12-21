@@ -39,7 +39,7 @@ class UsersController extends Controller
         $is_followed = $login_user->isFollowed($user->id);
         $timelines = $product->getUserTimeLine($user->id);
         $product_count = $product->getProductCount($user->id);
-        $follow_count = $follow->getFollowerCount($user->id);
+        $follow_count = $follow->getFollowCount($user->id);
         $follower_count = $follow->getFollowerCount($user->id);
         $favorite_count = $favorite->getFavoriteCount($user->id);
 
@@ -55,16 +55,17 @@ class UsersController extends Controller
         ]);
     }
     // フォロー一覧
-    public function followIndex(User $user, Product $product, Follow $follow, Favorite $favorite)
+    public function followIndex(User $user, Product $product, Follow $follow, Favorite $favorite, $id)
     {
         $login_user = auth()->user();
-        $is_following = $login_user->isFollowing($user->id);
-        $is_followed = $login_user->isFollowed($user->id);
-        $product_count = $product->getProductCount($user->id);
-        $follows = $follow->getFollow($user->id);
-        $follow_count = $follow->getFollowerCount($user->id);
-        $follower_count = $follow->getFollowerCount($user->id);
-        $favorite_count = $favorite->getFavoriteCount($user->id);
+        $user = $user->getUser($id);
+        $is_following = $login_user->isFollowing($id);
+        $is_followed = $login_user->isFollowed($id);
+        $product_count = $product->getProductCount($id);
+        $follows = $follow->getFollow($id);
+        $follow_count = $follow->getFollowCount($id);
+        $follower_count = $follow->getFollowerCount($id);
+        $favorite_count = $favorite->getFavoriteCount($id);
 
         return view('users.followIndex', [
             'user' => $user,
@@ -85,7 +86,7 @@ class UsersController extends Controller
         $is_followed = $login_user->isFollowed($user->id);
         $product_count = $product->getProductCount($user->id);
         $followers = $follow->getFollower($user->id);
-        $follow_count = $follow->getFollowerCount($user->id);
+        $follow_count = $follow->getFollowCount($user->id);
         $follower_count = $follow->getFollowerCount($user->id);
         $favorite_count = $favorite->getFavoriteCount($user->id);
 
