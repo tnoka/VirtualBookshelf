@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">フォローユーザー 一覧</h3>
+                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">フォロワー 一覧</h3>
             <div class="col-md-8 mb-3 p-0">
                 <div class="container">
                     <div class="row">
@@ -63,43 +63,43 @@
                         <div class="text-secondary">読みたい</div>
                         <div class="">{{ $favorite_count }}</div></a>
                     </li>
-                    <li class="tab__item tab__item--active px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ route('followIndex', $user->id) }}">
+                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ route('followIndex', $user->id) }}">
+                        <div class="text-secondary">フォロー</div>
+                        <div class="">{{ $follow_count }}</div></a>
+                    </li>
+                    <li class="tab__item tab__item--active px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ route('followerIndex', $user->id) }}">
                         <strong>
-                            <div class="">フォロー</div>
-                            <div class="">{{ $follow_count }}</div></a>
+                            <div class="">フォロワー</div>
+                            <div class="">{{ $follower_count }}</div></a>
                         </strong>
                     </li>
-                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ route('followerIndex', $user->id) }}">
-                        <div class="text-secondary">フォロワー</div>
-                        <div class="">{{ $follower_count }}</div></a>
-                    </li>
-                </ul>
+                    </ul>
             </div>
             
-            @if(isset($follows))
+            @if(isset($followers))
                 <div class="col-md-8">
-                    @foreach ($follows as $follow)
+                    @foreach ($followers as $follower)
                         <div class="card">
                             <div class="card-haeder p-3 w-100 d-flex">
-                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follow->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
+                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follower->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
                                 <div class="ml-2 flex-column">
-                                    <a href="{{ url('users/' .$follow->followed_id) }}" >ユーザー名 : {{ $follow->name }}</a>
-                                    <p class="mb-0 text-secondary">ユーザーID : {{ $follow->followed_id }}</p>
+                                    <a href="{{ url('users/' .$follower->following_id) }}" >ユーザー名 : {{ $follower->name }}</a>
+                                    <p class="mb-0 text-secondary">ユーザーID : {{ $follower->following_id }}</p>
                                 </div>
-                                @if (auth()->user()->isFollowed($follow->followed_id))
+                                @if (auth()->user()->isFollowed($follower->following_id))
                                     <div class="px-2">
                                         <span class="px-1 bg-secondary text-light">フォロワー</span>
                                     </div>
                                 @endif
                                 <div class="d-flex justify-content-end flex-grow-1">
-                                    @if(auth()->user()->isFollowing($follow->followed_id))
-                                        <form action="{{ route('unFollow', $follow->followed_id) }}" method="POST">
+                                    @if(auth()->user()->isFollowing($follower->following_id))
+                                        <form action="{{ route('unFollow', $follower->following_id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger">フォロー解除</button>
                                         </form>
                                     @else
-                                        <form action="{{ route('follow', $follow->followed_id) }}" method="POST">
+                                        <form action="{{ route('follow', $follower->following_id) }}" method="POST">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-primary">フォローする</button>
                                         </form>
@@ -112,7 +112,7 @@
             @endif
         </div>
         <div class="my-4 d-flex justify-content-center">
-            {{ $follows->links() }}
+            {{ $followers->links() }}
         </div>
     </div>
 @endsection

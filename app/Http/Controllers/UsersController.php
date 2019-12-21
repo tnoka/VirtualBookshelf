@@ -79,16 +79,17 @@ class UsersController extends Controller
         ]);
     }
     // フォロワー一覧
-    public function followerIndex(User $user, Product $product, Follow $follow, Favorite $favorite)
+    public function followerIndex(User $user, Product $product, Follow $follow, Favorite $favorite, $id)
     {
         $login_user = auth()->user();
-        $is_following = $login_user->isFollowing($user->id);
-        $is_followed = $login_user->isFollowed($user->id);
-        $product_count = $product->getProductCount($user->id);
-        $followers = $follow->getFollower($user->id);
-        $follow_count = $follow->getFollowCount($user->id);
-        $follower_count = $follow->getFollowerCount($user->id);
-        $favorite_count = $favorite->getFavoriteCount($user->id);
+        $user = $user->getUser($id);
+        $is_following = $login_user->isFollowing($id);
+        $is_followed = $login_user->isFollowed($id);
+        $product_count = $product->getProductCount($id);
+        $followers = $follow->getFollower($id);
+        $follow_count = $follow->getFollowCount($id);
+        $follower_count = $follow->getFollowerCount($id);
+        $favorite_count = $favorite->getFavoriteCount($id);
 
         return view('users.followerIndex', [
             'user' => $user,
