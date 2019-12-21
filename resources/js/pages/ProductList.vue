@@ -8,9 +8,9 @@
             </loading>
                 <div class="container" v-if="isLogin">
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active pt-0"><router-link class="btn btn-secondary btn-lg" to="/">新着</router-link></li>
+                <li class="tab__item tab__item--active pt-0 px-1"><router-link class="btn btn-secondary btn-lg" to="/">新着</router-link></li>
                 <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexFeed">フィード</router-link></li>
-                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人気</router-link></li>
+                <li class="tab__item px-1 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人気</router-link></li>
                 </ul>
                 <div  class="row">
                     <Product

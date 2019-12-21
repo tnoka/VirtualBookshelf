@@ -29,21 +29,23 @@
                                                 </form>
                                             </div>
                                         @else
-                                            @if($is_following)
-                                                <form action="{{ route('unFollow', $user->id) }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger mb-1">フォロー解除</button>
-                                                </form>
-                                            @else
-                                                <form action="{{ route('follow', $user->id) }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-primary mb-1">フォローする</button>
-                                                </form>
-                                            @endif
-                                            @if($is_followed)
-                                                <span class="mt-2 p-1 bg-secondary text-light" style="font-size:11px;">フォローされています</span>
-                                            @endif
+                                            <div class="mt-3 d-flex">
+                                                @if($is_following)
+                                                    <form action="{{ route('unFollow', $user->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-danger mr-2">フォロー解除</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('follow', $user->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <button type="submit" class="btn btn-primary mr-2">フォローする</button>
+                                                    </form>
+                                                @endif
+                                                @if($is_followed)
+                                                    <span class="bg-secondary text-light px-2 d-flex align-items-center" style="font-size:11px;">フォロワー</span>
+                                                @endif
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -55,7 +57,7 @@
                 <ul class="tab my-2 justify-content-center">
                     <li class="tab__item tab__item--active px-0 pt-0 ml-3 mr-0"><a class="btn btn-lg px-2" href="{{ url('users/' .$user->id) }}">
                         <strong>
-                            <div class="bold">本棚</div>
+                            <div class="bold">本 棚</div>
                             <div class="">{{ $product_count }}</div></a>
                         </strong>
                     </li>
@@ -67,7 +69,7 @@
                         <div class="text-secondary">フォロー</div>
                         <div class="">{{ $follow_count }}</div></a>
                     </li>
-                    <li class="tab__item px-0 pt-0 mr-3 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
                         <div class="text-secondary">フォロワー</div>
                         <div class="">{{ $follower_count }}</div></a>
                     </li>

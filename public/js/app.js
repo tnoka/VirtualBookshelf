@@ -6661,7 +6661,7 @@ var render = function() {
               _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  { staticClass: "tab__item tab__item--active pt-0" },
+                  { staticClass: "tab__item tab__item--active pt-0 px-1" },
                   [
                     _c(
                       "router-link",
@@ -6693,7 +6693,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item px-0 pt-0" },
+                  { staticClass: "tab__item px-1 pt-0" },
                   [
                     _c(
                       "router-link",
@@ -6884,7 +6884,7 @@ var render = function() {
               _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  { staticClass: "tab__item pt-0" },
+                  { staticClass: "tab__item pt-0 px-1" },
                   [
                     _c(
                       "router-link",
@@ -6916,7 +6916,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item t px-0 pt-0" },
+                  { staticClass: "tab__item t px-1 pt-0" },
                   [
                     _c(
                       "router-link",
@@ -7107,7 +7107,7 @@ var render = function() {
               _c("ul", { staticClass: "tab mb-4 justify-content-center" }, [
                 _c(
                   "li",
-                  { staticClass: "tab__item pt-0" },
+                  { staticClass: "tab__item pt-0 px-1" },
                   [
                     _c(
                       "router-link",
@@ -7139,7 +7139,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item tab__item--active px-0 pt-0" },
+                  { staticClass: "tab__item tab__item--active px-1 pt-0" },
                   [
                     _c(
                       "router-link",
