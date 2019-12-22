@@ -61,23 +61,10 @@
                     @csrf
                     @method('DELETE')
                     <div class="form-group row mb-0 mx-auto">
-                            <button class="btn btn-danger" type="submit" onclick="submitbtn();">アカウントを削除する</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウントを削除する</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
-
-<script type="text/javascript">
-function submitbtn() {
-    // 「OK」ボタン押下時
-    if (confirm('アカウントを削除してもよろしいですか？')) {
-        alert('正常に削除されました。トップ画面に戻ります。');
-    }
-    // 「キャンセル」ボタン押下時
-    else {
-        alert('キャンセル');
-    }
-}
-</script>
