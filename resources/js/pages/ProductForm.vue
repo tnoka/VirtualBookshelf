@@ -28,7 +28,13 @@
             <label for="author">著者</label>
             <input type="text" class="form__item" id="author" v-model="author">
             <label for="recommend">おすすめ度</label>
-            <input type="text" class="form__item" id="recommend" v-model="recommend">
+                <select name="recommend" class="form-control mb-3" id="recommend" v-model="recommend">
+                    <option value="★★★★★">★★★★★</option>
+                    <option value="★★★★">★★★★</option>
+                    <option value="★★★">★★★</option>
+                    <option value="★★">★★</option>
+                    <option value="★">★</option>
+                </select>
             <label for="text">メモ</label>
             <input type="text" class="form__item" id="text" v-model="text">
             <label for="product_image">本の画像</label>
@@ -37,7 +43,7 @@
                 <img :src="preview">
             </output>
             <div class="form__button">
-            <button type="submit" class="button button--inverse">register</button>
+            <button type="submit" class="button button--inverse">投稿する</button>
             </div>
         </form>
         </div>

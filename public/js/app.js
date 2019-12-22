@@ -2707,6 +2707,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6531,27 +6537,47 @@ var render = function() {
               _vm._v("おすすめ度")
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.recommend,
-                  expression: "recommend"
-                }
-              ],
-              staticClass: "form__item",
-              attrs: { type: "text", id: "recommend" },
-              domProps: { value: _vm.recommend },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.recommend,
+                    expression: "recommend"
                   }
-                  _vm.recommend = $event.target.value
+                ],
+                staticClass: "form-control mb-3",
+                attrs: { name: "recommend", id: "recommend" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.recommend = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
                 }
-              }
-            }),
+              },
+              [
+                _c("option", { attrs: { value: "★★★★★" } }, [_vm._v("★★★★★")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "★★★★" } }, [_vm._v("★★★★")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "★★★" } }, [_vm._v("★★★")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "★★" } }, [_vm._v("★★")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "★" } }, [_vm._v("★")])
+              ]
+            ),
             _vm._v(" "),
             _c("label", { attrs: { for: "text" } }, [_vm._v("メモ")]),
             _vm._v(" "),
@@ -6609,7 +6635,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("register")]
+        [_vm._v("投稿する")]
       )
     ])
   }
