@@ -15,7 +15,7 @@
                             <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>
                         </div>
                         <div class="d-flex justify-content-end flex-grow-1">
-                            <button type="submit" class="btn btn-secondary">フォローする</button>
+                            <form action="{{ url('login') }}"><button type="submit" class="btn btn-secondary"  onclick="return confirm('フォロー機能を使う場合は、ログインしてください');">フォローする</button></form>
                         </div>
                     </div>
                 </div>
