@@ -124,13 +124,14 @@ class UsersController extends Controller
         return redirect('users/'.$user->id);
     }
 
-    // public function destroy(User $user)
-    // {
-    //     $user = auth()->user();
-    //     $user->destroyUser($user->id);
+    // アカウント削除
+    public function destroy(User $user)
+    {
+        $user = auth()->user();
+        $user->destroyUser($user->id);
 
-    //     return response($user, 200);    
-    // }
+        return redirect('/');    
+    }
 
     // フォロー
     public function follow(User $user)

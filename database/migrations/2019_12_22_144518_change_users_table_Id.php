@@ -13,8 +13,8 @@ class ChangeUsersTableId extends Migration
      */
     public function up()
     {
-        Schema::table('favorite', function (Blueprint $table) {
-            $table->string('profile_image')->nullable()->default('fast.png')->comment('プロフィール画像');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('profile_image')->default('fast.png')->change();
         });
     }
 
