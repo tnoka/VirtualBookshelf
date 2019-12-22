@@ -6127,7 +6127,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "button button-inverse", attrs: { type: "submit" } },
-        [_vm._v("Login")]
+        [_vm._v("ログイン")]
       )
     ])
   },
@@ -6139,7 +6139,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("register")]
+        [_vm._v("登録する")]
       )
     ])
   }

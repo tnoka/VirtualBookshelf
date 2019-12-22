@@ -12,7 +12,7 @@
                             @method('PUT')
 
                             <div class="form-group row align-items-center">
-                                <label for="profile_image" class="col-md-4 col-form-label text-md-right">{{ __('Profile Image') }}</label>
+                                <label for="profile_image" class="col-md-4 col-form-label text-md-right">プロフィール画像</label>
                                 <div class="col-md-6 d-flex align-items-center">
                                     <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="mr-2 rounded-circle" width="50" height="50" alt="profile_image">
                                     <input type="file" name="profile_image" class="@error('profile_image') is-invalid @enderror" autocomplete="profile_image">
@@ -25,7 +25,7 @@
                             </div>                             
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">ユーザーネーム</label>
                                 <div class="col-md-6">
                                     <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
                                     @error('name')
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">メールアドレス</label>
 
                                 <div class="col-md-6">
                                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}"  required autocomplete="email">
@@ -50,14 +50,34 @@
                             </div>
 
                             <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">更新する</button>
+                                <div class="col-md-6 offset-md-4 mt-3">
+                                    <button class="btn btn-primary btn-lg" type="submit">更新する</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <form action="{{ url('users/' .$user->id) }}" method="POST" class="mt-5 d-flex">
+                    @csrf
+                    @method('DELETE')
+                    <div class="form-group row mb-0 mx-auto">
+                            <button class="btn btn-danger" type="submit" onclick="submitbtn();">アカウントを削除する</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 @endsection
+
+<script type="text/javascript">
+function submitbtn() {
+    // 「OK」ボタン押下時
+    if (confirm('アカウントを削除してもよろしいですか？')) {
+        alert('正常に削除されました。トップ画面に戻ります。');
+    }
+    // 「キャンセル」ボタン押下時
+    else {
+        alert('キャンセル');
+    }
+}
+</script>
