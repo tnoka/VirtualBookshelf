@@ -6,11 +6,11 @@
                 :on-cancel="onCancel"
                 :is-full-page="fullPage">
             </loading>
-                <div class="container" v-if="isLogin">
+            <div class="container" v-if="isLogin">
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active pt-0 px-1"><router-link class="btn btn-secondary btn-lg" to="/">新着</router-link></li>
-                <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexFeed">フィード</router-link></li>
-                <li class="tab__item px-1 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人気</router-link></li>
+                    <li class="tab__item tab__item--active pt-0 px-1"><router-link class="btn btn-secondary btn-lg" to="/">新 着</router-link></li>
+                    <li class="tab__item px-0 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexFeed">フィード</router-link></li>
+                    <li class="tab__item px-1 pt-0"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
                 <div  class="row">
                     <Product
@@ -21,9 +21,8 @@
                     />
                 </div>
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
-
             </div>
-                <div class="container" v-else>
+            <div class="container" v-else>
                 <div class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
                     <div class="container-fluid jumbotron-container">
                         <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
@@ -33,8 +32,8 @@
                 </div>
 
                 <ul class="tab mb-4 justify-content-center">
-                <li class="tab__item tab__item--active"><router-link class="btn btn-secondary btn-lg" to="/">新 着</router-link></li>
-                <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
+                    <li class="tab__item tab__item--active"><router-link class="btn btn-secondary btn-lg" to="/">新 着</router-link></li>
+                    <li class="tab__item"><router-link class="btn btn-outline-secondary btn-lg" to="/indexRank">人 気</router-link></li>
                 </ul>
                 <div class="row">
                     <Product
@@ -43,12 +42,10 @@
                     :item="product"
                     @like="onFavoriteClick"
                     />
-                                </div>
+                </div>
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
-
             </div>
         </div>
-        
 </template>
 
 

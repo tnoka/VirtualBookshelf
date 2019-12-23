@@ -25,6 +25,11 @@ class Follow extends Model
     // AutoIncrementではないのでfalse
     public $incrementing = false;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     // フォローしているユーザー
     public function getFollow(Int $user_id)
     {

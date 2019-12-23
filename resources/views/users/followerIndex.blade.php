@@ -4,7 +4,6 @@
 
     <div class="container">
         <div class="row justify-content-center">
-                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">フォロワー 一覧</h3>
             <div class="col-md-8 mb-3 p-0">
                 <div class="container">
                     <div class="row">
@@ -20,7 +19,7 @@
                                         @if($user->id === Auth::user()->id)
                                             <div class="mt-3 d-flex">
                                                 <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary mr-2">編集</a>
-                                                <a href="{{ route('logout') }}" class="btn btn-primary"
+                                                <a href="{{ route('logout') }}" class="btn btn-secondary"
                                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">ログアウト
                                                 </a>
@@ -79,27 +78,25 @@
             @if(isset($followers))
                 <div class="col-md-8">
                     @foreach ($followers as $follower)
+                        @if($follower->isFollowing($user->id))
                         <div class="card">
                             <div class="card-haeder p-3 w-100 d-flex">
                                 <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follower->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
                                 <div class="ml-2 flex-column">
-                                    <a href="{{ url('users/' .$follower->following_id) }}" >ユーザー名 : {{ $follower->name }}</a>
-                                    <p class="mb-0 text-secondary">ユーザーID : {{ $follower->following_id }}</p>
+                                    <h5><a href="{{ url('users/' .$follower->id) }}" class="text-muted font-weight-bold">{{ $follower->name }}</a></h5>
+                                    @if (auth()->user()->isFollowed($follower->id))
+                                        <p class="px-1 bg-secondary text-light">フォローされています</p>
+                                    @endif
                                 </div>
-                                @if (auth()->user()->isFollowed($follower->following_id))
-                                    <div class="px-2">
-                                        <span class="px-1 bg-secondary text-light">フォロワー</span>
-                                    </div>
-                                @endif
                                 <div class="d-flex justify-content-end flex-grow-1">
-                                    @if(auth()->user()->isFollowing($follower->following_id))
-                                        <form action="{{ route('unFollow', $follower->following_id) }}" method="POST">
+                                    @if(auth()->user()->isFollowing($follower->id))
+                                        <form action="{{ route('unFollow', $follower->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger">フォロー解除</button>
                                         </form>
                                     @else
-                                        <form action="{{ route('follow', $follower->following_id) }}" method="POST">
+                                        <form action="{{ route('follow', $follower->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-primary">フォローする</button>
                                         </form>
@@ -107,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     @endforeach
                 </div>
             @endif

@@ -1,30 +1,20 @@
 <template>
     <div>
-        <!-- <header>
-            <Navbar />
-        </header> -->
-            <div class="container">
-                <Message />
-                <RouterView />
-
-        <p class="mt-5 text-center text-secondary">Copyright ©2019 仮想本棚, All Rights Reserved.</p>
-            </div>
-            
-
+        <div class="container">
+            <Message />
+            <RouterView />
+            <p class="mt-5 text-center text-secondary">Copyright ©2019 仮想本棚, All Rights Reserved.</p>
+        </div>
     </div>
 </template>
 
 <script>
 import Message from './components/Message.vue'
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
 import { NOT_FOUND,UNAUTHORIZED,INTERNAL_SERVER_ERROR } from './util'
 
 export default {
     components: {
         Message,
-        Navbar,
-        Footer,
     },
     computed: {
         errorCode() {

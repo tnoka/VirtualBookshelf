@@ -26,35 +26,39 @@
                 <label for="login-password">パスワード</label>
                 <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
                 <div class="form__button">
-                    <button type="submit" class="button button-inverse">ログイン</button>
+                    <a :href="'/'"><button type="submit" class="button button-inverse">ログイン</button></a>
                 </div>
             </form>
         </div>
         <div class="panel" v-show="tab === 2">
-        <form class="form" @submit.prevent="register">
-            <div v-if="registerErrors" class="errors">
-                <ul v-if="registerErrors.name">
-                    <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
-                </ul>
-                <ul v-if="registerErrors.email">
-                    <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
-                </ul>
-                <ul v-if="registerErrors.password">
-                    <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
-                </ul>
-            </div>
-            <label for="username">ユーザーネーム</label>
-            <input type="text" class="form__item" id="username" v-model="registerForm.name">
-            <label for="email">メールアドレス</label>
-            <input type="text" class="form__item" id="email" v-model="registerForm.email">
-            <label for="password">パスワード（8文字以上）</label>
-            <input type="password" class="form__item" id="password" v-model="registerForm.password">
-            <label for="password-confirmation">パスワード（再入力）</label>
-            <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
-            <div class="form__button">
-            <button type="submit" class="button button--inverse">登録する</button>
-            </div>
-        </form>
+            <form class="form" @submit.prevent="register">
+                <div v-if="registerErrors" class="errors">
+                    <ul v-if="registerErrors.name">
+                        <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
+                    </ul>
+                    <ul v-if="registerErrors.email">
+                        <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
+                    </ul>
+                    <ul v-if="registerErrors.password">
+                        <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
+                    </ul>
+                </div>
+                <label for="username">ユーザーネーム</label>
+                <input type="text" class="form__item" id="username" v-model="registerForm.name">
+
+                <label for="email">メールアドレス</label>
+                <input type="text" class="form__item" id="email" v-model="registerForm.email">
+
+                <label for="password">パスワード（8文字以上）</label>
+                <input type="password" class="form__item" id="password" v-model="registerForm.password">
+
+                <label for="password-confirmation">パスワード（再入力）</label>
+                <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
+
+                <div class="form__button">
+                    <button type="submit" class="button button--inverse">登録する</button>
+                </div>
+            </form>
         </div>
     </div>
 </template>
@@ -90,13 +94,13 @@ export default {
         async login() {
             await this.$store.dispatch('auth/login', this.loginForm)
             if(this.apiStatus){
-                this.$router.push('/')
+                this.$router.go('/')
             }
         },
         async register () {
             await this.$store.dispatch('auth/register', this.registerForm)
             if(this.apiStatus){
-                this.$router.push('/')
+                this.$router.go('/')
             }
         },
         clearError() {

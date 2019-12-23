@@ -7,11 +7,9 @@ import ProductListRank from './pages/ProductListRank.vue'
 import ProductListFeed from './pages/ProductListFeed.vue'
 import Login from './pages/Login.vue'
 import ProductForm from './pages/ProductForm.vue'
-import ProductDetail from './pages/ProductDetail.vue'
 
 import store from './store'
 import SystemError from './pages/errors/System.vue'
-import NotFound from './pages/errors/NotFound.vue'
 
 
 //VueRouterプラグインを使用
@@ -72,18 +70,10 @@ const routes = [
         }
     },
     {
-        path: '/products/:id',
-        component: ProductDetail,
-        props: true
-    },
-    {
         path: '/500',
         component: SystemError
     },
-    // {
-    //     path: '*', // 指定されたルート以外はNotFound
-    //     component: NotFound
-    // }
+
 ]
 
 // VueRouterインスタンスを作成

@@ -10,9 +10,8 @@
                 <div class="card">
                     <div class="card-haeder p-3 w-100 d-flex">
                         <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
-                        <div class="ml-2 flex-column">
-                            <a href="{{ url('users/' .$user->id) }}" >ユーザー名 : {{ $user->name }}</a>
-                            <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>
+                        <div class="ml-3 flex-column">
+                            <h5><a href="{{ url('users/' .$user->id) }}" class="text-muted font-weight-bold">{{ $user->name }}</a></h5>
                         </div>
                         <div class="d-flex justify-content-end flex-grow-1">
                             <form action="{{ url('login') }}"><button type="submit" class="btn btn-secondary"  onclick="return confirm('フォロー機能を使う場合は、ログインしてください');">フォローする</button></form>

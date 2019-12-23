@@ -4,7 +4,6 @@
 
     <div class="container">
         <div class="row justify-content-center">
-                    <h3 class="col-md-8 mb-3 p-0 text-center text-muted">ユーザー情報</h3>
             <div class="col-md-8 mb-3 p-0">
                 <div class="container">
                     <div class="row">
@@ -20,7 +19,7 @@
                                         @if($user->id === Auth::user()->id)
                                             <div class="mt-3 d-flex">
                                                 <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary mr-2">編集</a>
-                                                <a href="{{ route('logout') }}" class="btn btn-primary"
+                                                <a href="{{ route('logout') }}" class="btn btn-secondary"
                                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">ログアウト
                                                 </a>
@@ -69,7 +68,7 @@
                         <div class="text-secondary">フォロー</div>
                         <div class="">{{ $follow_count }}</div></a>
                     </li>
-                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="/indexRank">
+                    <li class="tab__item px-0 pt-0 mr-0"><a class="btn btn-lg px-2" href="{{ url('followerIndex', $user->id) }}">
                         <div class="text-secondary">フォロワー</div>
                         <div class="">{{ $follower_count }}</div></a>
                     </li>
@@ -93,19 +92,19 @@
                             </div>
                             <div class="card-body">
                                 
-                                <h4><a href="{{ url('products/' .$timeline->id) }}" class="pl-4">{{ $timeline->title }} / {{ $timeline->author }}</a></h4>
-                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$timeline->product_image) }}" width="300" height="300" class="mt-3 d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425" style="cursor:pointer" />
-                                <p class="form-control pl-4 mb-0">おすすめ度 : {{ $timeline->recommend }}</p>
-                                <p class="form-control pl-4 mb-0">{{ $timeline->text }}</p>
+                                <h4><a href="{{ url('products/' .$timeline->id) }}" class="pl-4 text-muted font-weight-bold">{{ $timeline->title }} / {{ $timeline->author }}</a></h4>
+                                <a href="{{ url('products/' .$timeline->id) }}"> <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$timeline->product_image) }}" width="300" height="300" class="mt-4 d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425" style="cursor:pointer" /></a>
+                                <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $timeline->recommend }}</p>
+                                <p class="pl-4 mb-0">{{ $timeline->text }}</p>
                             </div>
-                            <div class="card-footer py-1 d-flex justify-content-end bg-white">
+                            <div class="card-footer py-2 d-flex justify-content-end bg-white">
                                 @if ($timeline->user->id === Auth::user()->id)
                                     <div class="mr-3 d-flex align-items-center">
-                                            <form method="POST" action="{{ url('products/' .$timeline->id) }}" class="mb-0 d-flex flex-row">
+                                            <a href="{{ url('products/' .$timeline->id .'/edit') }}" class="btn btn-primary"><span class="far fa-edit"></span> 編集</a>
+                                            <form method="POST" action="{{ url('products/' .$timeline->id) }}" class="mb-0 ml-2">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ url('products/' .$timeline->id .'/edit') }}" class="dropdown-item">編集</a>
-                                                <button type="submit" class="dropdown-item del-btn">削除</button>
+                                                <button type="submit" class="btn btn-secondary" onclick="return confirm('投稿を削除してもよろしいですか？');"><span class="fas fa-trash-alt"></span> 削除</button>
                                             </form>
                                     </div>
                                 @endif

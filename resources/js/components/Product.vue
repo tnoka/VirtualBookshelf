@@ -1,6 +1,5 @@
 <template>
     <div class="product col-6 col-sm-4">
-
         <figure class="">
             <img
             class="img-fluid mb-4"
@@ -10,10 +9,7 @@
             ref="image"
             >
         </figure> 
-        <!-- <router-link
-        class="product__overlay"
-        :to= "`/products/${item.id}`"
-        :title="`View the Book by ${item.owner.name}`"> -->
+
         <a :href="'/products/'+item.id" class="product__overlay">
         <div class="product__controls">
             <button class="product__action product__action--favorite"
@@ -24,7 +20,6 @@
             </button>
         </div>
         </a>
-        <!-- </router-link> -->
     </div>
 </template>
 

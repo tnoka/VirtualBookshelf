@@ -44,10 +44,6 @@ Route::get('/products/indexRank', 'ProductController@indexRank')->name('product.
 // フィード
 Route::get('/products/indexFeed', 'ProductController@indexFeed')->name('product.indexFeed');
 
-
-// 本の詳細
-Route::get('/products/{id}', 'ProductController@show')->name('product.show');
-
 // コメント
 Route::post('/products/{product}/comments', 'ProductController@addComment')->name('product.comment');
 

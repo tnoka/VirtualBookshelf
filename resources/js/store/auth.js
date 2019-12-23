@@ -51,21 +51,6 @@ const actions = {
             context.commit('error/setCode', response.status, { root: true})
         }
     },
-    // // 退会
-    // async destroy(context)
-    // {
-    //     context.commit('setApiStatus', null)
-    //     const response = await axios.delete(`/api/users/` + user.id)
-
-    //     if(response.status === OK) {
-    //         context.commit('setApiStatus', true)
-    //         context.commit('setUser', null)
-    //         return false
-    //     }
-
-    //     context.commit('setApiStatus', false)
-    //     context.commit('error/setCode', response.status, { root: true })
-    // },
     // ログイン
     async login(context, data){
         context.commit('setApiStatus', null)

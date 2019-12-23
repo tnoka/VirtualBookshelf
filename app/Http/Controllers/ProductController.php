@@ -79,11 +79,6 @@ class ProductController extends Controller
             'comments' => $comments
         ]);
     }
-    public function show(string $id)
-    {
-        $product = Product::where('id', $id)->with(['owner', 'comments.author', 'favorite'])->first();
-        return $product ?? abort(404);
-    }
 
     // 本の投稿
     public function store(StoreProduct $request, product $product)

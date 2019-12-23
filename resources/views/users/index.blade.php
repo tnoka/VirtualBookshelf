@@ -10,15 +10,12 @@
             <div class="card">
               <div class="card-haeder p-3 w-100 d-flex">
                 <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
-                <div class="ml-2 flex-column">
-                  <a href="{{ url('users/' .$user->id) }}" >ユーザー名 : {{ $user->name }}</a>
-                  <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>
+                <div class="ml-3 flex-column">
+                  <h5><a href="{{ url('users/' .$user->id) }}" class="text-muted font-weight-bold">{{ $user->name }}</a></h5>
+                  @if (auth()->user()->isFollowed($user->id))
+                      <p class="px-1 bg-secondary text-light">フォローされています</p>
+                  @endif
                 </div>
-                @if (auth()->user()->isFollowed($user->id))
-                  <div class="px-2">
-                    <span class="px-1 bg-secondary text-light">フォロワー</span>
-                  </div>
-                @endif
                 <div class="d-flex justify-content-end flex-grow-1">
                   @if(auth()->user()->isFollowing($user->id))
                     <form action="{{ route('unFollow', $user->id) }}" method="POST">

@@ -38,61 +38,6 @@ img {
   max-width: 600px;
 }
 
-.grid {
-  display: grid;
-  grid-gap: 0 2%;
-  grid-template-columns: repeat(auto-fit, 32%);
-}
-
-.grid__item {
-  margin-bottom: 2rem;
-}
-
-.navbar {
-  -webkit-box-align: center;
-          align-items: center;
-  background: #fff;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
-  display: -webkit-box;
-  display: flex;
-  height: 4rem;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-  left: 0;
-  padding: 2%;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 3;
-}
-
-.navbar__brand {
-  color: inherit;
-  font-family: Merriweather, serif;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-decoration: none;
-}
-
-.navbar__brand:visited {
-  color: inherit;
-}
-
-.navbar__brand:hover {
-  opacity: .6;
-}
-
-.navbar__menu {
-  -webkit-box-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: flex;
-}
-
-.navbar__item {
-  margin-left: 1rem;
-}
-
 .product {
   position: relative;
 }
@@ -187,72 +132,6 @@ img {
 
 .product__action--favorited .icon {
   color: #fff;
-}
-
-.product-detail {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-}
-
-.product-detail--column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-}
-
-.product-detail--column .product-detail__pane {
-  width: 100%;
-}
-
-.product-detail--column .product-detail__image {
-  cursor: -webkit-zoom-out;
-  cursor: zoom-out;
-}
-
-.product-detail__pane {
-  width: 49%;
-}
-
-.product-detail__image {
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
-  margin-bottom: 1.5rem;
-}
-
-.product-detail__image figcaption {
-  margin-top: .5rem;
-}
-
-.product-detail__title {
-  font-size: 1.2rem;
-  margin: 1.5rem 0;
-}
-
-.product-detail__title .icon {
-  margin-right: .5em;
-}
-
-.product-detail__comments {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.product-detail__commentItem {
-  border-bottom: 1px solid #dedede;
-  margin-bottom: 1.5rem;
-  padding: 0 0 1.5rem 0;
-}
-
-.product-detail__commentBody {
-  margin: 0 0 1rem 0;
-}
-
-.product-detail__commentInfo {
-  color: #8a8a8a;
-  margin: 0;
 }
 
 .button {
@@ -365,17 +244,6 @@ img {
   border-bottom: 2px solid #222;
   color: #222;
   font-weight: bold;
-}
-
-.footer {
-  -webkit-box-align: center;
-          align-items: center;
-  border-top: 1px solid #f1f1f1;
-  display: -webkit-box;
-  display: flex;
-  height: 5rem;
-  -webkit-box-pack: center;
-          justify-content: center;
 }
 
 .errors {

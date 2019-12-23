@@ -52,7 +52,7 @@
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('register'))
-                        <a class="btn btn-dark btn-lg" href="{{ url('login') }}">ログイン / 新規登録</a>
+                        <a class="btn btn-dark" href="{{ url('login') }}">ログイン / 新規登録</a>
                     @endif
                 @else
                     <div class="d-flex flex-row">
@@ -63,7 +63,7 @@
         </div>
     </nav>
 
-    <main class="py-1">
+    <main class="py-1 my-4">
         @yield('content')
     </main>
 </body>
