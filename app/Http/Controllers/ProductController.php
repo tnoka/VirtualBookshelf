@@ -51,21 +51,6 @@ class ProductController extends Controller
         return $products;
     }
 
-    // タイムライン
-    public function productTimeLine(Product $product, Follow $follow)
-    {
-        $user = auth()->user();
-        // ログインしているユーザーがフォローしているユーザーのIDを取得
-        $follow_ids = $follow->followIds($user->id);
-        
-        $timelines = $product->getTimeLine($user->id, $follow_ids);
-
-        return view('product.timeline', [
-            'user' => $user,
-            'timelines' => $timelines
-        ]);
-    }
-
     // 本の詳細
     public function shows(Product $product, Comment $comment)
     {
@@ -122,7 +107,7 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            Auth::user()->product()->save($product);
+            Auth::user()->products()->save($product);
             DB::commit();
         } catch(\Exception $extension) {
             DB::rollBack();
