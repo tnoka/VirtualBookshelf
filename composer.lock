@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.125.0",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
@@ -1065,7 +1065,7 @@
                 "illuminate/view": "self.version"
             },
             "require-dev": {
-                "aws/aws-sdk-php": "^3.0",
+                "aws/aws-sdk-php": "^3.13",
                 "doctrine/dbal": "^2.6",
                 "filp/whoops": "^2.4",
                 "guzzlehttp/guzzle": "^6.3",
@@ -1080,7 +1080,7 @@
                 "true/punycode": "^2.1"
             },
             "suggest": {
-                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.0).",
+                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.13).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
                 "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
                 "ext-memcached": "Required to use the memcache cache driver.",
@@ -1354,7 +1354,7 @@
                 "shasum": ""
             },
             "require": {
-                "aws/aws-sdk-php": "^3.0.0",
+                "aws/aws-sdk-php": "^3.13.0",
                 "league/flysystem": "^1.0.40",
                 "php": ">=5.5.0"
             },
@@ -1408,7 +1408,7 @@
                 "psr/log-implementation": "1.0.0"
             },
             "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "aws/aws-sdk-php": "^2.4.9 || ^3.13",
                 "doctrine/couchdb": "~1.0@dev",
                 "elasticsearch/elasticsearch": "^6.0",
                 "graylog2/gelf-php": "^1.4.2",

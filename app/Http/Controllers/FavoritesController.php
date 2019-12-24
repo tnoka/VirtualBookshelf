@@ -19,7 +19,7 @@ class FavoritesController extends Controller
         $is_following = $login_user->isFollowing($id);
         $is_followed = $login_user->isFollowed($id);
         $product_count = $product->getProductCount($id);
-        $follow_count = $follow->getFollowerCount($id);
+        $follow_count = $follow->getFollowCount($id);
         $follower_count = $follow->getFollowerCount($id);
         return view('favorites.index',
         [

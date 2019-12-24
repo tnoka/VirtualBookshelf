@@ -18,20 +18,20 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="pl-4">{{ $product->title }} / {{ $product->author }}</p>
+                        <h4><p class="pl-4 mb-4 text-muted font-weight-bold">{{ $product->title }} / {{ $product->author }}</p></h4>
                         <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->product_image) }}" alt="" width="300" height="300" class="d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425"/>
                         <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $product->recommend }}</p>
                         <p class="pl-4 mb-0">{{ $product->text }}</p>
                     </div>
 
-                    <div class="card-footer py-1 d-flex justify-content-end bg-white">
+                    <div class="card-footer py-2 d-flex justify-content-end bg-white">
                         @if ($product->user->id === Auth::user()->id)
                             <div class="mr-3 d-flex align-items-center">
-                                <form method="POST" action="{{ url('products/' .$product->id) }}" class="mb-0 d-flex flex-row">
+                                <a href="{{ url('products/' .$product->id .'/edit') }}" class="btn btn-primary"><span class="far fa-edit"></span> 編集</a>
+                                <form method="POST" action="{{ url('products/' .$product->id) }}" class="mb-0 ml-2">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ url('products/' .$product->id .'/edit') }}" class="dropdown-item">編集</a>
-                                    <button type="submit" class="dropdown-item del-btn">削除</button>
+                                    <button type="submit" class="btn btn-secondary" onclick="return confirm('投稿を削除してもよろしいですか？');"><span class="fas fa-trash-alt"></span> 削除</button>
                                 </form>
                             </div>
                         @endif
