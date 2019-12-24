@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center mb-5">
-            <h3 class="col-md-8 mb-3 text-center text-muted">投稿内容の詳細</h3>
+            <h3 class="col-md-8 mb-3 text-center text-dark">投稿内容の詳細</h3>
 
             <div class="col-md-8 mb-3">
                 <div class="card">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4><p class="pl-4 mb-4 text-muted font-weight-bold">{{ $product->title }} / {{ $product->author }}</p></h4>
+                        <h4><p class="pl-4 mb-4 text-dark font-weight-bold">{{ $product->title }} / {{ $product->author }}</p></h4>
                         <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->product_image) }}" alt="" width="300" height="300" class="d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425"/>
                         <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $product->recommend }}</p>
                         <p class="pl-4 mb-0">{{ $product->text }}</p>

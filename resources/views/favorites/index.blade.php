@@ -88,7 +88,7 @@
                             </div>
                             <div class="card-body">
                                 
-                                <h4><a href="{{ url('products/' .$favorite->product->id) }}" class="pl-4 text-muted font-weight-bold">{{ $favorite->product->title }} / {{ $favorite->product->author }}</a></h4>
+                                <h4><a href="{{ url('products/' .$favorite->product->id) }}" class="pl-4 text-dark font-weight-bold">{{ $favorite->product->title }} / {{ $favorite->product->author }}</a></h4>
                                 <a href="{{ url('products/' .$favorite->product->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$favorite->product->product_image) }}" width="300" height="300" class="mt-4 d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425" style="cursor:pointer" /></a>
                                 <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $favorite->product->recommend }}</p>
                                 <p class="pl-4 mb-0">{{ $favorite->product->text }}</p>
