@@ -24,10 +24,6 @@ class CreateProductsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->index('id');
-            $table->index('category_id');
-            $table->index('user_id');
-
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
