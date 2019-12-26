@@ -2047,6 +2047,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2068,6 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
         // 縦長クラス
         'product__image--portrait': this.portrait
       };
+    },
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
     }
   },
   methods: {
@@ -2601,6 +2630,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.$store.getters['auth/check']) {
         alert('読みたい本に追加する場合はログインしてください');
+        this.$router.push('/login');
         return false;
       }
 
@@ -2659,7 +2689,7 @@ __webpack_require__.r(__webpack_exports__);
             case 2:
               response = _context3.sent;
 
-              if (!(response.data !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
                 _context3.next = 6;
                 break;
               }
@@ -2668,7 +2698,7 @@ __webpack_require__.r(__webpack_exports__);
               return _context3.abrupt("return", false);
 
             case 6:
-              this.product = this.product.map(function (product) {
+              this.products = this.products.map(function (product) {
                 if (product.id === response.data.product_id) {
                   product.favorite_count -= 1;
                   product.favorited_by_user = false;
@@ -2914,7 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
             case 2:
               response = _context3.sent;
 
-              if (!(response.data !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
                 _context3.next = 6;
                 break;
               }
@@ -2923,7 +2953,7 @@ __webpack_require__.r(__webpack_exports__);
               return _context3.abrupt("return", false);
 
             case 6:
-              this.product = this.product.map(function (product) {
+              this.products = this.products.map(function (product) {
                 if (product.id === response.data.product_id) {
                   product.favorite_count -= 1;
                   product.favorited_by_user = false;
@@ -3169,7 +3199,7 @@ __webpack_require__.r(__webpack_exports__);
             case 2:
               response = _context3.sent;
 
-              if (!(response.data !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
+              if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_3__["OK"])) {
                 _context3.next = 6;
                 break;
               }
@@ -3178,7 +3208,7 @@ __webpack_require__.r(__webpack_exports__);
               return _context3.abrupt("return", false);
 
             case 6:
-              this.product = this.product.map(function (product) {
+              this.products = this.products.map(function (product) {
                 if (product.id === response.data.product_id) {
                   product.favorite_count -= 1;
                   product.favorited_by_user = false;
@@ -5254,47 +5284,96 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "product col-6 col-sm-4" }, [
-    _c("figure", {}, [
-      _c("img", {
-        ref: "image",
-        staticClass: "img-fluid mb-4",
-        class: _vm.imageClass,
-        attrs: { src: _vm.item.url },
-        on: { load: _vm.setAspectRatio }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "product__overlay",
-        attrs: { href: "/products/" + _vm.item.id }
-      },
-      [
-        _c("div", { staticClass: "product__controls" }, [
+    _vm.isLogin
+      ? _c("div", [
+          _c("figure", {}, [
+            _c("img", {
+              ref: "image",
+              staticClass: "img-fluid mb-4",
+              class: _vm.imageClass,
+              attrs: { src: _vm.item.url },
+              on: { load: _vm.setAspectRatio }
+            })
+          ]),
+          _vm._v(" "),
           _c(
-            "button",
+            "a",
             {
-              staticClass: "product__action product__action--favorite",
-              class: {
-                "product__action--favorited": _vm.item.favorited_by_user
-              },
-              attrs: { title: "読みたい本" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.favorite($event)
-                }
-              }
+              staticClass: "product__overlay",
+              attrs: { href: "/products/" + _vm.item.id }
             },
             [
-              _c("i", { staticClass: "fa fa-heart" }),
-              _vm._v(_vm._s(_vm.item.favorite_count) + "\n        ")
+              _c("div", { staticClass: "product__controls" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "product__action product__action--favorite",
+                    class: {
+                      "product__action--favorited": _vm.item.favorited_by_user
+                    },
+                    attrs: { title: "読みたい本" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.favorite($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-heart" }),
+                    _vm._v(" " + _vm._s(_vm.item.favorite_count) + "\n        ")
+                  ]
+                )
+              ])
             ]
           )
         ])
-      ]
-    )
+      : _c(
+          "div",
+          [
+            _c("figure", {}, [
+              _c("img", {
+                ref: "image",
+                staticClass: "img-fluid mb-4",
+                class: _vm.imageClass,
+                attrs: { src: _vm.item.url },
+                on: { load: _vm.setAspectRatio }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { staticClass: "product__overlay", attrs: { to: "/login" } },
+              [
+                _c("div", { staticClass: "product__controls" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "product__action product__action--favorite",
+                      class: {
+                        "product__action--favorited": _vm.item.favorited_by_user
+                      },
+                      attrs: { title: "読みたい本" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.favorite($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fa fa-heart" }),
+                      _vm._v(
+                        " " + _vm._s(_vm.item.favorite_count) + "\n        "
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ],
+          1
+        )
   ])
 }
 var staticRenderFns = []
@@ -6027,7 +6106,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
@@ -6089,7 +6168,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
@@ -6250,7 +6329,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
@@ -6312,7 +6391,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
@@ -6473,7 +6552,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
@@ -6535,7 +6614,7 @@ var render = function() {
                   return _c("Product", {
                     key: product.id,
                     attrs: { item: product },
-                    on: { like: _vm.onFavoriteClick }
+                    on: { favorite: _vm.onFavoriteClick }
                   })
                 }),
                 1
