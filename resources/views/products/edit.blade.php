@@ -14,9 +14,9 @@
 
                             <div class="form-froup row mb-0">
                                 <div class="col-md-12 p-3 w-100 d-flex">
-                                    <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
+                                    <a href="{{ url('users/' .$user->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
                                     <div class="ml-3 d-flex flex-column">
-                                        <a href="{{ url('users/' .$user->id) }}" class="font-weight-bold">ユーザー名 : {{ $user->name }}</a>
+                                        <h5><a href="{{ url('users/' .$user->id) }}" class="text-dark font-weight-bold">ユーザー名 : {{ $user->name }}</a></h5>
                                         <p class="mb-0 text-secondary">ユーザーID : {{ $user->id }}</p>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
 
                             <div class="form-group row mb-0 mx-auto">
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">更 新</button>
+                                    <button type="submit" class="btn button--inverse btn-lg">更 新</button>
                                 </div>
                             </div>
                         </form>

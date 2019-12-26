@@ -47,8 +47,8 @@
                     <img :src="preview">
                 </output>
                 
-                <div class="form__button">
-                    <button type="submit" class="button button--inverse">投稿する</button>
+                <div class="form__button text-center my-3">
+                    <button type="submit" class="btn button--inverse btn-lg">投稿する</button>
                 </div>
             </form>
         </div>

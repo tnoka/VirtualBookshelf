@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">プロフィール編集</div>
-                    <div class="card-body">
+                    <div class="card-body pb-0">
                         <form action="{{ url('users/' .$user->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -49,10 +49,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4 mt-3">
-                                    <button class="btn btn-primary btn-lg" type="submit">更新する</button>
-                                </div>
+                            <div class="form-group text-center my-5">
+                                    <button class="btn button--inverse btn-lg" type="submit">更新する</button>
                             </div>
                         </form>
                     </div>
