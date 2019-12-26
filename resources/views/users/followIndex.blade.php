@@ -81,7 +81,7 @@
                         @if($follow->isFollowed($user->id))
                             <div class="card">
                                 <div class="card-haeder p-3 w-100 d-flex">
-                                    <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follow->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
+                                    <a href="{{ url('users/' .$follow->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follow->profile_image) }}" class="rounded-circle" width="50" height="50" alt=""></a>
                                     <div class="ml-2 flex-column">
                                         <a href="{{ url('users/' .$follow->id) }}" class="text-muted font-weight-bold">{{ $follow->name }}</a>
                                         @if (auth()->user()->isFollowed($follow->id))

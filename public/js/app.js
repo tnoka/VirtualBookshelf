@@ -5536,7 +5536,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "button button-inverse",
+                    staticClass: "button button--inverse",
                     attrs: { type: "submit" }
                   },
                   [_vm._v("ログイン")]
@@ -5996,10 +5996,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
+    return _c("div", { staticClass: "form__button text-center my-3" }, [
       _c(
         "button",
-        { staticClass: "button button--inverse", attrs: { type: "submit" } },
+        {
+          staticClass: "btn button--inverse btn-lg",
+          attrs: { type: "submit" }
+        },
         [_vm._v("投稿する")]
       )
     ])

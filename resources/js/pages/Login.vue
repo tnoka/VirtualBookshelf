@@ -26,7 +26,7 @@
                 <label for="login-password">パスワード</label>
                 <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
                 <div class="form__button">
-                    <a :href="'/'"><button type="submit" class="button button-inverse">ログイン</button></a>
+                    <a :href="'/'"><button type="submit" class="button button--inverse">ログイン</button></a>
                 </div>
             </form>
         </div>
