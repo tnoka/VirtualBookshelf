@@ -17,7 +17,7 @@
                     v-for="product in products"
                     :key="product.id"
                     :item="product"
-                    @like="onFavoriteClick"
+                    @favorite="onFavoriteClick"
                     />
                 </div>
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
@@ -40,7 +40,7 @@
                     v-for="product in products"
                     :key="product.id"
                     :item="product"
-                    @like="onFavoriteClick"
+                    @favorite="onFavoriteClick"
                     />
                 </div>
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
@@ -108,6 +108,7 @@ export default {
         onFavoriteClick({id, favorited}) {
             if(! this.$store.getters['auth/check']) {
                 alert('読みたい本に追加する場合はログインしてください')
+                this.$router.push('/login')
                 return false
             }
 
@@ -136,12 +137,12 @@ export default {
         async unFavorite(id) {
             const response = await axios.delete(`/api/products/${id}/favorite`)
 
-            if(response.data !== OK) {
+            if(response.status !== OK) {
                 this.$store.commit('error/setCode', response.status)
                 return false
             }
 
-            this.product = this.product.map(product => {
+            this.products = this.products.map(product => {
                 if(product.id === response.data.product_id) {
                     product.favorite_count -= 1
                     product.favorited_by_user = false
