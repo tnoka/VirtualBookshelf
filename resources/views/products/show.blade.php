@@ -8,10 +8,9 @@
             <div class="col-md-8 mb-3">
                 <div class="card">
                     <div class="card-haeder p-3 w-100 d-flex">
-                        <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->user->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
-                        <div class="ml-2 d-flex flex-column">
-                            <a href="{{ url('users/' .$product->user->id) }}" class="">ユーザー名 : {{ $product->user->name }}</a>
-                            <p class="mb-0 text-secondary">ユーザーID : {{ $product->user->id }}</p>
+                        <a href="{{ url('users/' .$product->user->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->user->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
+                        <div class="ml-2 mt-3">
+                            <h5><a href="{{ url('users/' .$product->user->id) }}" class="text-dark font-weight-bold">{{ $product->user->name }}</a></h5>
                         </div>
                         <div class="d-flex justify-content-end flex-grow-1">
                             <p class="mb-0 text-secondary">{{ $product->created_at->format('Y-m-d H:i') }}</p>
@@ -75,13 +74,10 @@
                     @forelse($comments as $comment)
                         <li class="list-group-item">
                             <div class="py-3 w-100 d-flex">
-                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$comment->user->profile_image) }}" class="rounded-circle" width="50" height="50" alt="">
-                                <div class="ml-2 d-flex flex-column">
-                                    <a href="{{ url('users/' .$comment->user->id) }}" class="text-secondary">{{ $comment->user->id}}</a>
-                                    <p class="mb-0">{{ $comment->user->name }}</p>
-                                </div>
-                                <div class="d-flex justify-content-end flex-grouw-1">
+                                <a href="{{ url('users/' .$comment->user->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$comment->user->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
+                                <div class="ml-2">
                                     <p class="mb-0 text-secondary">{{ $comment->created_at->format('Y-m-d H:i') }}</p>
+                                    <a href="{{ url('users/' .$comment->user->id) }}" class="text-dark font-weight-bold">{{ $comment->user->name }}</a>
                                 </div>
                             </div>
                             <div class="py-3">
@@ -99,10 +95,9 @@
                                 @csrf
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 p-3 w-100 d-flex">
-                                        <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
-                                        <div class="ml-2 d-flex flex-column">
-                                            <a href="{{ url('users/' .$user->id) }}">{{ $user->name }}</a>
-                                            <p class="mb-0 text-secondary">{{ $user->id }}</p>
+                                        <a href="{{ url('users/' .$user->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
+                                        <div class="ml-2 mt-3">
+                                            <a href="{{ url('users/' .$user->id) }}" class="text-dark font-weight-bold">{{ $user->name }}</a>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -117,7 +112,7 @@
                                 </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-primary">確定</button>
+                                        <button type="submit" class="btn button--inverse">確定</button>
                                     </div>
                                 </div>
                             </form>
