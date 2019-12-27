@@ -2067,12 +2067,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2087,31 +2081,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    imageClass: function imageClass() {
-      return {
-        // 横長クラス
-        'product__image--landscape': this.landscape,
-        // 縦長クラス
-        'product__image--portrait': this.portrait
-      };
-    },
     isLogin: function isLogin() {
       return this.$store.getters['auth/check'];
     }
   },
   methods: {
-    setAspectRatio: function setAspectRatio() {
-      if (!this.$refs.image) {
-        return false;
-      }
-
-      var height = this.$refs.image.clientHeight;
-      var width = this.$refs.image.clientWidth; // 縦横比率 3:4 よりも横長の画像
-
-      this.landscape = height / width <= 0.75; // 横長でなければ縦長
-
-      this.portrait = !this.landscape;
-    },
     favorite: function favorite() {
       this.$emit('favorite', {
         id: this.item.id,
@@ -2311,6 +2285,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./resources/js/util.js");
 /* harmony import */ var _components_Loader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Loader.vue */ "./resources/js/components/Loader.vue");
 
+//
 //
 //
 //
@@ -5286,15 +5261,12 @@ var render = function() {
   return _c("div", { staticClass: "product col-6 col-sm-4" }, [
     _vm.isLogin
       ? _c("div", [
-          _c("figure", {}, [
-            _c("img", {
-              ref: "image",
-              staticClass: "img-fluid mb-4",
-              class: _vm.imageClass,
-              attrs: { src: _vm.item.url },
-              on: { load: _vm.setAspectRatio }
-            })
-          ]),
+          _c("img", {
+            ref: "image",
+            staticClass: "img-fluid mb-4",
+            class: _vm.imageClass,
+            attrs: { src: _vm.item.url }
+          }),
           _vm._v(" "),
           _c(
             "a",
@@ -5331,15 +5303,12 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("figure", {}, [
-              _c("img", {
-                ref: "image",
-                staticClass: "img-fluid mb-4",
-                class: _vm.imageClass,
-                attrs: { src: _vm.item.url },
-                on: { load: _vm.setAspectRatio }
-              })
-            ]),
+            _c("img", {
+              ref: "image",
+              staticClass: "img-fluid mb-4",
+              class: _vm.imageClass,
+              attrs: { src: _vm.item.url }
+            }),
             _vm._v(" "),
             _c(
               "router-link",
@@ -5933,6 +5902,10 @@ var render = function() {
               }
             },
             [
+              _c("option", { attrs: { value: "-" } }, [
+                _vm._v("選択してください")
+              ]),
+              _vm._v(" "),
               _c("option", { attrs: { value: "★★★★★" } }, [_vm._v("★★★★★")]),
               _vm._v(" "),
               _c("option", { attrs: { value: "★★★★" } }, [_vm._v("★★★★")]),
@@ -5947,7 +5920,7 @@ var render = function() {
           _vm._v(" "),
           _c("label", { attrs: { for: "text" } }, [_vm._v("メモ")]),
           _vm._v(" "),
-          _c("input", {
+          _c("textarea", {
             directives: [
               {
                 name: "model",
@@ -5957,7 +5930,7 @@ var render = function() {
               }
             ],
             staticClass: "form__item",
-            attrs: { type: "text", id: "text" },
+            attrs: { type: "text", id: "text", rows: "10" },
             domProps: { value: _vm.text },
             on: {
               input: function($event) {

@@ -31,6 +31,7 @@
 
                 <label for="recommend">おすすめ度</label>
                 <select name="recommend" class="form-control mb-3" id="recommend" v-model="recommend">
+                    <option value="-">選択してください</option>
                     <option value="★★★★★">★★★★★</option>
                     <option value="★★★★">★★★★</option>
                     <option value="★★★">★★★</option>
@@ -39,7 +40,7 @@
                 </select>
 
                 <label for="text">メモ</label>
-                <input type="text" class="form__item" id="text" v-model="text">
+                <textarea type="text" class="form__item" id="text" v-model="text" rows="10"></textarea>
 
                 <label for="product_image">本の画像</label>
                 <input type="file" id="product_image" class="form__item" @change="onFileChange">

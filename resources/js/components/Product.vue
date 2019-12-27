@@ -1,15 +1,12 @@
 <template>
     <div class="product col-6 col-sm-4">
         <div v-if="isLogin">
-        <figure class="">
             <img
             class="img-fluid mb-4"
             :class="imageClass"
             :src="item.url"
-            @load="setAspectRatio"
             ref="image"
             >
-        </figure> 
 
         <a :href="'/products/'+item.id" class="product__overlay">
         <div class="product__controls">
@@ -23,15 +20,12 @@
         </a>
         </div>
         <div v-else>
-        <figure class="">
             <img
             class="img-fluid mb-4"
             :class="imageClass"
             :src="item.url"
-            @load="setAspectRatio"
             ref="image"
             >
-        </figure> 
 
         <router-link to="/login" class="product__overlay">
         <div class="product__controls">
@@ -64,30 +58,11 @@ export default {
         }
     },
     computed: {
-        imageClass () {
-        return {
-            // 横長クラス
-            'product__image--landscape': this.landscape,
-            // 縦長クラス
-            'product__image--portrait': this.portrait
-        }
-        },
         isLogin() {
             return this.$store.getters['auth/check']
         }
     },
     methods: {
-        setAspectRatio () {
-        if (! this.$refs.image) {
-            return false
-        }
-        const height = this.$refs.image.clientHeight
-        const width = this.$refs.image.clientWidth
-        // 縦横比率 3:4 よりも横長の画像
-        this.landscape = height / width <= 0.75
-        // 横長でなければ縦長
-        this.portrait = ! this.landscape
-        },
         favorite() {
             this.$emit('favorite', {
                 id: this.item.id,
