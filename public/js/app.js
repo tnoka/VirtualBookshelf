@@ -2547,15 +2547,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    doAjax: function doAjax() {
-      var self = this;
-      self.isLoading = true; // simulate AJAX
-
-      setTimeout(function () {
-        self.isLoading = false;
-        console.log('load off');
-      }, 1300);
-    },
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
     },
@@ -2571,7 +2562,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 1300);
+              }, 800);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/?page=".concat(this.$route.query.page)));
 
@@ -2827,7 +2818,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 1300);
+              }, 800);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/indexFeed/?page=".concat(this.$route.query.page)));
 
@@ -3082,7 +3073,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 1300);
+              }, 800);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/indexRank/?page=".concat(this.$route.query.page)));
 

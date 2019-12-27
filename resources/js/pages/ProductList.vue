@@ -23,7 +23,7 @@
                 <Pagination :current-page="currentPage" :last-page="lastPage" />
             </div>
             <div class="container" v-else>
-                <div class="jumbotron jumbotron-extend home-header"  style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
+                <div class="jumbotron jumbotron-extend home-header" style="background: url(../img/main.jpg) no-repeat center center; background-size: cover;">
                     <div class="container-fluid jumbotron-container">
                         <h1 class="display-4 site-name text-light text-center mt-5 top-title" style="">仮想本棚</h1>
                         <h3 class="site-name text-light text-center mt-5 top-title">読んだ本を本棚に飾り</h3>
@@ -74,15 +74,6 @@ export default {
         }
     },
     methods: {
-        doAjax:function() {
-            let self = this;    
-            self.isLoading = true;
-            // simulate AJAX
-            setTimeout(function(){
-                self.isLoading = false;
-                console.log('load off');
-            }, 1300);
-            },
         onCancel:function() {
             console.log('User cancelled the loader.')
             },
@@ -93,7 +84,7 @@ export default {
             setTimeout(function(){
                 self.isLoading = false;
                 console.log('load off');
-            }, 1300);
+            }, 800);
             const response = await axios.get(`/api/products/?page=${this.$route.query.page}`)
 
             if(response.status !== OK) {
