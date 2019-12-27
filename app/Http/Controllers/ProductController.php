@@ -156,7 +156,7 @@ class ProductController extends Controller
         $user = auth()->user();
         $product->productDestroy($user->id, $product->id);
 
-        return back();
+        return redirect('users/'. $user->id);
     }
 
     // コメント投稿
