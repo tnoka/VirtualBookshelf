@@ -47,6 +47,7 @@
                                         <label for="recommend" class="col-md-4 col-form-label text-md-right">おすすめ度</label>
                                             <div class="col-md-6">
                                                 <select name="recommend" class="form-control mb-3" value="{{ old('recommend') ? : $products->recommend }}" required autocomplete="recommend" autofocus>
+                                                    <option value="-" @if($products->recommend =="-") selected @endif>選択してください</option>
                                                     <option value="★★★★★" @if($products->recommend =="★★★★★") selected @endif>★★★★★</option>
                                                     <option value="★★★★" @if($products->recommend =="★★★★") selected @endif>★★★★</option>
                                                     <option value="★★★" @if($products->recommend =="★★★") selected @endif>★★★</option>
