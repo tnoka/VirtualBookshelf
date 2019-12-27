@@ -14,7 +14,7 @@
 //     return view('index');
 // });
 
-Route::get('users/all', 'usersController@all')->name('all');
+Route::get('users/all', 'UsersController@all')->name('all');
 
 // ログイン状態のみ
 Route::group(['middleware' => 'auth'], function(){
