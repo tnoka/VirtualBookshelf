@@ -84,7 +84,7 @@ export default {
             setTimeout(function(){
                 self.isLoading = false;
                 console.log('load off');
-            }, 800);
+            }, 400);
             const response = await axios.get(`/api/products/indexFeed/?page=${this.$route.query.page}`)
 
             if(response.status !== OK) {

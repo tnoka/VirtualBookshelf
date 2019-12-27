@@ -2562,7 +2562,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 800);
+              }, 400);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/?page=".concat(this.$route.query.page)));
 
@@ -2818,7 +2818,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 800);
+              }, 400);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/indexFeed/?page=".concat(this.$route.query.page)));
 
@@ -3073,7 +3073,7 @@ __webpack_require__.r(__webpack_exports__);
               setTimeout(function () {
                 self.isLoading = false;
                 console.log('load off');
-              }, 800);
+              }, 400);
               _context.next = 5;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios.get("/api/products/indexRank/?page=".concat(this.$route.query.page)));
 
@@ -5491,12 +5491,12 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "form__button" }, [
+            _c("div", { staticClass: "form__button text-center my-3" }, [
               _c("a", { attrs: { href: "/" } }, [
                 _c(
                   "button",
                   {
-                    staticClass: "button button--inverse",
+                    staticClass: "btn btn-lg button--inverse",
                     attrs: { type: "submit" }
                   },
                   [_vm._v("ログイン")]
@@ -5688,11 +5688,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
+    return _c("div", { staticClass: "form__button text-center my-3" }, [
       _c(
         "button",
-        { staticClass: "button button--inverse", attrs: { type: "submit" } },
-        [_vm._v("登録する")]
+        {
+          staticClass: "btn btn-lg button--inverse",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("新規登録")]
       )
     ])
   }
@@ -23849,65 +23852,29 @@ var actions = {
       }
     });
   },
-  // ログアウト
-  logout: function logout(context) {
-    var response;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function logout$(_context3) {
+  // ログインユーザーのチェック
+  currentUser: function currentUser(context) {
+    var response, user;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function currentUser$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             context.commit('setApiStatus', null);
             _context3.next = 3;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/logout'));
-
-          case 3:
-            response = _context3.sent;
-
-            if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
-              _context3.next = 8;
-              break;
-            }
-
-            context.commit('setApiStatus', true);
-            context.commit('setUser', null);
-            return _context3.abrupt("return", false);
-
-          case 8:
-            context.commit('setApiStatus', false);
-            context.commit('error/setCode', response.status, {
-              root: true
-            });
-
-          case 10:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    });
-  },
-  // ログインユーザーのチェック
-  currentUser: function currentUser(context) {
-    var response, user;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function currentUser$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            context.commit('setApiStatus', null);
-            _context4.next = 3;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/user'));
 
           case 3:
-            response = _context4.sent;
+            response = _context3.sent;
             user = response.data || null;
 
             if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
-              _context4.next = 9;
+              _context3.next = 9;
               break;
             }
 
             context.commit('setApiStatus', true);
             context.commit('setUser', user);
-            return _context4.abrupt("return", false);
+            return _context3.abrupt("return", false);
 
           case 9:
             context.commit('setApiStatus', false);
@@ -23917,7 +23884,7 @@ var actions = {
 
           case 11:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
       }
     });

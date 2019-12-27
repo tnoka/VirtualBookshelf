@@ -69,20 +69,6 @@ const actions = {
         context.commit('error/setCode', response.status, { root: true })
         }
     },
-    // ログアウト
-    async logout(context){
-        context.commit('setApiStatus', null)
-        const response = await axios.post('/api/logout')
-
-        if(response.status === OK) {
-            context.commit('setApiStatus', true)
-            context.commit('setUser', null)
-            return false
-        }
-
-        context.commit('setApiStatus', false)
-        context.commit('error/setCode', response.status, { root: true })
-    },
     // ログインユーザーのチェック
     async currentUser(context){
         context.commit('setApiStatus', null)

@@ -25,8 +25,8 @@
                 <input type="text" class="form__item" id="login-email" v-model="loginForm.email">
                 <label for="login-password">パスワード</label>
                 <input type="password" class="form__item" id="login-password" v-model="loginForm.password">
-                <div class="form__button">
-                    <a :href="'/'"><button type="submit" class="button button--inverse">ログイン</button></a>
+                <div class="form__button text-center my-3">
+                    <a :href="'/'"><button type="submit" class="btn btn-lg button--inverse">ログイン</button></a>
                 </div>
             </form>
         </div>
@@ -55,8 +55,8 @@
                 <label for="password-confirmation">パスワード（再入力）</label>
                 <input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
 
-                <div class="form__button">
-                    <button type="submit" class="button button--inverse">登録する</button>
+                <div class="form__button text-center my-3">
+                    <button type="submit" class="btn btn-lg button--inverse">新規登録</button>
                 </div>
             </form>
         </div>
