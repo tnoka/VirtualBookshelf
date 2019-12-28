@@ -8,6 +8,12 @@
                 <div class="card">
 
                     <div class="card-body">
+                        <div class="text-center font-weight-bold text-danger my-3">
+                            {{ $errors->first('title') }}
+                            {{ $errors->first('author') }}
+                            {{ $errors->first('recommend') }}
+                            {{ $errors->first('text') }}
+                        </div>
                         <form action="{{ route('products.update',['products' => $products]) }}" method="POST" > 
                             @csrf
                             @method('PUT')
@@ -24,23 +30,13 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-md-4 col-form-label text-md-right">タイトル</label>
                                         <div class="col-md-6">
-                                            <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') ? : $products->title }}" required autocomplete="title" autofocus>
-                                            @error('title')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="text" id="title" class="form-control" name="title" value="{{ old('title') ? : $products->title }}" required autocomplete="title" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="author" class="col-md-4 col-form-label text-md-right">著者</label>
                                         <div class="col-md-6">
-                                            <input type="text" id="author" class="form-control @error('author') is-invalid @enderror" name="author" value="{{ old('author') ? : $products->author }}" required autocomplete="author" autofocus>
-                                            @error('author')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="text" id="author" class="form-control" name="author" value="{{ old('author') ? : $products->author }}" required autocomplete="author" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -55,7 +51,7 @@
                                                     <option value="★" @if($products->recommend =="★") selected @endif>★</option>
                                                 </select>
                                             </div>
-                                    <textarea name="text" class="form-control mb-3" required autocomplete="text" rows="10">{{ old('text') ? : $products->text }}</textarea>
+                                    <textarea name="text" class="form-control mb-3" autocomplete="text" rows="10">{{ old('text') ? : $products->text }}</textarea>
                                 </div>
                             </div>
 

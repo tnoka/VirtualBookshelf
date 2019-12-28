@@ -14,7 +14,7 @@ class CommentsController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, [
             'product_id' => 'required|string',
-            'text' => 'required|string|max:200'
+            'text' => 'required|max:200'
         ]);
 
         $validator->validate();

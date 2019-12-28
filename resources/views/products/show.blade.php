@@ -91,6 +91,10 @@
                     @endforelse
                     <li class="list-group-item">
                         <div class="py-3">
+                            <div class="text-center font-weight-bold text-danger my-3">
+                                {{ $errors->first('text') }}
+                            </div>
+
                             <form method="POST" action="{{ route('comments.store') }}">
                                 @csrf
                                 <div class="form-group row mb-0">
@@ -102,12 +106,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <textarea class="mb-3 form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') }}</textarea>
-                                        @error('text')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <textarea class="mb-3 form-control" name="text" autocomplete="text" rows="4">{{ old('text') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">
