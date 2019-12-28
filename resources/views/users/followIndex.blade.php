@@ -81,14 +81,14 @@
                         @if($follow->isFollowed($user->id))
                             <div class="card">
                                 <div class="card-haeder p-3 w-100 d-flex">
-                                    <a href="{{ url('users/' .$follow->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follow->profile_image) }}" class="rounded-circle" width="50" height="50" alt=""></a>
+                                    <a href="{{ url('users/' .$follow->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$follow->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
                                     <div class="ml-2 flex-column">
-                                        <a href="{{ url('users/' .$follow->id) }}" class="text-muted font-weight-bold">{{ $follow->name }}</a>
+                                        <h5><a href="{{ url('users/' .$follow->id) }}" class="text-muted font-weight-bold">{{ $follow->name }}</a></h5>
                                         @if (auth()->user()->isFollowed($follow->id))
                                             <p class="px-1 bg-secondary text-light">フォローされています</p>
                                         @endif
                                     </div>
-                                    <div class="d-flex justify-content-end flex-grow-1">
+                                    <div class="d-flex align-items-center justify-content-end flex-grow-1">
                                         @if(auth()->user()->isFollowing($follow->id))
                                             <form action="{{ route('unFollow', $follow->id) }}" method="POST">
                                                 {{ csrf_field() }}
