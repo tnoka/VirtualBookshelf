@@ -1,6 +1,6 @@
 <template>
     <div class="pagination">
-        <div class="mx-auto">
+        <div class="mx-auto my-4">
         <RouterLink
         v-if="! isFirstPage"
         :to="`/?page=${currentPage - 1}`"

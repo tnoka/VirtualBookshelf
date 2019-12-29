@@ -153,7 +153,8 @@ return [
         'product_image' => '本の画像',
         'profile_image' => 'プロフィール画像',
         'name' => 'ユーザーネーム',
-        'emaile' => 'メールアドレス',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
     ],
 
 ];

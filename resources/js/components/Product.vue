@@ -3,7 +3,6 @@
         <div v-if="isLogin">
             <img
             class="img-fluid mb-4"
-            :class="imageClass"
             :src="item.url"
             ref="image"
             >
@@ -22,7 +21,6 @@
         <div v-else>
             <img
             class="img-fluid mb-4"
-            :class="imageClass"
             :src="item.url"
             ref="image"
             >

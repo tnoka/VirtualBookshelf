@@ -6,7 +6,6 @@
                 <RouterView />
             </div>
         </main>    
-        <Footer />   
         <p>Copyright ©2019 仮想本棚, All Rights Reserved.</p>
     </div>
 </template>
@@ -18,8 +17,6 @@ import { NOT_FOUND,UNAUTHORIZED,INTERNAL_SERVER_ERROR } from './util'
 export default {
     components: {
         Message,
-        Navbar,
-        Footer,
     },
     computed: {
         errorCode() {

@@ -2067,8 +2067,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -2192,6 +2190,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2200,6 +2203,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loginForm: {
         email: '',
         password: ''
+      },
+      easyLogin: {
+        email: 'a@a.com',
+        password: 'aaaaaaaa'
       },
       registerForm: {
         name: '',
@@ -2241,13 +2248,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }, null, this);
     },
-    register: function register() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function register$(_context2) {
+    easy: function easy() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function easy$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.$store.dispatch('auth/register', this.registerForm));
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.$store.dispatch('auth/login', this.easyLogin));
 
             case 2:
               if (this.apiStatus) {
@@ -2257,6 +2264,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             case 3:
             case "end":
               return _context2.stop();
+          }
+        }
+      }, null, this);
+    },
+    register: function register() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function register$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.$store.dispatch('auth/register', this.registerForm));
+
+            case 2:
+              if (this.apiStatus) {
+                this.$router.go('/');
+              }
+
+            case 3:
+            case "end":
+              return _context3.stop();
           }
         }
       }, null, this);
@@ -5203,7 +5230,7 @@ var render = function() {
   return _c("div", { staticClass: "pagination" }, [
     _c(
       "div",
-      { staticClass: "mx-auto" },
+      { staticClass: "mx-auto my-4" },
       [
         !_vm.isFirstPage
           ? _c(
@@ -5259,7 +5286,6 @@ var render = function() {
           _c("img", {
             ref: "image",
             staticClass: "img-fluid mb-4",
-            class: _vm.imageClass,
             attrs: { src: _vm.item.url }
           }),
           _vm._v(" "),
@@ -5301,7 +5327,6 @@ var render = function() {
             _c("img", {
               ref: "image",
               staticClass: "img-fluid mb-4",
-              class: _vm.imageClass,
               attrs: { src: _vm.item.url }
             }),
             _vm._v(" "),
@@ -5683,6 +5708,74 @@ var render = function() {
             _vm._m(0)
           ]
         )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "py-5 text-center",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.easy($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.easyLogin.email,
+              expression: "easyLogin.email"
+            }
+          ],
+          attrs: { type: "hidden", id: "login-email" },
+          domProps: { value: _vm.easyLogin.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.easyLogin, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.easyLogin.password,
+              expression: "easyLogin.password"
+            }
+          ],
+          attrs: { type: "hidden", id: "login-password" },
+          domProps: { value: _vm.easyLogin.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.easyLogin, "password", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-warning btn-outline-dark mt-2",
+              staticStyle: { "font-weight": "800" },
+              attrs: { type: "submit" }
+            },
+            [_vm._v("簡単ログイン（ポートフォリオ閲覧用）")]
+          )
+        ])
       ]
     )
   ])
@@ -23856,29 +23949,70 @@ var actions = {
       }
     });
   },
-  // ログインユーザーのチェック
-  currentUser: function currentUser(context) {
-    var response, user;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function currentUser$(_context3) {
+  // 簡単ログイン
+  easyLogin: function easyLogin(context, data) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function easyLogin$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             context.commit('setApiStatus', null);
             _context3.next = 3;
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/user'));
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/login', data));
 
           case 3:
             response = _context3.sent;
+
+            if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
+              _context3.next = 8;
+              break;
+            }
+
+            context.commit('setApiStatus', true);
+            context.commit('setUser', response.data);
+            return _context3.abrupt("return", false);
+
+          case 8:
+            context.commit('setApiStatus', false);
+
+            if (response.status === _util__WEBPACK_IMPORTED_MODULE_2__["UNPROCESSABLE_ENTITY"]) {
+              context.commit('setLoginErrorMessages', response.data.errors);
+            } else {
+              context.commit('error/setCode', response.status, {
+                root: true
+              });
+            }
+
+          case 10:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    });
+  },
+  // ログインユーザーのチェック
+  currentUser: function currentUser(context) {
+    var response, user;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function currentUser$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            context.commit('setApiStatus', null);
+            _context4.next = 3;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/user'));
+
+          case 3:
+            response = _context4.sent;
             user = response.data || null;
 
             if (!(response.status === _util__WEBPACK_IMPORTED_MODULE_2__["OK"])) {
-              _context3.next = 9;
+              _context4.next = 9;
               break;
             }
 
             context.commit('setApiStatus', true);
             context.commit('setUser', user);
-            return _context3.abrupt("return", false);
+            return _context4.abrupt("return", false);
 
           case 9:
             context.commit('setApiStatus', false);
@@ -23888,7 +24022,7 @@ var actions = {
 
           case 11:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
     });
