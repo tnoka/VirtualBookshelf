@@ -7,7 +7,7 @@
 
             <div class="col-md-8 mb-3">
                 <div class="card">
-                    <div class="card-haeder p-3 w-100 d-flex">
+                    <div class="card-header p-3 w-100 d-flex">
                         <a href="{{ url('users/' .$product->user->id) }}"><img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->user->profile_image) }}" class="rounded-circle" width="50" height="50"></a>
                         <div class="ml-2 mt-3">
                             <h5><a href="{{ url('users/' .$product->user->id) }}" class="text-dark font-weight-bold">{{ $product->user->name }}</a></h5>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4><p class="pl-4 mb-4 text-dark font-weight-bold">{{ $product->title }} / {{ $product->author }}</p></h4>
+                        <h4 class="text-center my-2"><p class="pl-4 mb-4 text-dark font-weight-bold">{{ $product->title }} / {{ $product->author }}</p></h4>
                         <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$product->product_image) }}" alt="" width="300" height="300" class="d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425"/>
                         <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $product->recommend }}</p>
                         <p class="pl-4 mb-0">{{ $product->text }}</p>

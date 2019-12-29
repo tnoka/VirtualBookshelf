@@ -12,7 +12,7 @@
                             <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
                             </div>
                             <div class="mt-3 d-flex flex-column">
-                                <h5 class="mb-0 pt-3 font-weight-bold">ユーザー名 : {{ $user->name }}</h5>
+                                <h3 class="mb-0 py-1 font-weight-bold">{{ $user->name }}</h3>
                                 <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="d-flex">

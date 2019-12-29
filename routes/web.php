@@ -15,6 +15,12 @@
 // });
 
 Route::get('users/all', 'UsersController@all')->name('all');
+Route::get('terms',function(){
+    return view('TermsOfService');
+});
+Route::get('privacy',function(){
+    return view('privacy');
+});
 
 // ログイン状態のみ
 Route::group(['middleware' => 'auth'], function(){
