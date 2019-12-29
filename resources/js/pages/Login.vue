@@ -60,6 +60,11 @@
                 </div>
             </form>
         </div>
+        <form @submit.prevent="easy" class="py-5 text-center">
+            <input type="hidden" v-model="easyLogin.email" id="login-email">
+            <input type="hidden" v-model="easyLogin.password" id="login-password">
+            <a :href="'/'"><button type="submit" class="btn btn-warning btn-outline-dark mt-2" style="font-weight:800;">簡単ログイン（ポートフォリオ閲覧用）</button></a>
+        </form>
     </div>
 </template>
 
@@ -73,6 +78,10 @@ export default {
             loginForm: {
                 email: '',
                 password: '',
+            },
+            easyLogin: {
+                email: 'a@a.com',
+                password: 'aaaaaaaa',
             },
             registerForm: {
                 name: '',
@@ -97,6 +106,12 @@ export default {
                 this.$router.go('/')
             }
         },
+        async easy() {
+            await this.$store.dispatch('auth/login', this.easyLogin)
+            if(this.apiStatus){
+                this.$router.go('/')
+            }
+        },       
         async register () {
             await this.$store.dispatch('auth/register', this.registerForm)
             if(this.apiStatus){
