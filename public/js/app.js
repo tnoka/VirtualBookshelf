@@ -1990,6 +1990,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     currentPage: {
@@ -5198,34 +5200,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pagination" },
-    [
-      !_vm.isFirstPage
-        ? _c(
-            "RouterLink",
-            {
-              staticClass: "button",
-              attrs: { to: "/?page=" + (_vm.currentPage - 1) }
-            },
-            [_vm._v("« prev")]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.isLastPage
-        ? _c(
-            "RouterLink",
-            {
-              staticClass: "button",
-              attrs: { to: "/?page=" + (_vm.currentPage + 1) }
-            },
-            [_vm._v("next »")]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+  return _c("div", { staticClass: "pagination" }, [
+    _c(
+      "div",
+      { staticClass: "mx-auto" },
+      [
+        !_vm.isFirstPage
+          ? _c(
+              "RouterLink",
+              {
+                staticClass: "button",
+                attrs: { to: "/?page=" + (_vm.currentPage - 1) }
+              },
+              [_vm._v("« 前のページ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.isLastPage
+          ? _c(
+              "RouterLink",
+              {
+                staticClass: "button",
+                attrs: { to: "/?page=" + (_vm.currentPage + 1) }
+              },
+              [_vm._v("次のページ »")]
+            )
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

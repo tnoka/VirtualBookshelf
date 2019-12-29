@@ -1,15 +1,17 @@
 <template>
     <div class="pagination">
+        <div class="mx-auto">
         <RouterLink
         v-if="! isFirstPage"
         :to="`/?page=${currentPage - 1}`"
         class="button"
-        >&laquo; prev</RouterLink>
+        >&laquo; 前のページ</RouterLink>
         <RouterLink
         v-if="! isLastPage"
         :to="`/?page=${currentPage + 1}`"
         class="button"
-        >next &raquo;</RouterLink>
+        >次のページ &raquo;</RouterLink>
+        </div>
     </div>
 </template>
 
