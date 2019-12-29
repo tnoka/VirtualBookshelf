@@ -12,7 +12,7 @@
                             <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
                             </div>
                             <div class="mt-3 d-flex flex-column">
-                                <h5 class="mb-0 pt-3 font-weight-bold">ユーザー名 : {{ $user->name }}</h5>
+                                <h3 class="mb-0 py-1 font-weight-bold">{{ $user->name }}</h3>
                                 <span class="text-secondary">ユーザーID : {{ $user->id }}</span>
                                 <div class="d-flex flex-column justify-content-between">
                                     <div class="d-flex">
@@ -80,10 +80,9 @@
                     <div class="col-md-8 mb-3">
                         <div class="card">
                             <div class="card-header p-3 w-100 d-flex">
-                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
-                                <div class="ml-2 d-flex flex-column flex-grow-1">
-                                    <p class="mb-0 text-secondary">ユーザー名 : {{ $timeline->user->name }}</p>
-                                    <p class="mb-0 text-secondary">ユーザーID : {{ $timeline->user->id }}</p>
+                                <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$user->profile_image) }}" class="rounded-circle ml-3" width="50" height="50">
+                                <div class="ml-2 mt-3 d-flex flex-column flex-grow-1">
+                                    <p class="mb-0 text-secondary">{{ $timeline->user->name }}</p>
                                 </div>
                                 <div class="ml-2 d-flex flex-column flex-grow-1">
                                     <p class="mb-0 text-secondary">投稿日時</p>
@@ -92,7 +91,7 @@
                             </div>
                             <div class="card-body">
                                 
-                                <h4><a href="{{ url('products/' .$timeline->id) }}" class="pl-4 text-dark font-weight-bold">{{ $timeline->title }} / {{ $timeline->author }}</a></h4>
+                                <h4 class="text-center my-2"><a href="{{ url('products/' .$timeline->id) }}" class="text-dark font-weight-bold">{{ $timeline->title }} / {{ $timeline->author }}</a></h4>
                                 <a href="{{ url('products/' .$timeline->id) }}"> <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .$timeline->product_image) }}" width="300" height="300" class="mt-4 d-block mx-auto img-fluid img-responsive thumbnail aligncenter size-full wp-image-425" style="cursor:pointer" /></a>
                                 <p class="my-2 pl-4 mb-0">おすすめ度 : {{ $timeline->recommend }}</p>
                                 <p class="pl-4 mb-0">{{ $timeline->text }}</p>
