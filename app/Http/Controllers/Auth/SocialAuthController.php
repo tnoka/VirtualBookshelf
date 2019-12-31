@@ -28,7 +28,7 @@ class SocialAuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect()->route('/');
+        return redirect('/');
     }
     private function findOrCreateUser($twitterUser)
     {
@@ -40,7 +40,7 @@ class SocialAuthController extends Controller
 
         return User::create([
             'name' => $twitterUser->name,
-            'handle' => $twitterUser->nickname,
+            'email' => $twitterUser->email,
             'twitter_id' => $twitterUser->id,
             'avatar' => $twitterUser->avatar_original
         ]);
