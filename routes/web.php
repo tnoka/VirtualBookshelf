@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('auth/twitter', 'Auth\SocialAuthController@redirectToProvider');
-Route::get('auth/twitter/callback', 'Auth\SocialAuthController@handleProviderCallback');
-Route::get('auth/twitter/logout', 'Auth\SocialAuthController@logout');
+Route::get('/login/{social}', 'Auth\OAuthLoginController@socialLogin')->where('social', 'twitter');
+Route::get('/login/{social}/callback', 'Auth\OAuthLoginController@handleProviderCallback')->where('social', 'twitter');
 Route::get('users/all', 'UsersController@all')->name('all');
 Route::get('terms',function(){
     return view('TermsOfService');
