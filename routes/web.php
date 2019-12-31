@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return view('index');
-// });
 
+Route::get('/login/{social}', 'Auth\OAuthLoginController@socialLogin')->where('social', 'twitter');
+Route::get('/login/{social}/callback', 'Auth\OAuthLoginController@handleProviderCallback')->where('social', 'twitter');
 Route::get('users/all', 'UsersController@all')->name('all');
 Route::get('terms',function(){
     return view('TermsOfService');

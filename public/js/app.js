@@ -2195,6 +2195,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5710,6 +5711,8 @@ var render = function() {
         )
       ]
     ),
+    _vm._v(" "),
+    _c("a", { attrs: { href: "login/twitter" } }, [_vm._v("twitterログイン")]),
     _vm._v(" "),
     _c(
       "form",
