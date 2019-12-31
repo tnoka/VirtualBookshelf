@@ -62,7 +62,7 @@
         </div>
 
         <form @submit.prevent="easy" class="py-5 text-center d-flex flex-column">
-            <a :href="'login/twitter'" class="mb-5 text-center mx-auto btn btn-primary">Twitterログイン</a>
+            <a :href="'auth/twitter'" class="mb-5 text-center mx-auto btn btn-primary">Twitterログイン</a>
             <input type="hidden" v-model="easyLogin.email" id="login-email">
             <input type="hidden" v-model="easyLogin.password" id="login-password">
             <a :href="'/'"><button type="submit" class="btn btn-warning btn-outline-dark mt-2" style="font-weight:800;">簡単ログイン（ポートフォリオ閲覧用）</button></a>
