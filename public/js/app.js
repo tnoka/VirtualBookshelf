@@ -5719,7 +5719,7 @@ var render = function() {
           "a",
           {
             staticClass: "mb-5 text-center mx-auto btn btn-primary",
-            attrs: { href: "login/twitter" }
+            attrs: { href: "auth/twitter" }
           },
           [_vm._v("Twitterログイン")]
         ),
