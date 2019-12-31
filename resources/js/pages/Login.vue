@@ -60,6 +60,7 @@
                 </div>
             </form>
         </div>
+        <a :href="'login/twitter'">twitterログイン</a>
         <form @submit.prevent="easy" class="py-5 text-center">
             <input type="hidden" v-model="easyLogin.email" id="login-email">
             <input type="hidden" v-model="easyLogin.password" id="login-password">
