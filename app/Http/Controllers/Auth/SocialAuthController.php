@@ -41,7 +41,7 @@ class SocialAuthController extends Controller
         return User::create([
             'name' => $twitterUser->name,
             'email' => $twitterUser->email,
-            'twitter_id' => $twitterUser->getNickname(),
+            'twitter_id' => $twitterUser->email,
         ]);
     }
     public function logout()
