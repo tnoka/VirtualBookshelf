@@ -5718,7 +5718,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "mb-5 text-center mx-auto btn btn-primary",
+            staticClass: "mb-5 text-center mx-auto btn btn-primary btn-lg",
             attrs: { href: "auth/twitter" }
           },
           [_vm._v("Twitterログイン")]
