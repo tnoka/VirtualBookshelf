@@ -40,4 +40,9 @@ class Comment extends Model
     {
         return $this->with('author')->where('product_id', $product_id)->get();
     }
+
+    public function commentDelete(Int $user_id, Int $comment_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $comment_id)->delete();
+    }
 }

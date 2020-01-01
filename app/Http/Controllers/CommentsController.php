@@ -22,4 +22,12 @@ class CommentsController extends Controller
 
         return back();
     }
+
+    public function destroy(Comment $comment)
+    {
+        $user = auth()->user();
+        $comment->commentDelete($user->id, $comment->id);
+
+        return back();
+    }
 }

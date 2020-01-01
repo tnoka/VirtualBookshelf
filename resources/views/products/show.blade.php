@@ -83,6 +83,13 @@
                             <div class="py-3">
                                 {!! nl2br(e($comment->text)) !!}
                             </div>
+                            @if(Auth::user()->id === $comment->user_id)
+                            <form method="POST" action="{{ url('comments/'. $comment->id) }}" class="text-right">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-secondary" onclick="return confirm('コメントを削除してもよろしいですか？');"><span class="fas fa-trash-alt"></span> 削除</button>
+                            </form>
+                            @endif
                         </li>
                     @empty
                         <li class="list-group-item">
