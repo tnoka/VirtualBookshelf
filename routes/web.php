@@ -10,17 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// TwitterAPI ソーシャルログイン機能
 Route::get('auth/twitter', 'Auth\SocialAuthController@redirectToProvider');
 Route::get('auth/twitter/callback', 'Auth\SocialAuthController@handleProviderCallback');
 Route::get('auth/twitter/logout', 'Auth\SocialAuthController@logout');
+Route::get('terms',function(){return view('TermsOfService');});
+Route::get('privacy',function(){return view('privacy');});
+
+// 非ログイン時のユーザー一覧
 Route::get('users/all', 'UsersController@all')->name('all');
-Route::get('terms',function(){
-    return view('TermsOfService');
-});
-Route::get('privacy',function(){
-    return view('privacy');
-});
 
 // ログイン状態のみ
 Route::group(['middleware' => 'auth'], function(){
