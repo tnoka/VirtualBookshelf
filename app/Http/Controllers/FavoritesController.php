@@ -10,6 +10,7 @@ use App\User;
 
 class FavoritesController extends Controller
 {
+    // 読みたい本の一覧
     public function index(Favorite $favorite, User $user, Product $product, Follow $follow, $id)
     {
         $login_user  = auth()->user();
@@ -35,6 +36,7 @@ class FavoritesController extends Controller
 
     }
 
+    // 読みたい本の登録機能
     public function store(Request $request, Favorite $favorite)
     {
         $user = auth()->user();
@@ -50,6 +52,7 @@ class FavoritesController extends Controller
         return back();
     }
 
+    // 読みたい本の解除機能
     public function destroy(Favorite $favorite)
     {
         $user_id = $favorite->user_id;
