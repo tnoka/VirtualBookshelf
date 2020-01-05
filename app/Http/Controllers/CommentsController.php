@@ -8,6 +8,7 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
+    // コメント登録
     public function store(Request $request, Comment $comment)
     {
         $user = auth()->user();
@@ -23,6 +24,7 @@ class CommentsController extends Controller
         return back();
     }
 
+    // コメント削除
     public function destroy(Comment $comment)
     {
         $user = auth()->user();
