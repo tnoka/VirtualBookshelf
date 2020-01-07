@@ -6359,7 +6359,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "tab__item ab__item--active px-0 pt-0" },
+                  { staticClass: "tab__item tab__item--active px-0 pt-0" },
                   [
                     _c(
                       "router-link",
