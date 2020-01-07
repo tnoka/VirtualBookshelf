@@ -28,7 +28,7 @@ class StoreProduct extends FormRequest
             'author' => ['required', 'string'],
             'recommend' => ['required', 'string'],
             'text' => 'required|max:750',
-            'product_image' => 'required|file|mimes:jpg,jpeg,png,heic,gif|max:102400'
+            'product_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:102400'
         ];
     }
 }
