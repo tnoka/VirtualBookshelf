@@ -26,7 +26,9 @@ Route::group(['middleware' => 'auth'], function(){
     // resourceでCRUDルーティングをまとめて設定
     // ユーザー関連
     Route::resource('users', 'UsersController');
+    // フォロー一覧
     Route::get('followIndex/{id}', 'UsersController@followIndex')->name('followIndex');
+    // フォロワー一覧
     Route::get('followerIndex/{id}', 'UsersController@followerIndex')->name('followerIndex');
 
     // 本関連
