@@ -18,6 +18,8 @@ Route::get('auth/twitter/logout', 'Auth\SocialAuthController@logout');
 Route::get('terms',function(){return view('TermsOfService');});
 Route::get('privacy',function(){return view('privacy');});
 
+// 検索機能
+Route::get('products/search', 'ProductController@search')->name('search');
 // 非ログイン時のユーザー一覧
 Route::get('users/all', 'UsersController@all')->name('all');
 
