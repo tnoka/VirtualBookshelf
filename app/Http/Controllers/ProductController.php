@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function __construct()
     {
         // 認証
-        $this->middleware('auth')->except(['index', 'indexRank', 'show']);
+        $this->middleware('auth')->except(['index', 'indexRank', 'show', 'search']);
     }
 
     // 本の一覧（新着順）
@@ -35,9 +35,9 @@ class ProductController extends Controller
     {
         $products = Product::with(['owner', 'favorite'])->withCount('favorite')->orderBy('favorite_count', 'desc')->paginate();
 
-
         return $products;
     }
+
     // 本の一覧（フィード）
     public function indexFeed(Product $product, Follow $follow)
     {
@@ -49,6 +49,23 @@ class ProductController extends Controller
         $products = $product->getFeed($user->id, $following_ids); 
 
         return $products;
+    }
+
+    // 本の検索機能
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        if (!empty($keyword)) {
+            $products = Product::where('title', 'like', '%' . $keyword . '%')->orWhere('author', 'like', '%' . $keyword . '%')->orderBy(Product::CREATED_AT, 'desc')->paginate();
+        } else {
+            $products = Product::orderBy(Product::CREATED_AT, 'desc')->paginate();
+        }
+
+        return view('products.search', [
+            'keyword' => $keyword,
+            'products' => $products,
+        ]);
     }
 
     // 本の詳細
@@ -131,8 +148,8 @@ class ProductController extends Controller
 
         $validator->validate();
         $product->productUpdate($product->id, $data);
-
-        return back();
+        $user = auth()->user();
+        return redirect('users/'. $user->id);
     }
 
     // 本の編集画面

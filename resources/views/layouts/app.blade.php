@@ -35,12 +35,18 @@
                 <a class="navbar-brand text-dark mr-0 custom-form" href="{{ url('/users/all') }}">
                     <i class="fa fa-user-friends"></i>
                 </a>
+                <a class="navbar-brand text-dark mr-0 custom-form ml-2" href="{{ url('/products/search') }}">
+                    <i class="fa fa-search"></i>
+                </a>
             @else
                 <a class="navbar-brand text-dark mr-3 custom-form" href="{{ url('/') }}">
                     {{ ' 仮想本棚 ' }}
                 </a>
                 <a class="navbar-brand text-dark mr-2 custom-form" href="{{ url('/users') }}">
                     <i class="fa fa-user-friends"></i>
+                </a>
+                <a class="navbar-brand text-dark mr-0 custom-form mx-2" href="{{ url('/products/search') }}">
+                    <i class="fa fa-search"></i>
                 </a>
                 <a href="{{ url('users/' .auth()->user()->id) }}">
                     <img src="{{ asset('https://s3-ap-northeast-1.amazonaws.com/virtualbookshelf/' .auth()->user()->profile_image) }}" class="rounded-circle ml-2" width="40" height="40">
