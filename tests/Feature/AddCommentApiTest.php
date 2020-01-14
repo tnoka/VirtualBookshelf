@@ -28,9 +28,8 @@ class AddCommentApiTest extends TestCase
 
         $text = 'Sample';
 
-        $response = $this->actingAs($this->user)->json('POST', route('product.comment', [
-            'product' => $product->id,
-        ]), compact('text'));
+        $response = $this->actingAs($this->user)->POST('comments.store',
+        compact('text'));
 
         $comments = $product->comments()->get();
 
