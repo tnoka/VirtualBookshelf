@@ -45,13 +45,21 @@
                         </form>
                     </div>
                 </div>
-                <form action="{{ url('users/' .$user->id) }}" method="POST" class="mt-5 d-flex">
-                    @csrf
-                    @method('DELETE')
-                    <div class="form-group row mb-0 mx-auto">
-                        <button class="btn btn-danger" type="submit" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウントを削除する</button>
-                    </div>
-                </form>
+                @if(Auth::user()->id === 1)
+                    <form class="mt-5 d-flex">
+                        <div class="form-group row mb-0 mx-auto">
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('テストユーザーは削除できません');">アカウントを削除する</button>
+                        </div>
+                    </form>
+                @else
+                    <form action="{{ url('users/' .$user->id) }}" method="POST" class="mt-5 d-flex">
+                        @csrf
+                        @method('DELETE')
+                        <div class="form-group row mb-0 mx-auto">
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('アカウントを削除してもよろしいですか？');">アカウントを削除する</button>
+                        </div>
+                    </form>
+                @endif
             </div>
         </div>
     </div>
