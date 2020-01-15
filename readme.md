@@ -1,5 +1,6 @@
 <p>ＳＮＳ型の読書記録サイトです。</p>
 <p>是非一度ご確認頂ければ幸いでございます。</p>
+<a href="http://virtualbookshelf.work/">仮想本棚（サイトリンク）</a>
 </br>
 <p>・LaravelとVue.jsを使用したCRUD処理</p>
 <p>・インフラにAWSを使用</p>
