@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('followerIndex/{id}', 'UsersController@followerIndex')->name('followerIndex');
 
     // 本関連
-    Route::get('products/{product}', 'ProductController@shows')->name('products.shows');
+    Route::get('products/{product}', 'ProductController@show')->name('products.show');
     Route::resource('products', 'ProductController', ['only' => ['edit', 'update', 'destroy']]);
     Route::put('products/{products}', 'ProductController@update')->name('products.update');
 

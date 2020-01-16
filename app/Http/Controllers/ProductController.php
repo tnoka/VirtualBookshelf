@@ -7,7 +7,6 @@ use App\Comment;
 use App\Follow;
 use App\Favorite;
 use App\Http\Requests\StoreProduct;
-use App\Http\Requests\StoreComment;
 use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +17,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        // 認証
+    // 認証と認証不要の設定
         $this->middleware('auth')->except(['index', 'indexRank', 'show', 'search']);
     }
 
@@ -69,7 +68,7 @@ class ProductController extends Controller
     }
 
     // 本の詳細
-    public function shows(Product $product, Comment $comment)
+    public function show(Product $product, Comment $comment)
     {
         $user = auth()->user();
         $product = $product->getProduct($product->id);
@@ -89,7 +88,9 @@ class ProductController extends Controller
         $extension = $request->product_image->extension();
         $product = new Product();
         $product->product_image = $product->id . '.' . $extension;
+        // S3に保存
         Storage::cloud()->putFileAs('', $request->product_image, $product->product_image, 'public');
+        // エラー処理（DBとS3の整合性）
         DB::beginTransaction();
         try {
             $data = $request->all();
@@ -103,36 +104,8 @@ class ProductController extends Controller
             throw $exception;
         }
 
-
         return response($product, 201);
 
-    }
-
-    public function create(StoreProduct $request)
-    {
-        // 拡張子を取得
-        $extension = $request->product->extension();
-
-        $product = new Product();
-
-        $product->filename = $product->id . '.' . $extension;
-
-        // S3にファイルを保存
-        Storage::cloud()->putFileAs('', $request->product, $product->filename, 'public');
-
-        // エラー時にファイルを削除を行うため
-        DB::beginTransaction();
-
-        try {
-            Auth::user()->products()->save($product);
-            DB::commit();
-        } catch(\Exception $extension) {
-            DB::rollBack();
-            // DBとの不整合を避けるためアップロードしたファイルを削除
-            Storage::cloud()->delete($product->filename);
-            throw $extension;
-        }
-        return response($product, 201);
     }
 
     // 本の編集機能
@@ -174,19 +147,6 @@ class ProductController extends Controller
         $product->productDestroy($user->id, $product->id);
 
         return redirect('users/'. $user->id);
-    }
-
-    // コメント投稿
-    public function addComment(Product $product, StoreComment $request)
-    {
-        $comment = new Comment();
-        $comment->text = $request->get('text');
-        $comment->user_id = Auth::user()->id;
-        $product->comments()->save($comment);
-
-        $new_comment = Comment::where('id', $comment->id)->with('author')->first();
-
-        return response($new_comment, 201);
     }
 
     // いいね（読みたい本）
