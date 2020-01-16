@@ -67,7 +67,7 @@ class User extends Authenticatable
     // ユーザーの一覧を取得
     public function usersAll()
     {
-        return $this->paginate(5);
+        return $this->all();
     }
 
     // ユーザー情報の取得
