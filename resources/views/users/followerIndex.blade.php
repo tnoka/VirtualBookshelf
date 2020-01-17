@@ -109,5 +109,8 @@
                 </div>
             @endif
         </div>
+        <div class="my-4 d-flex justify-content-center">
+            {{ $followers->links() }}
+        </div>
     </div>
 @endsection
