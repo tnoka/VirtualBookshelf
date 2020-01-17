@@ -62,7 +62,7 @@ class UsersController extends Controller
         $is_following = $login_user->isFollowing($id);
         $is_followed = $login_user->isFollowed($id);
         $product_count = $product->getProductCount($id);
-        $follows = $user->usersAll($id);
+        $follows = $user->getUsers($id);
         $follow_count = $follow->getFollowCount($id);
         $follower_count = $follow->getFollowerCount($id);
         $favorite_count = $favorite->getFavoriteCount($id);
@@ -86,7 +86,7 @@ class UsersController extends Controller
         $is_following = $login_user->isFollowing($id);
         $is_followed = $login_user->isFollowed($id);
         $product_count = $product->getProductCount($id);
-        $followers = $user->usersAll($id);
+        $followers = $user->getUsers($id);
         $follow_count = $follow->getFollowCount($id);
         $follower_count = $follow->getFollowerCount($id);
         $favorite_count = $favorite->getFavoriteCount($id);

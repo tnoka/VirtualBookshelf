@@ -70,6 +70,12 @@ class User extends Authenticatable
         return $this->paginate(5);
     }
 
+    // ユーザーの一覧を取得(ページネーションなし)
+    public function getUsers()
+    {
+        return $this->all();
+    }
+
     // ユーザー情報の取得
     public function getUser($id)
     {
