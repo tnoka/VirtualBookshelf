@@ -24133,7 +24133,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   scrollBehavior: function scrollBehavior() {
     return {
       x: 0,
-      y: 500
+      y: 170
     };
   },
   routes: routes

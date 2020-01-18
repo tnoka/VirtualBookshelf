@@ -80,7 +80,10 @@ const routes = [
 const router = new VueRouter({
     mode: 'history', //historyモード（URLの＃を消す）
     scrollBehavior() {
-        return { x: 0, y: 500}
+        return {
+            x: 0,
+            y: 170
+        }
     },
     routes
 })
