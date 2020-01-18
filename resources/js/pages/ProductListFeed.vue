@@ -20,7 +20,7 @@
                     @favorite="onFavoriteClick"
                     />
                 </div>
-                <Pagination :current-page="currentPage" :last-page="lastPage" />
+                <PaginationIndexFeed :current-page="currentPage" :last-page="lastPage" />
             </div>
 
             <div class="container" v-else>
@@ -43,7 +43,7 @@
                         @favorite="onFavoriteClick"
                     />
                 </div>
-                <Pagination :current-page="currentPage" :last-page="lastPage" />
+                <PaginationIndexFeed :current-page="currentPage" :last-page="lastPage" />
             </div>
         </div>
 </template>
@@ -51,7 +51,7 @@
 
 <script>
 import Product from '../components/Product.vue'
-import Pagination from '../components/Pagination.vue'
+import PaginationIndexFeed from '../components/PaginationIndexFeed.vue'
 import { OK } from '../util'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -59,7 +59,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
     components: {
         Product,
-        Pagination,
+        PaginationIndexFeed,
         Loading
     },
     data() {
