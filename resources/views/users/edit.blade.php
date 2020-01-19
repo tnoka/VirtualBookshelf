@@ -39,9 +39,15 @@
                                 </div>
                             </div>
 
-                            <div class="form-group text-center my-5">
-                                <button class="btn button--inverse btn-lg" type="submit">更新する</button>
-                            </div>
+                            @if(Auth::user()->id === 1)
+                                <div class="form-group text-center my-5">
+                                    <p class="btn button--inverse btn-lg" onclick="return confirm('テストユーザーは変更できません');">更新する</p>
+                                </div>
+                            @else
+                                <div class="form-group text-center my-5">
+                                    <button class="btn button--inverse btn-lg" type="submit">更新する</button>
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
