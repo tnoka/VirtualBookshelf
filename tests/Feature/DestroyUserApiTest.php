@@ -9,6 +9,8 @@ use App\User;
 
 class DestroyUserApiTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function setUp():void
     {
         parent::setUp();
@@ -22,7 +24,7 @@ class DestroyUserApiTest extends TestCase
     public function DestroyUser_ユーザーを削除できる()
     {
         $response = $this->actingAs($this->user)
-            ->json('DELETE', route('user.delete', [
+            ->DELETE(route('users.destroy', [
                 'id' => $this->user->id,
             ]));
 

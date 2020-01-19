@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class AccessTest extends TestCase
 {
@@ -18,7 +19,7 @@ class AccessTest extends TestCase
     }
 
     /**
-     * test
+     * @test
      */
     public function Access_正常にアクセスできるか()
     {
