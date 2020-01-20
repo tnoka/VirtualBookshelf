@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\User;
+use App\Product;
 
 class AccessTest extends TestCase
 {
@@ -16,6 +17,7 @@ class AccessTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
+        $this->product = factory(Product::class)->create();
     }
 
     /**
@@ -30,10 +32,6 @@ class AccessTest extends TestCase
         $this->get('/users/all')->assertOk();
         $this->actingAs($this->user)->get('/followIndex/1')->assertOk();
         $this->actingAs($this->user)->get('/followerIndex/1')->assertOk();
-        $this->actingAs($this->user)->get('/products/1')->assertOk();
-        $this->actingAs($this->user)->put('/products/1')->assertOk();
-        $this->actingAs($this->user)->post('/users/1/follow')->assertOk();
-        $this->actingAs($this->user)->delete('/users/1/unFollow')->assertOk();
         $this->actingAs($this->user)->get('/favorites/1')->assertOk();
     }
 }
