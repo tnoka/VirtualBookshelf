@@ -11,11 +11,6 @@ class Comment extends Model
         'text'
     ];
 
-    // JSONに含める属性
-    protected $visible = [
-        'author', 'text',
-    ];
-
     // リレーション
     public function user()
     {

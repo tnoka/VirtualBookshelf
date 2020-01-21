@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\Database\Migrations;
-use IlluminateFoundationTestingDatabaseTransactions;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 use App\Product;
 use App\User;
@@ -21,6 +21,7 @@ class AddCommentApiTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
+        Auth::loginUsingId($this->user->id);
     }
     /**
      * @test
@@ -28,15 +29,13 @@ class AddCommentApiTest extends TestCase
     public function Comment_コメントを追加できるか()
     {
         factory(Product::class)->create();
-        $product = Product::first();
+        $this->product = Product::first();
 
-        $text = 'Sample';
-
-        $response = $this
-            ->POST(route('comments.store'), [
-                'product_id' => $product->id,
-                'text' => $text
-            ]);
+        $response = $this->json('POST',(route('comments.store', [
+            'user_id' => $this->user->id,
+            'product_id' => $this->product->id,
+            'text' => 'Sample'
+        ])));
 
         $comments = Comment::first();
 
