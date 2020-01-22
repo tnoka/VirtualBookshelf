@@ -26,7 +26,7 @@ class LogoutApiTest extends TestCase
         $response = $this->actingAs($this->user) //認証状態にする
                         ->POST(route('logout')); //認証状態でログアウトを実施する
 
-        $response->assertStatus(200); //正常にアクセスできた場合は200
+        $response->assertStatus(302); //正常にアクセスできた場合は200
         $this->assertGuest(); //ユーザーが認証されていない、つまりログアウトしているか
     }
 }
