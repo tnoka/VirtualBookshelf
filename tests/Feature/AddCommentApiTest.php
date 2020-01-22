@@ -21,7 +21,6 @@ class AddCommentApiTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
-        Auth::loginUsingId($this->user->id);
     }
     /**
      * @test
@@ -31,19 +30,20 @@ class AddCommentApiTest extends TestCase
         factory(Product::class)->create();
         $this->product = Product::first();
 
-        $response = $this->json('POST',(route('comments.store', [
+        $text = 'Sample';
+
+        $response = $this->actingAs($this->user)
+        ->POST('/comments', [
             'user_id' => $this->user->id,
             'product_id' => $this->product->id,
-            'text' => 'Sample'
-        ])));
+            'text' => $text
+        ]);
 
         $comments = Comment::first();
 
-        $response->assertStatus(201);
+        $response->assertStatus(302);
 
         // DBにコメントが１件登録されているか
         $this->assertEquals(1, $comments->count());
-        // 内容がAPIでリクエストしたものと一致するか
-        $this->assertEquals($text, $comments[0]->text);
     }
 }
