@@ -38,8 +38,6 @@ Route::get('/products/indexRank', 'ProductController@indexRank')->name('product.
 // フィード
 Route::get('/products/indexFeed', 'ProductController@indexFeed')->name('product.indexFeed');
 
-// コメント
-Route::post('/products/{product}/comments', 'ProductController@addComment')->name('product.comment');
 
 // いいね（読みたい本）
 Route::put('/products/{id}/favorite', 'ProductController@favorite')->name('product.favorite');

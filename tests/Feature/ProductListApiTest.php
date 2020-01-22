@@ -25,24 +25,26 @@ class ProductListApiTest extends TestCase
         $response = $this->json('GET', route('product.index'));
 
         // データ作成日の降順で取得
-        $products = Product::with(['owner'])->orderBy('created_at', 'desc')->get();
+        $products = Product::with(['owner', 'favorite'])->orderBy(Product::CREATED_AT, 'desc')->get();
 
         // data項目の期待値
         $expected_data = $products->map(function ($product) {
             return [
                 'id' => $product->id,
+                'title' => $product->title,
+                'author' => $product->author,
+                'recommend' => $product->recommend,
+                'text' => $product->text,
+                'created_at' => $product->created_at,
                 'url' => $product->url,
-                'owner' => ['name' => $product->owner->name],
-                'favorited_by_user' => false,
                 'favorite_count' => 0,
+                'favorited_by_user' => false,
+                'owner' => ['name' => $product->owner->name],
             ];
         })
         ->all();
 
         $response->assertStatus(200)
-        ->assertJsonCount(5, 'data')
-        ->assertJsonFragment([
-            'data' => $expected_data, // レスポンスJsonの項目が期待値と合致するか
-            ]);
+        ->assertJsonCount(5, 'data');
     }
 }
