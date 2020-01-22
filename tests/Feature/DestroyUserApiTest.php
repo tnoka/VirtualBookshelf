@@ -24,11 +24,11 @@ class DestroyUserApiTest extends TestCase
     public function DestroyUser_ユーザーを削除できる()
     {
         $response = $this->actingAs($this->user)
-            ->DELETE(route('users.destroy', [
+            ->DELETE('users'. '/'. $this->user->id, [
                 'id' => $this->user->id,
-            ]));
+            ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
 
         $users = User::all();
 
