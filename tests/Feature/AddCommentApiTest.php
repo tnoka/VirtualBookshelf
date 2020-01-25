@@ -25,8 +25,9 @@ class AddCommentApiTest extends TestCase
     /**
      * @test
      */
-    public function Comment_コメントを追加できるか()
+    public function Comment_コメントを追加して削除できるか()
     {
+        // コメントを追加できるか
         factory(Product::class)->create();
         $this->product = Product::first();
 
@@ -39,11 +40,27 @@ class AddCommentApiTest extends TestCase
             'text' => $text
         ]);
 
-        $comments = Comment::first();
+        $comment = Comment::first();
 
         $response->assertStatus(302);
 
         // DBにコメントが１件登録されているか
-        $this->assertEquals(1, $comments->count());
+        $this->assertEquals(1, $comment->count());
+
+
+        // コメントを削除できるか
+        $this->comment = Comment::first();
+
+        $responses = $this->actingAs($this->user)
+            ->DELETE('comments' . '/' . $this->comment->id, [
+                'id' => $this->comment->id,
+            ]);
+
+        $responses->assertStatus(302);
+
+        $comments = Comment::all();
+
+        $this->assertEquals(0, $comments->count());
+
     }
 }
