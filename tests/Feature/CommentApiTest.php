@@ -12,7 +12,7 @@ use App\Product;
 use App\User;
 use App\Comment;
 
-class AddCommentApiTest extends TestCase
+class CommentApiTest extends TestCase
 {
     use RefreshDatabase;
 
