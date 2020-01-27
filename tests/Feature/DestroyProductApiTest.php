@@ -37,6 +37,7 @@ class DestroyProductApiTest extends TestCase
 
         $products = Product::all();
 
+        // DBの件数が0であるか
         $this->assertEquals(0, $products->count());
 
     }
