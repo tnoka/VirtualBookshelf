@@ -10,7 +10,6 @@ class Favorite extends Model
     protected $table = 'favorite';
     public $timestamps = false;
 
-    // リレーション
     public function user()
     {
         return $this->belongsTo(User::class);
