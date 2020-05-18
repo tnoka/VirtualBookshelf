@@ -8,7 +8,6 @@ class Follow extends Model
 {
     protected $table = 'follow';
 
-    // 主キーの設定
     protected $primaryKey = [
         'following_id',
         'followed_id'
